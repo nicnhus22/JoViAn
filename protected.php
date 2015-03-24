@@ -22,7 +22,7 @@
 
 	<body>
 
-		<h1><?php echo 'Welcome, '.$_SESSION['username']; ?></h1>
+		<h1><?php echo 'Welcome, '.$_SESSION['email']; ?></h1>
 
 
 
