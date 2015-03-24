@@ -64,7 +64,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => 'clipper.encs.concordia.ca',
 	'username' => 'kgc353_4',
 	'password' => 'janv001',
 	'database' => 'kgc353_4',
