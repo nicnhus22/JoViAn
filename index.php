@@ -102,8 +102,8 @@ catch(Exception $e){
 
 		<!-- The main CSS file -->
 		<link href="assets/css/style.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="assets/bootstrap.min">
-		
+		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min">
+
 	</head>
 
 	<body>
