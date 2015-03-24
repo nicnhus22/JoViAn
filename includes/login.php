@@ -29,7 +29,6 @@ if(isset($_POST['submit'])){
      
     $sql->bindValue(1, $_POST["email"]); 
     $sql->bindValue(2, $pas); 
-
     $sql->execute(); 
 
     // Row count is different for different databases 
@@ -45,11 +44,11 @@ if(isset($_POST['submit'])){
         header("Location: protected.php"); // Modify to go to the page you would like 
         exit; 
     }else{ 
-        header("Location: index.php"); 
+        header("Location: ../index.php"); 
         exit; 
     } 
 }else{ //If the form button wasn't submitted go to the index page, or login page 
-    header("Location: index.php"); 
+    header("Location: ../index.php"); 
     exit; 
 }
 
