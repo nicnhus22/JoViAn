@@ -552,8 +552,6 @@
 	},
 	"file_history":
 	[
-		"/C/Users/nicolas.husser/SkyDrive/Documents/Cours/Winter_2015/COMP353/Project/Main/DBProject/Simple/includes/main.php",
-		"/C/Users/nicolas.husser/SkyDrive/Documents/Cours/Winter_2015/COMP353/Project/Main/DBProject/includes/main.php",
 		"/C/Users/nicolas.husser/SkyDrive/Documents/Cours/Winter_2015/COMP353/Project/Main/DBProject/index.php",
 		"/C/Users/nicolas.husser/SkyDrive/Documents/Cours/Winter_2015/COMP353/Project/Main/DBProject/application/config/config.php",
 		"/C/Users/nicolas.husser/AppData/Local/Temp/Rar$DIa0.511/index.php",
@@ -679,7 +677,9 @@
 		"/C/wamp/www/TrainerWorkout/app/views/trainee/search.blade.php",
 		"/C/wamp/www/TrainerWorkout/app/views/trainee/profile.blade.php",
 		"/C/wamp/www/TrainerWorkout/app/views/trainee/index.blade.php",
-		"/C/wamp/www/TrainerWorkout/app/views/trainee/exercises.blade.php"
+		"/C/wamp/www/TrainerWorkout/app/views/trainee/exercises.blade.php",
+		"/C/wamp/www/TrainerWorkout/app/views/trainee/friends.blade.php",
+		"/C/wamp/www/TrainerWorkout/app/views/trainee/editProfile.blade.php"
 	],
 	"find":
 	{
