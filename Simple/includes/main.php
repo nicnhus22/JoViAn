@@ -12,7 +12,7 @@ require_once __DIR__."/functions.php";
  * Configure Idiorm
  */
 
-$db_host = 'clipper.encs.concordia.ca/~kgc353_4/';
+$db_host = 'clipper.encs.concordia.ca';
 $db_name = 'kgc353_4';
 $db_user = 'kgc353_4';
 $db_pass = 'janv001';

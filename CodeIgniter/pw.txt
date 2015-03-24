@@ -1,9 +1,0 @@
-github: $msQ3E677KB=vn
-token: 1641799ba55fb3ad8279adaf9febaed84f8eae3f
-
-
-concordia_1_web
-Oong7rez
-
-root: au8rv25j
-db/keyring: 12345
