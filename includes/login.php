@@ -27,6 +27,8 @@ if(isset($_POST['submit'])){
     //Password function (Not In all versions of MySQL). 
     $pas = hash('sha256', $_POST['password']); 
      
+    echo password.' '.email;
+
     $sql->bindValue(1, $_POST["email"]); 
     $sql->bindValue(2, $pas); 
 
@@ -42,14 +44,14 @@ if(isset($_POST['submit'])){
         $_SESSION['fname']    = $row['first_name']; 
         $_SESSION['lname']    = $row['last_name']; 
         $_SESSION['logged']   = TRUE; 
-        header("Location: protected.php"); // Modify to go to the page you would like 
+        #header("Location: protected.php"); // Modify to go to the page you would like 
         exit; 
     }else{ 
-        redirect("index.php"); 
+        #redirect("index.php"); 
         exit; 
     } 
 }else{ //If the form button wasn't submitted go to the index page, or login page 
-    redirect("index.php"); 
+    #redirect("index.php"); 
     exit; 
 }
 
