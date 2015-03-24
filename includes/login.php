@@ -26,7 +26,7 @@ if(isset($_POST['submit'])){
     //Choose some sort of password encryption, I choose sha256 
     //Password function (Not In all versions of MySQL). 
     $pas = hash('sha256', $_POST['password']); 
-
+     
     $sql->bindValue(1, $_POST["email"]); 
     $sql->bindValue(2, $pas); 
 
@@ -42,14 +42,14 @@ if(isset($_POST['submit'])){
         $_SESSION['fname']    = $row['first_name']; 
         $_SESSION['lname']    = $row['last_name']; 
         $_SESSION['logged']   = TRUE; 
-        redirect("protected.php"); // Modify to go to the page you would like 
+        header("Location: protected.php"); // Modify to go to the page you would like 
         exit; 
     }else{ 
-        redirect("index.php"); 
+        header("Location: index.php"); 
         exit; 
     } 
 }else{ //If the form button wasn't submitted go to the index page, or login page 
-    redirect("index.php"); 
+    header("Location: index.php"); 
     exit; 
 }
 
