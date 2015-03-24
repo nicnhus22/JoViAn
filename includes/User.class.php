@@ -122,26 +122,6 @@ class User{
 	}
 
 	/**
-	 * Generates a new SHA1 login token, writes it to the database and returns it.
-	 * @return string
-	 */
-
-	public function generateToken(){
-		// generate a token for the logged in user. Save it to the database.
-
-		$token = sha1($this->email.time().rand(0, 1000000));
-
-		// Save the token to the database, 
-		// and mark it as valid for the next 10 minutes only
-
-		$this->orm->set('token', $token);
-		$this->orm->set_expr('token_validity', "ADDTIME(NOW(),'0:10')");
-		$this->orm->save();
-
-		return $token;
-	}
-
-	/**
 	 * Login this user
 	 * @return void
 	 */
@@ -188,7 +168,6 @@ class User{
 	 * Find the type of user. It can be either admin or regular.
 	 * @return string
 	 */
-
 	public function rank(){
 		if($this->orm->rank == 1){
 			return 'administrator';

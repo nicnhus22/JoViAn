@@ -2,32 +2,6 @@
 
 require_once 'includes/main.php';
 
-
-/*--------------------------------------------------
-	Handle visits with a login token. If it is
-	valid, log the person in.
----------------------------------------------------*/
-
-
-if(isset($_GET['tkn'])){
-
-	// Is this a valid login token?
-	$user = User::findByToken($_GET['tkn']);
-
-	if($user){
-
-		// Yes! Login the user and redirect to the protected page.
-
-		$user->login();
-		redirect('protected.php');
-	}
-
-	// Invalid token. Redirect back to the login form.
-	redirect('index.php');
-}
-
-
-
 /*--------------------------------------------------
 	Handle logging out of the system. The logout
 	link in protected.php leads here.
@@ -51,7 +25,6 @@ if(isset($_GET['logout'])){
 	logged-in users.
 ---------------------------------------------------*/
 
-
 $user = new User();
 
 if($user->loggedIn()){
@@ -59,12 +32,9 @@ if($user->loggedIn()){
 }
 
 
-
 /*--------------------------------------------------
 	Handle submitting the login form via AJAX
 ---------------------------------------------------*/
-
-
 try{
 
 	if(!empty($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH'])){
@@ -72,16 +42,6 @@ try{
 		// Output a JSON header
 
 		header('Content-type: application/json');
-
-		// Is the email address valid?
-
-		if(!isset($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-			throw new Exception('Please enter a valid email.');
-		}
-
-		// This will throw an exception if the person is above 
-		// the allowed login attempt limits (see functions.php for more):
-		rate_limit($_SERVER['REMOTE_ADDR']);
 
 		// Record this login attempt
 		rate_limit_tick($_SERVER['REMOTE_ADDR'], $_POST['email']);
@@ -142,36 +102,62 @@ catch(Exception $e){
 
 		<!-- The main CSS file -->
 		<link href="assets/css/style.css" rel="stylesheet" />
-
-		<!--[if lt IE 9]>
-			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
+		<link rel="stylesheet" type="text/css" href="assets/bootstrap.min">
+		
 	</head>
 
 	<body>
-
-		<form id="login-register" method="post" action="index.php">
-
-			<h1>Login or Register</h1>
-
-			<input type="text" placeholder="your@email.com" name="email" autofocus />
-			<p>Enter your email address above and we will send <br />you a login link.</p>
-
-			<button type="submit">Login / Register</button>
-
-			<span></span>
-
-		</form>
-
-		<footer>
-            <a class="tz" href="http://tutorialzine.com/2013/08/simple-registration-system-php-mysql/">Super Simple Registration System</a>
-            <div id="tzine-actions"></div>
-            <span class="close"></span>
-        </footer>
-        
-		<!-- JavaScript Includes -->
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script src="assets/js/script.js"></script>
-
+		<!-- Navigation Bar -->
+		<div class="navbar navbar-inverse navbar-fixed-top">
+		  <div class="navbar-inner">
+		    <div class="container">
+		        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		 
+		            </a>
+		 
+		    <a href="#" class="brand">JoViAnNi Computer Store</a>
+		 
+		    <div class="nav-collapse collapse pull-right">
+		        <ul class="nav">
+		            <li><a href="#forgot" data-toggle="modal"><i class="icon-user icon-white"></i> Forgot Password</a></li>
+		            <li class="divider-vertical"></li>
+		            <li><a href="#contact" data-toggle="modal"><i class="icon-envelope icon-white"></i> Contact Us</a></li>
+		            <li class="divider-vertical"></li>
+		        </ul>
+		    </div>
+		 
+		    </div>
+		  </div>
+		</div>
+		<!-- Navigation Ends -->
+		 
+		<!-- Main Container -->
+		<section>
+		<div class="container login">
+		    <div class="row ">
+		        <div class="center span4 well">
+		            <legend>Please Sign In</legend>
+		            <div class="alert alert-error">
+		                <a class="close" data-dismiss="alert" href="#">×</a>Incorrect Username or Password!
+		            </div>
+		            <form method="POST" action="" id="login-register" accept-charset="UTF-8" action="index.php">
+			            <input type="text" id="email" class="span4" name="email" placeholder="Email" />
+			            <input type="password" id="password" class="span4" name="password" placeholder="Password" />
+			            <button type="submit" name="submit" class="btn btn-primary btn-block">Sign in</button>
+		            </form>
+		        </div>
+		    </div>
+		</div>
+		<p class="text-center muted ">&copy; Copyright 2013 - Application Name</p>
+		</section>
+		<!-- Main Container Ends -->
+		 
+	<!-- JavaScript -->
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="assets/js/bootstrap.js"></script>
+	<script src="assets/js/script.js"></script>
 	</body>
 </html>
