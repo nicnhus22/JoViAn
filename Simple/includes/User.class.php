@@ -16,7 +16,7 @@ class User{
 		
 		// find it in the database and make sure the timestamp is correct
 
-		$result = ORM::for_table('reg_users')
+		$result = ORM::for_table('users')
 						->where('token', $token)
 						->where_raw('token_validity > NOW()')
 						->find_one();
@@ -57,7 +57,7 @@ class User{
 
 		// Write a new user to the database and return it
 
-		$result = ORM::for_table('reg_users')->create();
+		$result = ORM::for_table('users')->create();
 		$result->email = $email;
 		$result->save();
 
@@ -73,7 +73,7 @@ class User{
 	public static function exists($email){
 
 		// Does the user exist in the database?
-		$result = ORM::for_table('reg_users')
+		$result = ORM::for_table('users')
 					->where('email', $email)
 					->count();
 
@@ -96,7 +96,7 @@ class User{
 		else if(is_string($param)){
 
 			// An email was passed
-			$this->orm = ORM::for_table('reg_users')
+			$this->orm = ORM::for_table('users')
 							->where('email', $param)
 							->find_one();
 		}
@@ -114,7 +114,7 @@ class User{
 				$id = $_SESSION['loginid'];
 			}
 
-			$this->orm = ORM::for_table('reg_users')
+			$this->orm = ORM::for_table('users')
 							->where('id', $id)
 							->find_one();
 		}

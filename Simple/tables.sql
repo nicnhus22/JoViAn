@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `reg_login_attempt` (
 -- Table structure for table `reg_users`
 --
 
-CREATE TABLE IF NOT EXISTS `reg_users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `rank` tinyint(2) unsigned NOT NULL,
