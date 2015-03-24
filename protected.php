@@ -1,46 +1,35 @@
-<?php
-
-// To protect any php page on your site, include main.php
-// and create a new User object. It's that simple!
-
-require_once 'includes/main.php';
-
-$user = new User();
-
-if(!$user->loggedIn()){
-	redirect('index.php');
-}
-
+<?php 
+	session_start(); 
+	if(!$_SESSION['logged']){ 
+	    header("Location: login_page.php"); 
+	    exit; 
+	} 
 ?>
 
 <!DOCTYPE html>
 <html>
-
-	<head>
+<head>
 		<meta charset="utf-8"/>
-		<title>Protected page</title>
+		<title>JoViAnNi</title>
+
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
 		<!-- The main CSS file -->
-		<link href="assets/css/style.css" rel="stylesheet" />
+		<link href="/~kgc353_4/assets/css/style.css" rel="stylesheet" />
+		<link href="/~kgc353_4/assets/css/bootstrap.min.css" rel="stylesheet">
 
-		<!--[if lt IE 9]>
-			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
 	</head>
 
 	<body>
 
-		<div id="protected-page">
-			<img src="assets/img/lock.jpg" alt="Lock" />
-			<h1>You are logged in!</h1>
+		<h1><?php echo 'Welcome, '.$_SESSION['username']; ?></h1>
 
-			<p>Email: <b><?php echo $user->email ?></b><br />
-				Rank: <b style="text-transform:capitalize"><?php echo $user->rank() ?></b>
-			</p>
 
-			<a href="index.php?logout=1" class="logout-button">Logout</a>
 
-		</div>
+	<!-- JavaScript -->
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="assets/js/bootstrap.js"></script>
+	<script src="assets/js/script.js"></script>
 
 	</body>
 </html>

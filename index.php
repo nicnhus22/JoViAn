@@ -1,96 +1,3 @@
-<?php
-
-require_once 'includes/main.php';
-
-/*--------------------------------------------------
-	Handle logging out of the system. The logout
-	link in protected.php leads here.
----------------------------------------------------*/
-
-
-if(isset($_GET['logout'])){
-
-	$user = new User();
-
-	if($user->loggedIn()){
-		$user->logout();
-	}
-
-	redirect('index.php');
-}
-
-
-/*--------------------------------------------------
-	Don't show the login page to already 
-	logged-in users.
----------------------------------------------------*/
-
-$user = new User();
-
-if($user->loggedIn()){
-	redirect('protected.php');
-}
-
-
-/*--------------------------------------------------
-	Handle submitting the login form via AJAX
----------------------------------------------------*/
-try{
-
-	if(!empty($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH'])){
-
-		// Output a JSON header
-
-		header('Content-type: application/json');
-
-		// Record this login attempt
-		rate_limit_tick($_SERVER['REMOTE_ADDR'], $_POST['email']);
-
-		// Send the message to the user
-
-		$message = '';
-		$email = $_POST['email'];
-		$subject = 'Your Login Link';
-		
-		if(!User::exists($email)){
-			$subject = "Thank You For Registering!";
-			$message = "Thank you for registering at our site!\n\n";
-		}
-
-		// Attempt to login or register the person
-		$user = User::loginOrRegister($_POST['email']);
-
-
-		$message.= "You can login from this URL:\n";
-		$message.= get_page_url()."?tkn=".$user->generateToken()."\n\n";
-
-		$message.= "The link is going expire automatically after 10 minutes.";
-
-		$result = send_email($fromEmail, $_POST['email'], $subject, $message);
-
-		if(!$result){
-			throw new Exception("There was an error sending your email. Please try again.");
-		}
-
-		die(json_encode(array(
-			'message' => 'Thank you! We\'ve sent a link to your inbox. Check your spam folder as well.'
-		)));
-	}
-}
-catch(Exception $e){
-
-	die(json_encode(array(
-		'error'=>1,
-		'message' => $e->getMessage()
-	)));
-}
-
-/*--------------------------------------------------
-	Output the login form
----------------------------------------------------*/
-
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -143,8 +50,8 @@ catch(Exception $e){
 		            <div class="alert alert-error">
 		                <a class="close" data-dismiss="alert" href="#">×</a>Incorrect Username or Password!
 		            </div>
-		            <form method="POST" action="" id="login-register" accept-charset="UTF-8" action="index.php">
-			            <input type="text" id="email" class="span4" name="email" placeholder="Email" />
+		            <form method="POST" action="" accept-charset="UTF-8" action="includes/login.php">
+			            <input type="text" id="username" class="span4" name="username" placeholder="Username" />
 			            <input type="password" id="password" class="span4" name="password" placeholder="Password" />
 			            <button type="submit" name="submit" class="btn btn-primary btn-block">Sign in</button>
 		            </form>
