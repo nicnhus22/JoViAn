@@ -50,7 +50,7 @@
 		            <div class="alert alert-error">
 		                <a class="close" data-dismiss="alert" href="#">×</a>Incorrect Username or Password!
 		            </div>
-		            <form method="POST" action="" accept-charset="UTF-8" action="includes/login.php">
+		            <form method="POST" accept-charset="UTF-8" action="includes/login.php">
 			            <input type="text" id="email" class="span4" name="email" placeholder="Email" />
 			            <input type="password" id="password" class="span4" name="password" placeholder="Password" />
 			            <button type="submit" name="submit" class="btn btn-primary btn-block">Sign in</button>
