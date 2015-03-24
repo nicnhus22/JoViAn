@@ -18,7 +18,7 @@ if(isset($_POST['submit'])){
     $db  = new PDO("mysql:dbname=$dbDatabase;host=$dbHost", $dbUser, $dbPass); 
 
     $sql = $db->prepare("SELECT * FROM users 
-        WHERE username = ? AND 
+        WHERE email = ? AND 
         password = ? 
         LIMIT 1"); 
 
@@ -27,7 +27,7 @@ if(isset($_POST['submit'])){
     //Password function (Not In all versions of MySQL). 
     $pas = hash('sha256', $_POST['password']); 
      
-    $sql->bindValue(1, $_POST["username"]); 
+    $sql->bindValue(1, $_POST["email"]); 
     $sql->bindValue(2, $pas); 
 
     $sql->execute(); 
@@ -38,7 +38,7 @@ if(isset($_POST['submit'])){
     if($sql->rowCount() == 1){ 
         $row                  = $sql->fetch($sql); 
         session_start(); 
-        $_SESSION['username'] = $row['username']; 
+        $_SESSION['email']    = $row['email']; 
         $_SESSION['fname']    = $row['first_name']; 
         $_SESSION['lname']    = $row['last_name']; 
         $_SESSION['logged']   = TRUE; 
