@@ -552,6 +552,14 @@
 	},
 	"file_history":
 	[
+		"/C/Users/nicolas.husser/SkyDrive/Documents/Cours/Winter_2015/COMP353/Project/Main/DBProject/DCO.txt",
+		"/C/Users/nicolas.husser/SkyDrive/Documents/Cours/Winter_2015/COMP353/Project/Main/DBProject/index.php",
+		"/C/Users/nicolas.husser/SkyDrive/Documents/Cours/Winter_2015/COMP353/Project/Main/DBProject/application/core/MY_Controller.php",
+		"/C/Users/nicolas.husser/SkyDrive/Documents/Cours/Winter_2015/COMP353/Project/Main/DBProject/application/config/database.php",
+		"/C/Users/nicolas.husser/SkyDrive/Documents/Cours/Winter_2015/COMP353/Project/Main/DBProject/public/css/style.css",
+		"/C/Users/nicolas.husser/SkyDrive/Documents/Cours/Winter_2015/COMP353/Project/Main/DBProject/public/js/global.js",
+		"/C/Users/nicolas.husser/SkyDrive/Documents/Cours/Winter_2015/COMP353/Project/Main/DBProject/application/views/login.php",
+		"/C/Users/nicolas.husser/SkyDrive/Documents/Cours/Winter_2015/COMP353/Project/Main/DBProject/application/views/layout/header.php",
 		"/C/Users/nicolas.husser/SkyDrive/Documents/Cours/Winter_2015/COMP353/Project/CatsAndDogs/application/views/login.php",
 		"/C/Users/nicolas.husser/SkyDrive/Documents/Cours/Winter_2015/COMP353/Project/CatsAndDogs/application/controllers/Auth.php",
 		"/C/Users/nicolas.husser/SkyDrive/Documents/Cours/Winter_2015/COMP353/Project/CatsAndDogs/application/core/MY_Controller.php",
@@ -671,15 +679,7 @@
 		"/C/wamp/www/TrainerWorkout/app/views/trainee/workouts.blade.php",
 		"/C/wamp/www/TrainerWorkout/app/views/trainer/workouts.blade.php",
 		"/C/wamp/www/TrainerWorkout/app/views/widgets/base/trendingWorkouts.blade.php",
-		"/C/wamp/www/TrainerWorkout/app/views/trainee/createWorkout.blade.php",
-		"/C/wamp/www/TrainerWorkout/app/views/Store/thankYou.blade.php",
-		"/C/wamp/www/TrainerWorkout/app/views/Store/cart.blade.php",
-		"/C/wamp/www/TrainerWorkout/app/views/layouts/default.blade.php",
-		"/D/Programming/_web/nicnhus.github.io/TrainerWorkout/Workout/style.css",
-		"/C/wamp/www/TrainerWorkout/app/views/widgets/base/workoutMarket.blade.php",
-		"/D/Programming/_web/nicnhus.github.io/TrainerWorkout/Workout/index.html",
-		"/C/wamp/www/TrainerWorkout/app/views/widgets/base/clients.blade.php",
-		"/C/Users/nicolas.husser/AppData/Local/Temp/Rar$DIa0.825/mark.txt"
+		"/C/wamp/www/TrainerWorkout/app/views/trainee/createWorkout.blade.php"
 	],
 	"find":
 	{
@@ -1085,6 +1085,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 157.0,
+	"side_bar_width": 386.0,
 	"status_bar_visible": true
 }
