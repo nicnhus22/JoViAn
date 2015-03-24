@@ -19,13 +19,6 @@
 		<input type="text" name="email" placeholder="Email" required/>
 		<input type="password" name="password" placeholder="Password" required/><br/>
 		<input type="password" name="password2" placeholder="Re-Enter Password"/ required><br/>
-		<input type="text" style="width: 170px;" name="age" placeholder="Age" required/><br/>
-		<label class="radio-inline">
-		  <input type="radio" name="gender" id="gender_male" value="male"> Male
-		</label>
-		<label class="radio-inline">
-		  <input type="radio" name="gender" id="gender_female" value="female"> Female
-		</label>
 		<div class="login_icon">
 			<a href="javascript:void(0)" onclick="document.getElementById('signup_form').submit();"><i class="fa fa-money"></i></a>
 		</div>
