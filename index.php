@@ -96,7 +96,7 @@ catch(Exception $e){
 
 	<head>
 		<meta charset="utf-8"/>
-		<title>Tutorial: Super Simple Registration System With PHP &amp; MySQL</title>
+		<title>JoViAnNi</title>
 
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
