@@ -20,8 +20,8 @@
 	            <p id="profile-name" class="profile-name-card"></p>
 	            <form class="form-signin" action="includes/login.php">
 	                <span id="reauth-email" class="reauth-email"></span>
-	                <input type="email" id="email" class="form-control" placeholder="Email address" required autofocus>
-	                <input type="password" id="password" class="form-control" placeholder="Password" required>
+	                <input type="email"    name="email" id="email" class="form-control" placeholder="Email address" required autofocus>
+	                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
 	                <div id="remember" class="checkbox">
 	                    <label>
 	                        <input type="checkbox" value="remember-me"> Remember me
