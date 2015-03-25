@@ -35,7 +35,7 @@ if(isset($_POST['submit'])){
     // Mysql currently returns the number of rows found 
     // this could change in the future. 
     if($sql->rowCount() == 1){ 
-        $row                  = $sql->fetch(PDO::FETCH_INTO); 
+        $row                  = $sql->fetch(PDO::FETCH_ASSOC);
         session_start(); 
         $_SESSION['email']    = $row['email']; 
         $_SESSION['logged']   = TRUE; 
