@@ -22,7 +22,7 @@
 	                <span id="reauth-email" class="reauth-email"></span>
 	                <input type="text"     name="email" id="email" class="form-control" placeholder="Email address" required autofocus>
 	                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
-	                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+	                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" name="submit">Sign in</button>
 	            </form><!-- /form -->
 	            <a href="#" class="forgot-password">
 	                Forgot the password?

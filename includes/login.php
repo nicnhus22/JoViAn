@@ -42,13 +42,11 @@ if(isset($_POST['submit'])){
         header("Location: ../protected.php"); // Modify to go to the page you would like 
         exit; 
     }else{ 
-        #header("Location: ../index.php"); 
-        echo 'here not in db';
+        header("Location: ../index.php"); 
         exit; 
     } 
 }else{ //If the form button wasn't submitted go to the index page, or login page 
-    #header("Location: ../index.php"); 
-    echo 'here bug general';
+    header("Location: ../index.php"); 
     exit; 
 }
 
