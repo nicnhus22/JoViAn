@@ -23,10 +23,6 @@
 	                <input type="email"    name="email" id="email" class="form-control" placeholder="Email address" required autofocus>
 	                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
 	                <div id="remember" class="checkbox">
-	                    <label>
-	                        <input type="checkbox" value="remember-me"> Remember me
-	                    </label>
-	                </div>
 	                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
 	            </form><!-- /form -->
 	            <a href="#" class="forgot-password">
