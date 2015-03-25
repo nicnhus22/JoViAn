@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8"/>
 		<title>JoViAnNi</title>
@@ -12,54 +11,29 @@
 		<link href="/~kgc353_4/assets/css/bootstrap.min.css" rel="stylesheet">
 
 	</head>
-
 	<body>
-		<!-- Navigation Bar -->
-		<div class="navbar navbar-inverse navbar-fixed-top">
-		  <div class="navbar-inner">
-		    <div class="container">
-		        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-		                <span class="icon-bar"></span>
-		                <span class="icon-bar"></span>
-		                <span class="icon-bar"></span>
-		 
-		            </a>
-		 
-		    <a href="#" class="brand">JoViAnNi Computer Store</a>
-		 
-		    <div class="nav-collapse collapse pull-right">
-		        <ul class="nav">
-		            <li><a href="#forgot" data-toggle="modal"><i class="icon-user icon-white"></i> Forgot Password</a></li>
-		            <li class="divider-vertical"></li>
-		            <li><a href="#contact" data-toggle="modal"><i class="icon-envelope icon-white"></i> Contact Us</a></li>
-		            <li class="divider-vertical"></li>
-		        </ul>
-		    </div>
-		 
-		    </div>
-		  </div>
-		</div>
-		<!-- Navigation Ends -->
-		 
-		<!-- Main Container -->
-		<section>
-		<div class="container login">
-		    <div class="row ">
-		        <div class="center span4 well">
-		            <legend>Please Sign In</legend>
-		            <div class="alert alert-error">
-		                <a class="close" data-dismiss="alert" href="#">×</a>Incorrect Username or Password!
-		            </div>
-		            <form method="POST" accept-charset="UTF-8" action="includes/login.php">
-			            <input type="text" id="email" class="span4" name="email" placeholder="Email" />
-			            <input type="password" id="password" class="span4" name="password" placeholder="Password" />
-			            <button type="submit" name="submit" class="btn btn-primary btn-block">Sign in</button>
-		            </form>
-		        </div>
-		    </div>
-		</div>
-		<p class="text-center muted ">&copy; Copyright 2013 - Application Name</p>
-		</section>
+		<!-- Main Container begins -->
+		<div class="container">
+	        <div class="card card-container">
+	            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+	            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+	            <p id="profile-name" class="profile-name-card"></p>
+	            <form class="form-signin" action="includes/login.php">
+	                <span id="reauth-email" class="reauth-email"></span>
+	                <input type="email" id="email" class="form-control" placeholder="Email address" required autofocus>
+	                <input type="password" id="password" class="form-control" placeholder="Password" required>
+	                <div id="remember" class="checkbox">
+	                    <label>
+	                        <input type="checkbox" value="remember-me"> Remember me
+	                    </label>
+	                </div>
+	                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+	            </form><!-- /form -->
+	            <a href="#" class="forgot-password">
+	                Forgot the password?
+	            </a>
+	        </div><!-- /card-container -->
+	    </div><!-- /container -->
 		<!-- Main Container Ends -->
 		 
 	<!-- JavaScript -->
