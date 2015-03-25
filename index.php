@@ -20,9 +20,8 @@
 	            <p id="profile-name" class="profile-name-card"></p>
 	            <form class="form-signin" action="includes/login.php">
 	                <span id="reauth-email" class="reauth-email"></span>
-	                <input type="email"    name="email" id="email" class="form-control" placeholder="Email address" required autofocus>
+	                <input type="text"     name="email" id="email" class="form-control" placeholder="Email address" required autofocus>
 	                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
-	                <div id="remember" class="checkbox">
 	                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
 	            </form><!-- /form -->
 	            <a href="#" class="forgot-password">
