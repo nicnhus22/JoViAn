@@ -8,7 +8,7 @@
  * @note Feel free to replace the pdo found below with the pdo wrapper 
  * @see http://phpsnips.com/616/PDO-Wrapper 
  */ 
-if(isset($_POST['submit'])){ 
+// if(isset($_POST['submit'])){ 
     $dbHost = 'clipper.encs.concordia.ca';
 	$dbDatabase = 'kgc353_4';
 	$dbUser = 'kgc353_4';
@@ -45,10 +45,10 @@ if(isset($_POST['submit'])){
         header("Location: ../index.php"); 
         exit; 
     } 
-}else{ //If the form button wasn't submitted go to the index page, or login page 
-    header("Location: ../index.php"); 
-    exit; 
-}
+// }else{ //If the form button wasn't submitted go to the index page, or login page 
+//     header("Location: ../index.php"); 
+//     exit; 
+// }
 
 /*--------------------------------------------------
 	Output the login form
