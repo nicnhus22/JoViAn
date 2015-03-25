@@ -35,11 +35,12 @@ if(isset($_POST['submit'])){
     // Mysql currently returns the number of rows found 
     // this could change in the future. 
     if($sql->rowCount() == 1){ 
-        #$row                  = $sql->fetch($sql); 
+        $row                  = $sql->fetch($sql); 
         session_start(); 
         $_SESSION['email']    = $row['email']; 
         $_SESSION['logged']   = TRUE; 
-        header("Location: ../protected.php"); // Modify to go to the page you would like 
+        #header("Location: ../protected.php"); // Modify to go to the page you would like 
+        echo $row['email']; 
         exit; 
     }else{ 
         header("Location: ../index.php"); 
