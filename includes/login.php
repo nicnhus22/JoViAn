@@ -39,8 +39,7 @@ if(isset($_POST['submit'])){
         session_start(); 
         $_SESSION['email']    = $row['email']; 
         $_SESSION['logged']   = TRUE; 
-        #header("Location: ../protected.php"); // Modify to go to the page you would like 
-        echo $row['email']; 
+        header("Location: ../protected.php"); // Modify to go to the page you would like 
         exit; 
     }else{ 
         header("Location: ../index.php"); 
