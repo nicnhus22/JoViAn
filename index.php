@@ -8,6 +8,7 @@
 
 		<!-- The main CSS file -->
 		<link href="assets/css/style.css" rel="stylesheet" />
+		<link href="assets/css/login.css" rel="stylesheet" />
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
 	</head>
