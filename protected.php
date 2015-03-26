@@ -15,8 +15,8 @@
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
 		<!-- The main CSS file -->
-		<link href="/~kgc353_4/assets/css/style.css" rel="stylesheet" />
-		<link href="/~kgc353_4/assets/css/bootstrap.min.css" rel="stylesheet">
+		<link href="assets/css/style.css" rel="stylesheet" />
+		<link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
 	</head>
 
