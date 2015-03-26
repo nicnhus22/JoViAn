@@ -54,7 +54,7 @@
 	          </ul>
 	          <ul class="nav navbar-nav navbar-right">
 	            <li><a href="."><?php echo $_SESSION['username']; ?></a></li>
-	            <li class="active"><a href="./">Logout</a></li>
+	            <li class="active"><a href="includes/logout.php">Logout</a></li>
 	          </ul>
 	        </div><!--/.nav-collapse -->
 	      </div>
