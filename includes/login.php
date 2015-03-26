@@ -33,7 +33,7 @@ if(isset($_POST['submit'])){
     if($sql->rowCount() == 1){ 
         $row                  = $sql->fetch(PDO::FETCH_ASSOC);
         session_start(); 
-        $_SESSION['email']    = $row['email']; 
+        $_SESSION['username']    = $row['username']; 
         $_SESSION['logged']   = TRUE; 
         header("Location: ../protected.php"); // Modify to go to the page you would like 
         exit; 
