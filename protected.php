@@ -24,7 +24,7 @@
 
 		<h1><?php echo 'Welcome, '.$_SESSION['email']; ?></h1>
 
-
+		<?php echo $_SERVER['REMOTE_ADDR'] ?>
 
 	<!-- JavaScript -->
 	<script src="http://code.jquery.com/jquery-latest.js"></script>

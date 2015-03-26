@@ -1,6 +1,6 @@
 <?php
 
-#require_once 'includes/main.php';
+require_once 'config/db.php';
 
 /** 
  * @author Ryan Naddy <ryan@ryannaddy.com> 
@@ -9,10 +9,6 @@
  * @see http://phpsnips.com/616/PDO-Wrapper 
  */ 
 if(isset($_POST['submit'])){ 
-    $dbHost = 'clipper.encs.concordia.ca';
-	$dbDatabase = 'kgc353_4';
-	$dbUser = 'kgc353_4';
-	$dbPass = 'janv001';
 
     //Connect to the databasse 
     $db  = new PDO("mysql:dbname=$dbDatabase;host=$dbHost", $dbUser, $dbPass); 
