@@ -1,37 +1,40 @@
-<?php 
-	session_start(); 
-	if(!$_SESSION['logged']){ 
-	    header("Location: login_page.php"); 
-	    exit; 
-	} 
-?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-		<meta charset="utf-8"/>
-		<title>JoViAnNi</title>
 
-		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-		<!-- Bootstrap Core CSS -->
-	    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <title>SB Admin - Bootstrap Admin Template</title>
 
-	    <!-- Custom CSS -->
-	    <link href="assets/css/sb-admin.css" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-	    <!-- Morris Charts CSS -->
-	    <link href="assets/css/plugins/morris.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
 
-	    <!-- Custom Fonts -->
-	    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Morris Charts CSS -->
+    <link href="css/plugins/morris.css" rel="stylesheet">
 
-	</head>
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-	<body>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
+</head>
 
-	    <div id="wrapper">
+<body>
+
+    <div id="wrapper">
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -128,7 +131,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['username']; ?> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -141,7 +144,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="includes/logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -481,22 +484,6 @@
     <script src="js/plugins/morris/morris.min.js"></script>
     <script src="js/plugins/morris/morris-data.js"></script>
 
+</body>
 
-
-
-
-
-
-
-
-
-
-
-
-	<!-- JavaScript -->
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<script src="assets/js/bootstrap.js"></script>
-	<script src="assets/js/script.js"></script>
-
-	</body>
 </html>
