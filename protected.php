@@ -482,20 +482,7 @@
     <script src="assets/js/plugins/morris/morris-data.js"></script>
 
 
-
-
-
-
-
-
-
-
-
-
-
 	<!-- JavaScript -->
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<script src="assets/js/bootstrap.js"></script>
 	<script src="assets/js/script.js"></script>
 
 	</body>
