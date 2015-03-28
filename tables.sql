@@ -14,3 +14,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO users (email,password,username) VALUES ("admin@admin.com","8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918","admin");
+
+ALTER TABLE `users`
+ADD COLUMN `priveledge` ENUM('admin', 'regular') NOT NULL DEFAULT 'regular' AFTER `username`;
+
+UPDATE `users` SET `priveledge`='admin' WHERE `id`='1';

@@ -10,8 +10,17 @@ require_once 'config/db.php';
  */ 
 if(isset($_POST['submit'])){ 
 
-    //Connect to the databasse 
-    $db  = new PDO("mysql:dbname=$dbDatabase;host=$dbHost", $dbUser, $dbPass); 
+
+
+
+    try {
+        //Connect to the databasse
+        $db  = new PDO("mysql:dbname=$dbDatabase;host=$dbHost", $dbUser, $dbPass);
+    } catch (PDOException $e) {
+        print "Error!: " . $e->getMessage() . "<br/>";
+        die();
+    }
+
 
     $sql = $db->prepare("SELECT * FROM users 
         WHERE email = ? AND 
@@ -29,12 +38,13 @@ if(isset($_POST['submit'])){
 
     // Row count is different for different databases 
     // Mysql currently returns the number of rows found 
-    // this could change in the future. 
+    // this could change in the future.
+
     if($sql->rowCount() == 1){ 
         $row                  = $sql->fetch(PDO::FETCH_ASSOC);
         session_start(); 
         $_SESSION['username']    = $row['username']; 
-        $_SESSION['logged']   = TRUE; 
+        $_SESSION['logged']   = TRUE;
         header("Location: ../protected.php"); // Modify to go to the page you would like 
         exit; 
     }else{ 
