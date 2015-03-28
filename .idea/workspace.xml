@@ -23,10 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="tables.sql" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="tables.sql" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tables.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="27" selection-start="650" selection-end="650" vertical-scroll-proportion="0.5300353" vertical-offset="0" max-vertical-offset="566">
+            <state line="20" column="54" selection-start="677" selection-end="677" vertical-scroll-proportion="-3.8961039" vertical-offset="0" max-vertical-offset="390">
               <folding />
             </state>
           </provider>
@@ -35,12 +35,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="login.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/includes/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="11" selection-start="1437" selection-end="1437" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="1020">
+            <state line="50" column="11" selection-start="1489" selection-end="1489" vertical-scroll-proportion="0.64082277" vertical-offset="345" max-vertical-offset="1035">
               <folding>
-                <marker date="1427510021000" expanded="true" signature="529:616" placeholder="SELECT * FRO..users..." />
+                <marker date="1427558427000" expanded="true" signature="529:616" placeholder="SELECT * FRO..users..." />
               </folding>
             </state>
           </provider>
@@ -75,8 +75,8 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/includes/config/db.php" />
-        <option value="$PROJECT_DIR$/includes/login.php" />
         <option value="$PROJECT_DIR$/tables.sql" />
+        <option value="$PROJECT_DIR$/includes/login.php" />
       </list>
     </option>
   </component>
@@ -255,7 +255,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="49" column="11" selection-start="1437" selection-end="1437" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="1020">
           <folding>
-            <marker date="1427510021000" expanded="true" signature="529:616" placeholder="SELECT * FRO..users..." />
+            <marker date="1427558427000" expanded="true" signature="529:616" placeholder="SELECT * FRO..users..." />
           </folding>
         </state>
       </provider>
@@ -281,15 +281,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="11" selection-start="1437" selection-end="1437" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="1020">
-          <folding>
-            <marker date="1427510021000" expanded="true" signature="529:616" placeholder="SELECT * FRO..users..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="271" column="67" selection-start="12923" selection-end="12923" vertical-scroll-proportion="-158.75" vertical-offset="255" max-vertical-offset="6210">
@@ -299,12 +290,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tables.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="27" selection-start="650" selection-end="650" vertical-scroll-proportion="0.5300353" vertical-offset="0" max-vertical-offset="566">
+        <state line="20" column="54" selection-start="677" selection-end="677" vertical-scroll-proportion="-3.8961039" vertical-offset="0" max-vertical-offset="390">
           <folding />
         </state>
       </provider>
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="11" selection-start="1489" selection-end="1489" vertical-scroll-proportion="0.64082277" vertical-offset="345" max-vertical-offset="1035">
+          <folding>
+            <marker date="1427558427000" expanded="true" signature="529:616" placeholder="SELECT * FRO..users..." />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
