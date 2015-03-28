@@ -3,7 +3,7 @@
 -- Table structure for table `reg_users`
 --
 
-use kgcd353_4;
+use kgc353_4;
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
