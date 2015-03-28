@@ -2,6 +2,9 @@
 $(document).ready(function() 
 {
 
+	/**								*
+	 *			HANDLE LOGIN  		*
+	 *								*/			
 	$('#login_submit').click(function() {
 
 		var email=$ ("#email").val();
