@@ -8,10 +8,7 @@ require_once 'config/db.php';
  * @note Feel free to replace the pdo found below with the pdo wrapper 
  * @see http://phpsnips.com/616/PDO-Wrapper 
  */ 
-if(isset($_POST['submit'])){ 
-
-
-
+if(isset($_POST['email']) && isset($_POST['password'])){ 
 
     try {
         //Connect to the databasse
@@ -44,17 +41,17 @@ if(isset($_POST['submit'])){
         $row                  = $sql->fetch(PDO::FETCH_ASSOC);
         session_start(); 
         $_SESSION['username']    = $row['username'];
-        $_SESSION['privelege'] = $row['privelege'] ;
-        $_SESSION['logged']   = TRUE;
-        header("Location: ../protected.php"); // Modify to go to the page you would like 
-        exit; 
+        $_SESSION['privelege']   = $row['priveledge'] ;
+        $_SESSION['logged']      = TRUE;
+        #header("Location: ../protected.php"); // Modify to go to the page you would like 
+        echo 1;
     }else{ 
-        header("Location: ../index.php"); 
-        exit; 
+        #header("Location: ../index.php"); 
+        echo 0; 
     } 
 }else{ //If the form button wasn't submitted go to the index page, or login page 
-    header("Location: ../index.php"); 
-    exit; 
+    #header("Location: ../index.php"); 
+    echo 0;
 }
 
 /*--------------------------------------------------
