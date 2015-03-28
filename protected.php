@@ -1,7 +1,8 @@
 <?php 
 	session_start(); 
+
 	if(!$_SESSION['logged']){ 
-	    header("Location: login_page.php"); 
+	    header("Location: index.php"); 
 	    exit; 
 	} 
 ?>
@@ -56,9 +57,10 @@
                         <li>
                             <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
+                        <?php
+                            if($_SESSION['privelege'] == 'admin')
+                                echo '<li><a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a></li>';
+                        ?>
                         <li class="divider"></li>
                         <li>
                             <a href="includes/logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
