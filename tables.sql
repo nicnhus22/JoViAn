@@ -18,4 +18,4 @@ INSERT INTO users (email,password,username) VALUES ("admin@admin.com","8c6976e5b
 ALTER TABLE `users`
 ADD COLUMN `priveledge` ENUM('admin', 'regular') NOT NULL DEFAULT 'regular' AFTER `username`;
 
-UPDATE `users` SET `priveledge`='admin' WHERE `id`='1';
+UPDATE `users` SET `privelege`='admin' WHERE `id`='1';

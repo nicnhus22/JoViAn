@@ -41,7 +41,7 @@ if(isset($_POST['email']) && isset($_POST['password'])){
         $row                  = $sql->fetch(PDO::FETCH_ASSOC);
         session_start(); 
         $_SESSION['username']    = $row['username'];
-        $_SESSION['privelege']   = $row['priveledge'] ;
+        $_SESSION['privelege']   = $row['privelege'] ;
         $_SESSION['logged']      = TRUE;
         #header("Location: ../protected.php"); // Modify to go to the page you would like 
         echo 1;
