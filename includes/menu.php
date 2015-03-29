@@ -52,6 +52,8 @@ function menu()
     if ($_SESSION["privelege"] == 'admin') {
         echo '<li>
                         <a href="tables.html"><i class="fa fa-fw fa-group"></i> Manage Employees</a>
+                    </li><li>
+                        <a href="tables.html"><i class="fa fa-fw fa-bar-chart-o"></i> Analytics</a>
                     </li>';
     }
 
