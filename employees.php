@@ -78,7 +78,7 @@ include 'includes/menu.php'
                     echo '
                         <div class="row">
                             <div class="col-lg-12">
-                                <button class="btn btn-success">
+                                <button id="new-employee-btn" class="btn btn-success">
                                     <span class="fa fa-fw fa-plus-circle" style="vertical-align:middle"></span> New Employee
                                 </button>
                             </div>
@@ -135,6 +135,9 @@ include 'includes/menu.php'
                                             <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
                                             View
                                         </button>
+
+
+
 
                                         <?php
 
