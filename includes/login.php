@@ -43,14 +43,11 @@ if(isset($_POST['email']) && isset($_POST['password'])){
         $_SESSION['username']    = $row['username'];
         $_SESSION['privelege']   = $row['privelege'] ;
         $_SESSION['logged']      = TRUE;
-        #header("Location: ../protected.php"); // Modify to go to the page you would like 
         echo 1;
     }else{ 
-        #header("Location: ../index.php"); 
         echo 0; 
     } 
 }else{ //If the form button wasn't submitted go to the index page, or login page 
-    #header("Location: ../index.php"); 
     echo 0;
 }
 
