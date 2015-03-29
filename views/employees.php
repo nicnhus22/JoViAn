@@ -6,36 +6,16 @@ if(!$_SESSION['logged']){
     exit;
 }
 
-include 'includes/menu.php'
+include '../includes/views/menu.php';
+include '../includes/views/head.php';
+include '../includes/views/scripts.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Employees</title>
-
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-
-    <!-- Bootstrap Core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="assets/css/sb-admin.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="assets/css/plugins/morris.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <?php head(); ?>
 </head>
 
 <body>
@@ -174,20 +154,11 @@ include 'includes/menu.php'
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="assets/js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="assets/js/bootstrap.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="assets/js/plugins/morris/raphael.min.js"></script>
-    <script src="assets/js/plugins/morris/morris.min.js"></script>
-    <script src="assets/js/plugins/morris/morris-data.js"></script>
-
-
-    <!-- JavaScript -->
-    <script src="assets/js/script.js"></script>
+    <?php scripts() ?>
+    <script type="text/javascript">
+        $("#nav_employees").addClass("active");
+    </script>
 
 </body>
 
