@@ -139,7 +139,7 @@ include '../includes/views/scripts.php';
 
 <?php scripts() ?>
 <script type="text/javascript">
-    $("#nav_newemployee").addClass("active");
+    $("#nav_employees").addClass("active");
 </script>
 
 </body>
