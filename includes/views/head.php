@@ -15,16 +15,16 @@ function head()
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
         <!-- Bootstrap Core CSS -->
-        <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="../../assets/css/sb-admin.css" rel="stylesheet">
+        <link href="../assets/css/sb-admin.css" rel="stylesheet">
 
         <!-- Morris Charts CSS -->
-        <link href="../../assets/css/plugins/morris.css" rel="stylesheet">
+        <link href="../assets/css/plugins/morris.css" rel="stylesheet">
 
         <!-- Custom Fonts -->
-        <link href="../../assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">';
+        <link href="../assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">';
 }
 
 ?>
