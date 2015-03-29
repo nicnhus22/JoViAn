@@ -28,17 +28,6 @@ $(document).ready(function () {
 		return false;
 	});
 
-
-
-
-
-
-    /**
-     *  New employee event
-     */
-    $("#new-employee-btn").click(function () {
-        window.location.href = "newemployee.php";
-    });
-
 });
+
 
