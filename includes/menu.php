@@ -42,18 +42,18 @@ function menu()
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="protected.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-tasks"></i> View Inventory</a>
+                        <a href="inventory.php"><i class="fa fa-fw fa-tasks"></i> View Inventory</a>
                     </li>';
 
 
     if ($_SESSION["privelege"] == 'admin') {
         echo '<li>
-                        <a href="tables.html"><i class="fa fa-fw fa-group"></i> Manage Employees</a>
+                        <a href="employees.php"><i class="fa fa-fw fa-group"></i> Manage Employees</a>
                     </li><li>
-                        <a href="tables.html"><i class="fa fa-fw fa-bar-chart-o"></i> Analytics</a>
+                        <a href="analytics.php"><i class="fa fa-fw fa-bar-chart-o"></i> Sale Analytics</a>
                     </li>';
     }
 
