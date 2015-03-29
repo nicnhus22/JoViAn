@@ -45,15 +45,18 @@ function menu()
                         <a href="protected.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="inventory.php"><i class="fa fa-fw fa-tasks"></i> View Inventory</a>
+                        <a href="inventory.php"><i class="fa fa-fw fa-tasks"></i> Inventory</a>
+                    </li>
+                    <li>
+                        <a href="orders.php"><i class="fa fa-fw fa-truck"></i> Orders</a>
                     </li>';
 
 
     if ($_SESSION["privelege"] == 'admin') {
         echo '<li>
-                        <a href="employees.php"><i class="fa fa-fw fa-group"></i> Manage Employees</a>
+                        <a href="employees.php"><i class="fa fa-fw fa-group"></i> Employees</a>
                     </li><li>
-                        <a href="analytics.php"><i class="fa fa-fw fa-bar-chart-o"></i> Sale Analytics</a>
+                        <a href="analytics.php"><i class="fa fa-fw fa-bar-chart-o"></i> Analytics</a>
                     </li>';
     }
 

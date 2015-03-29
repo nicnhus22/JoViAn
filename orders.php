@@ -20,7 +20,7 @@ include 'includes/menu.php'
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Inventory</title>
+    <title>Orders</title>
 
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
@@ -55,34 +55,29 @@ include 'includes/menu.php'
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Inventory
+                        Orders
                     </h1>
                     <ol class="breadcrumb">
                         <li>
                             <i class="fa fa-dashboard"></i> <a href="protected.php">Dashboard</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-tasks"></i> Inventory
+                            <i class="fa fa-truck"></i> Orders
                         </li>
                     </ol>
                 </div>
             </div>
             <!-- /.row -->
 
-            <?php
 
-            if ($_SESSION["privelege"] == "admin") {
-                echo '
                         <div class="row">
                             <div class="col-lg-12">
                                 <button class="btn btn-success">
-                                    <span class="fa fa-fw fa-plus-circle" style="vertical-align:middle"></span> New Item
+                                    <span class="fa fa-fw fa-plus-circle" style="vertical-align:middle"></span> New Order
                                 </button>
                             </div>
-                         </div>';
-            }
+                         </div>
 
-            ?>
 
 
 
@@ -92,7 +87,7 @@ include 'includes/menu.php'
             <div class="row">
                 <div class="col-xs-8">
                     <div class=" form-group input-group">
-                        <input type="text" class="form-control" value="Search Inventory...">
+                        <input type="text" class="form-control" value="Search Orders...">
                             <span class="input-group-btn"><button class="btn btn-default" type="button"><i
                                         class="fa fa-search"></i></button></span>
                     </div>
@@ -100,10 +95,8 @@ include 'includes/menu.php'
                 <div class="col-xs-4">
                     <select class="form-control">
                         <option>All</option>
-                        <option>Computers</option>
-                        <option>Hard drives</option>
-                        <option>Printers</option>
-                        <option>Laptops</option>
+                        <option>Open</option>
+                        <option>Completed</option>
                     </select>
                 </div>
             </div>
@@ -114,10 +107,10 @@ include 'includes/menu.php'
                         <table class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Type</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
+                                <th>Customer ID</th>
+                                <th>Description</th>
+                                <th>Total</th>
+                                <th>Status</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -126,7 +119,7 @@ include 'includes/menu.php'
                                 <td>/index.html</td>
                                 <td>1265</td>
                                 <td>11.99</td>
-                                <td>2</td>
+                                <td>Opened</td>
                                 <td>
 
                                     <button class="btn btn-xs btn-success">
@@ -135,25 +128,16 @@ include 'includes/menu.php'
                                     </button>
 
                                     <button class="btn btn-xs btn-info">
-                                        <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
+                                        <span class="fa fa-fw fa-truck" style="vertical-align:middle"></span> Process
                                     </button>
-
-
-
-
-                                    <?php
-
-                                    if ($_SESSION["privelege"] == "admin") {
-                                        echo '                                            <button class="btn btn-xs btn-warning">
+                                         <button class="btn btn-xs btn-warning">
                                                 <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
                                             </button>
 
                                             <button class="btn btn-xs btn-danger">
                                                 <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
-                                            </button>';
-                                    }
+                                            </button>
 
-                                    ?>
 
                                 </td>
                             </tr>

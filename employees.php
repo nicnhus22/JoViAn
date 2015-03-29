@@ -20,7 +20,7 @@ include 'includes/menu.php'
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Manage Employees</title>
+    <title>Employees</title>
 
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
@@ -55,76 +55,104 @@ include 'includes/menu.php'
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Manage Employees
+                            Employees
                         </h1>
+
+
+
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="protected.php">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-group"></i> Manage Employees
+                                <i class="fa fa-group"></i> Employees
                             </li>
                         </ol>
                     </div>
                 </div>
                 <!-- /.row -->
 
+                <?php
+
+                if ($_SESSION["privelege"] == "admin") {
+                    echo '
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <button class="btn btn-success">
+                                    <span class="fa fa-fw fa-plus-circle" style="vertical-align:middle"></span> New Employee
+                                </button>
+                            </div>
+                         </div>';
+                }
+
+                ?>
+
+
+
+                <hr>
+
+
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class=" form-group input-group">
+                            <input type="text" class="form-control" value="Search Employees...">
+                            <span class="input-group-btn"><button class="btn btn-default" type="button"><i
+                                        class="fa fa-search"></i></button></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <select class="form-control">
+                            <option>All</option>
+                            <option>Managers</option>
+                            <option>Technicians</option>
+                            <option>Sales Associates</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2>Employees</h2>
+
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <thead>
-                                    <tr>
-                                        <th>Page</th>
-                                        <th>Visits</th>
-                                        <th>% New Visits</th>
-                                        <th>Revenue</th>
-                                    </tr>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Seniority</th>
+                                    <th>$ Sales</th>
+                                    <th></th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>/index.html</td>
-                                        <td>1265</td>
-                                        <td>32.3%</td>
-                                        <td>$321.33</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/about.html</td>
-                                        <td>261</td>
-                                        <td>33.3%</td>
-                                        <td>$234.12</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/sales.html</td>
-                                        <td>665</td>
-                                        <td>21.3%</td>
-                                        <td>$16.34</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/blog.html</td>
-                                        <td>9516</td>
-                                        <td>89.3%</td>
-                                        <td>$1644.43</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/404.html</td>
-                                        <td>23</td>
-                                        <td>34.3%</td>
-                                        <td>$23.52</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/services.html</td>
-                                        <td>421</td>
-                                        <td>60.3%</td>
-                                        <td>$724.32</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/blog/post.html</td>
-                                        <td>1233</td>
-                                        <td>93.2%</td>
-                                        <td>$126.34</td>
-                                    </tr>
+                                <tr>
+                                    <td>Andrew</td>
+                                    <td>Costa</td>
+                                    <td>Store Manager</td>
+                                    <td>39 000</td>
+                                    <td>
+
+                                        <button class="btn btn-xs btn-success">
+                                            <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
+                                            View
+                                        </button>
+
+                                        <?php
+
+                                        if ($_SESSION["privelege"] == "admin") {
+                                            echo '                                            <button class="btn btn-xs btn-warning">
+                                                <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
+                                            </button>
+
+                                            <button class="btn btn-xs btn-danger">
+                                                <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
+                                            </button>';
+                                        }
+
+                                        ?>
+
+                                    </td>
+                                </tr>
+
                                 </tbody>
                             </table>
                         </div>
