@@ -131,6 +131,21 @@ include 'includes/menu.php'
 
 
             <!-- /.row -->
+            <hr>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <button id="add-employee-btn" class="btn btn-success">
+                        <span class="fa fa-fw fa-plus-circle" style="vertical-align:middle"></span> Add Employee
+                    </button>
+                    <button id="cancel-add-new-employee-btn" class="btn btn-danger">
+                        <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Cancel
+                    </button>
+                </div>
+            </div>
+
+            <hr>
+
 
 
         </div>
