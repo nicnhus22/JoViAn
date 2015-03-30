@@ -99,11 +99,21 @@ include '../includes/views/scripts.php';
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-lg-4">
                     <div class="form-group">
                         <label>Date of Hire</label>
                         <input class="form-control" placeholder="dd/mm/yyyy">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Service Commission</label>
+                        <input class="form-control" placeholder="%">
                     </div>
                 </div>
             </div>
