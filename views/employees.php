@@ -1,7 +1,9 @@
 <?php
 session_start();
 
-if (!$_SESSION['logged'] && $_SESSION['privelege'] != "admin") {
+print_r($_SESSION);
+
+if (!$_SESSION['logged'] || $_SESSION['privelege'] != "admin") {
     header("Location: index.php");
     exit;
 }
