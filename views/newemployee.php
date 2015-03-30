@@ -99,6 +99,7 @@ include '../includes/views/scripts.php';
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-lg-4">
                     <div class="form-group">
@@ -108,6 +109,15 @@ include '../includes/views/scripts.php';
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-lg-4">
+                    <label>Service Commission</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+                      <div class="input-group-addon">%</div>
+                    </div>
+                </div>
+            </div>
 
 
             <!-- /.row -->
