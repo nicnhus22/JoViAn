@@ -1,10 +1,8 @@
 <?php
 session_start();
 
-print_r($_SESSION);
-
 if (!$_SESSION['logged'] || $_SESSION['privelege'] != "admin") {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit;
 }
 
@@ -22,6 +20,9 @@ include '../includes/views/scripts.php';
 
 <body>
 
+
+
+
 <div id="wrapper">
 
     <!-- Navigation -->
@@ -29,10 +30,10 @@ include '../includes/views/scripts.php';
 
 
 
+
     <div id="page-wrapper">
 
         <div class="container-fluid">
-
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
@@ -107,7 +108,7 @@ include '../includes/views/scripts.php';
                                         <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> View/Edit
                                     </button>
 
-                                    <button class="btn btn-xs btn-danger">
+                                    <button onclick="confirmdeleteEmployee(this)" class="btn btn-xs btn-danger">
                                         <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
                                     </button>
 

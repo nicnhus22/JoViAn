@@ -27,7 +27,10 @@ $(document).ready(function () {
 		});
 		return false;
 	});
-
 });
+
+function confirmdeleteEmployee(button) {
+    button.closest('tr').remove();
+}
 
 
