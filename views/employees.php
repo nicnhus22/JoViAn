@@ -104,8 +104,8 @@ include '../includes/views/scripts.php';
                                 <td>Store Manager</td>
                                 <td>39 000</td>
                                 <td>
-                                    <button class="btn btn-xs btn-success">
-                                        <span class="fa fa-fw fa-eye" style="vertical-align:middle"></span> View
+                                    <button class="btn btn-xs btn-success" onclick="route_viewEmployee(1)">
+                                        <span class="fa fa-fw fa-eye"  style="vertical-align:middle"></span> View
                                     </button>
 
                                     <button class="btn btn-xs btn-warning">
