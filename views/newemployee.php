@@ -111,13 +111,13 @@ include '../includes/views/scripts.php';
 
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="form-group">
-                        <label>Service Commission</label>
-                        <input class="form-control" placeholder="%">
+                    <label>Service Commission</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+                      <div class="input-group-addon">%</div>
                     </div>
                 </div>
             </div>
-
 
 
             <!-- /.row -->
