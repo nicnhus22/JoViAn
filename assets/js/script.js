@@ -27,7 +27,10 @@ $(document).ready(function () {
 		});
 		return false;
 	});
-
 });
+
+function deleteRow(button) {
+    button.closest('tr').remove();
+}
 
 
