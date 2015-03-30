@@ -74,9 +74,12 @@ include '../includes/views/scripts.php';
             <div class="row">
                 <div class="col-xs-8">
                     <div class=" form-group input-group">
-                        <input type="text" class="form-control" value="Search Inventory...">
-                            <span class="input-group-btn"><button class="btn btn-default" type="button"><i
-                                        class="fa fa-search"></i></button></span>
+                        <input type="text" class="form-control" placeholder="Search Inventory...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <iclass="fa fa-search"></i>
+                            </button>
+                        </span>
                     </div>
                 </div>
                 <div class="col-xs-4">

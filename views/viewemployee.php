@@ -42,7 +42,7 @@ include '../includes/views/scripts.php';
 
                     <ol class="breadcrumb">
                         <li>
-                            <i class="fa fa-dashboard"></i> <a href="protected.php">Dashboard</a>
+                            <i class="fa fa-dashboard"></i> <a href="dashboard.php">Dashboard</a>
                         </li>
                         <li class="active">
                             <i class="fa fa-group"></i> View Employee
