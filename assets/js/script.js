@@ -29,7 +29,7 @@ $(document).ready(function () {
 	});
 });
 
-function confirmdeleteEmployee(button) {
+function deleteRow(button) {
     button.closest('tr').remove();
 }
 

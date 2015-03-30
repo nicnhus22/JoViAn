@@ -130,7 +130,7 @@ include '../includes/views/scripts.php';
                                                 <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
                                             </button>
 
-                                            <button class="btn btn-xs btn-danger">
+                                            <button onclick="deleteRow(this)" class="btn btn-xs btn-danger">
                                                 <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
                                             </button>';
                                     }
