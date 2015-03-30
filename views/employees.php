@@ -105,7 +105,11 @@ include '../includes/views/scripts.php';
                                 <td>39 000</td>
                                 <td>
                                     <button class="btn btn-xs btn-success">
-                                        <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> View/Edit
+                                        <span class="fa fa-fw fa-eye" style="vertical-align:middle"></span> View
+                                    </button>
+
+                                    <button class="btn btn-xs btn-warning">
+                                        <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
                                     </button>
 
                                     <button onclick="deleteRow(this)" class="btn btn-xs btn-danger">

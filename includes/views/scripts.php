@@ -21,9 +21,15 @@ function scripts()
             <script src="../assets/js/plugins/morris/morris-data.js"></script>
 
 
+            <!-- DatePicker -->
+            <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+            <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
             <!-- JavaScript -->
             <script src="../assets/js/script.js"></script>
             <script src="../assets/js/routes.js"></script>';
+
+
 }
 
 ?>

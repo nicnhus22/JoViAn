@@ -27,10 +27,15 @@ $(document).ready(function () {
 		});
 		return false;
 	});
+
+    //initialize the date picker for date input
+    $( ".datepicker" ).datepicker();
 });
 
 function deleteRow(button) {
     button.closest('tr').remove();
 }
+
+
 
 
