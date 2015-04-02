@@ -36,12 +36,20 @@ $employees = $sql->fetchAll();
 </head>
 
 <body>
-    
+
+
+
+
 <div id="wrapper">
 
     <!-- Navigation -->
     <?php menu(); ?>
+
+
+
+
     <div id="page-wrapper">
+
         <div class="container-fluid">
             <!-- Page Heading -->
             <div class="row">
@@ -49,6 +57,8 @@ $employees = $sql->fetchAll();
                     <h1 class="page-header">
                         Employees
                     </h1>
+
+
                     <ol class="breadcrumb">
                         <li>
                             <i class="fa fa-dashboard"></i> <a href="protected.php">Dashboard</a>
@@ -136,6 +146,7 @@ $employees = $sql->fetchAll();
                         </table>
                     </div>
                 </div>
+
             </div>
             <!-- /.row -->
 

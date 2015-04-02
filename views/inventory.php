@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+// Require DB access
+require_once '../includes/config/db.php';
+
 if (!$_SESSION['logged']) {
     header("Location: index.php");
     exit;
@@ -9,15 +12,38 @@ if (!$_SESSION['logged']) {
 include '../includes/views/menu.php';
 include '../includes/views/head.php';
 include '../includes/views/scripts.php';
+
+try {
+    //Connect to the databasse
+    $db  = new PDO("mysql:dbname=$dbDatabase;host=$dbHost", $dbUser, $dbPass);
+} catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+}
+
+// Fetch PCS
+$PC_sql = $db->prepare("SELECT * FROM pc"); 
+$PC_sql->execute(); 
+$PCS = $PC_sql->fetchAll();
+
+// Fetch Laptops
+$Laptop_sql = $db->prepare("SELECT * FROM laptop"); 
+$Laptop_sql->execute(); 
+$Laptops = $Laptop_sql->fetchAll();
+
+// Fetch Part
+$Part_sql = $db->prepare("SELECT * FROM part"); 
+$Part_sql->execute(); 
+$Parts = $Part_sql->fetchAll();
+
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <?php head(); ?>
-
 </head>
 
 <body>
@@ -26,8 +52,6 @@ include '../includes/views/scripts.php';
 
     <!-- Navigation -->
     <?php menu(); ?>
-
-
 
     <div id="page-wrapper">
 
@@ -66,29 +90,25 @@ include '../includes/views/scripts.php';
 
             ?>
 
-
-
             <hr>
 
-
             <div class="row">
-                <div class="col-xs-8">
+               <div class="col-xs-8">
                     <div class=" form-group input-group">
-                        <input type="text" class="form-control" placeholder="Search Inventory...">
+                        <input type="text" id=""class="form-control" placeholder="Search Inventory...">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button">
-                                <iclass="fa fa-search"></i>
+                                <i class="fa fa-search"></i>
                             </button>
                         </span>
                     </div>
                 </div>
                 <div class="col-xs-4">
-                    <select class="form-control">
+                    <select class="form-control" id="inventorySort">
                         <option>All</option>
-                        <option>Computers</option>
-                        <option>Hard drives</option>
-                        <option>Printers</option>
+                        <option>PCs</option>
                         <option>Laptops</option>
+                        <option>Parts</option>
                     </select>
                 </div>
             </div>
@@ -107,41 +127,101 @@ include '../includes/views/scripts.php';
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>/index.html</td>
-                                <td>1265</td>
-                                <td>11.99</td>
-                                <td>2</td>
-                                <td>
+                            
+                            <?php 
+                                foreach ($Laptops as $Laptop){
+                                    echo '
+                                        <tr class="inventory_laptop">
+                                            <td>'.$Laptop["Name"].'</td>
+                                            <td>Laptop</td>
+                                            <td>'.$Laptop["Price"].'</td>
+                                            <td>'.$Laptop["Quantity"].'</td>
+                                            <td>
+                                                <button class="btn btn-xs btn-success">
+                                                    <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
+                                                    View
+                                                </button>
 
-                                    <button class="btn btn-xs btn-success">
-                                        <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
-                                        View
-                                    </button>
+                                                <button class="btn btn-xs btn-info">
+                                                    <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
+                                                </button>';
 
-                                    <button class="btn btn-xs btn-info">
-                                        <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
-                                    </button>
+                                                    if ($_SESSION["privelege"] == "admin") {
+                                                        echo '<button class="btn btn-xs btn-warning">
+                                                                <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
+                                                            </button>
 
+                                                            <button onclick="deleteRow(this)" class="btn btn-xs btn-danger">
+                                                                <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
+                                                            </button>';
+                                                    }
+                                      echo '</td></tr>';
+                                }
+                            ?>
 
+                            <?php 
+                                foreach ($Parts as $Part){
+                                    echo '
+                                        <tr class="inventory_part">
+                                            <td>'.$Part["Name"].'</td>
+                                            <td>'.$Part["Type"].'</td>
+                                            <td>'.$Part["Price"].'</td>
+                                            <td>'.$Part["Quantity"].'</td>
+                                            <td>
+                                                <button class="btn btn-xs btn-success">
+                                                    <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
+                                                    View
+                                                </button>
 
+                                                <button class="btn btn-xs btn-info">
+                                                    <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
+                                                </button>';
 
-                                    <?php
+                                                    if ($_SESSION["privelege"] == "admin") {
+                                                        echo '<button class="btn btn-xs btn-warning">
+                                                                <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
+                                                            </button>
 
-                                    if ($_SESSION["privelege"] == "admin") {
-                                        echo '                                            <button class="btn btn-xs btn-warning">
-                                                <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
-                                            </button>
+                                                            <button onclick="deleteRow(this)" class="btn btn-xs btn-danger">
+                                                                <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
+                                                            </button>';
+                                                    }
+                                      echo '</td>
+                                        </tr>';
+                                }
+                            ?>
 
-                                            <button onclick="deleteRow(this)" class="btn btn-xs btn-danger">
-                                                <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
-                                            </button>';
-                                    }
+                            <?php 
+                                foreach ($PCS as $PC){
+                                    echo '
+                                        <tr class="inventory_pc">
+                                            <td>'.$PC["Name"].'</td>
+                                            <td>PC</td>
+                                            <td>'.$PC["Price"].'</td>
+                                            <td>'.$PC["Quantity"].'</td>
+                                            <td>
+                                                <button class="btn btn-xs btn-success">
+                                                    <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
+                                                    View
+                                                </button>
 
-                                    ?>
+                                                <button class="btn btn-xs btn-info">
+                                                    <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
+                                                </button>';
 
-                                </td>
-                            </tr>
+                                                    if ($_SESSION["privelege"] == "admin") {
+                                                        echo '<button class="btn btn-xs btn-warning">
+                                                                <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
+                                                            </button>
+
+                                                            <button onclick="deleteRow(this)" class="btn btn-xs btn-danger">
+                                                                <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
+                                                            </button>';
+                                                    }
+                                      echo '</td>
+                                        </tr>';
+                                }
+                            ?>
 
                             </tbody>
                         </table>
@@ -164,6 +244,16 @@ include '../includes/views/scripts.php';
     <?php scripts() ?>
     <script type="text/javascript">
         $("#nav_inventory").addClass("active");
+
+        $('#inventorySort').change(function(){
+            var selected = $('#inventorySort').val();
+            if     (selected == "Laptops"){    $('.inventory_laptop').show(); $('.inventory_pc').hide(); $('.inventory_part').hide();   }
+            else if(selected == "Parts"){    $('.inventory_part').show();  $('.inventory_laptop').hide(); $('.inventory_pc').hide();  }
+            else if(selected == "PCs"){    $('.inventory_pc').show(); $('.inventory_laptop').hide(); $('.inventory_part').hide();  }
+            else if(selected == "All"){  $('.inventory_pc').show(); $('.inventory_part').show(); $('.inventory_laptop').show(); }
+        });
+
+
     </script>
 
 </body>
