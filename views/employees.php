@@ -22,7 +22,7 @@ try {
 }
 
 
-$sql = $db->prepare("SELECT * FROM employee"); 
+$sql = $db->prepare("SELECT * FROM Employee"); 
 $sql->execute(); 
 $employees = $sql->fetchAll();
 

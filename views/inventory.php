@@ -22,17 +22,17 @@ try {
 }
 
 // Fetch PCS
-$PC_sql = $db->prepare("SELECT * FROM pc"); 
+$PC_sql = $db->prepare("SELECT * FROM PC"); 
 $PC_sql->execute(); 
 $PCS = $PC_sql->fetchAll();
 
 // Fetch Laptops
-$Laptop_sql = $db->prepare("SELECT * FROM laptop"); 
+$Laptop_sql = $db->prepare("SELECT * FROM Laptop"); 
 $Laptop_sql->execute(); 
 $Laptops = $Laptop_sql->fetchAll();
 
 // Fetch Part
-$Part_sql = $db->prepare("SELECT * FROM part"); 
+$Part_sql = $db->prepare("SELECT * FROM Part"); 
 $Part_sql->execute(); 
 $Parts = $Part_sql->fetchAll();
 
