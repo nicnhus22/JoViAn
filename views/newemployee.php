@@ -77,7 +77,7 @@ include '../includes/views/scripts.php';
                 <div class="col-lg-4">
                     <div class="form-group">
                         <label>Date of birth</label>
-                        <input class="form-control" placeholder="dd/mm/yyyy">
+                        <input class="form-control datepick" type="text" placeholder="dd/mm/yyyy">
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@ include '../includes/views/scripts.php';
                 <div class="col-lg-4">
                     <div class="form-group">
                         <label>Date of Hire</label>
-                        <input class="form-control" placeholder="dd/mm/yyyy">
+                        <input class="form-control datepicker" type="text" placeholder="dd/mm/yyyy">
                     </div>
                 </div>
             </div>
