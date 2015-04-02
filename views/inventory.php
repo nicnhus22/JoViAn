@@ -127,7 +127,7 @@ $Softwares = $Software_sql->fetchAll();
                                 <th>Type</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
-                                <th></th>
+                                <th style="width:260px;"></th>
                             </tr>
                             </thead>
                             <tbody>
