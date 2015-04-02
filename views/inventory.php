@@ -36,6 +36,10 @@ $Part_sql = $db->prepare("SELECT * FROM Part");
 $Part_sql->execute(); 
 $Parts = $Part_sql->fetchAll();
 
+// Fetch Software
+$Software_sql = $db->prepare("SELECT * FROM Software");
+$Software_sql->execute();
+$Softwares = $Sodtware_sql->fetchAll();
 
 ?>
 
@@ -164,7 +168,7 @@ $Parts = $Part_sql->fetchAll();
                                     echo '
                                         <tr class="inventory_part">
                                             <td>'.$Part["Name"].'</td>
-                                            <td>'.$Part["Type"].'</td>
+                                            <td>Part - '.$Part["Type"].'</td>
                                             <td>'.$Part["Price"].'</td>
                                             <td>'.$Part["Quantity"].'</td>
                                             <td>
@@ -222,6 +226,44 @@ $Parts = $Part_sql->fetchAll();
                                         </tr>';
                                 }
                             ?>
+
+
+			    <?php 
+                                foreach ($Softwares as $Software){
+                                    echo '
+                                        <tr class="inventory_pc">
+                                            <td>'.$Software["Name"].'</td>
+                                            <td>Software - '.$Software["Type"].'</td>
+                                            <td>'.$Software["Price"].'</td>
+                                            <td>'.$Software["Quantity"].'</td>
+                                            <td>
+                                                <button class="btn btn-xs btn-success">
+                                                    <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
+                                                    View
+                                                </button>
+
+                                                <button class="btn btn-xs btn-info">
+                                                    <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
+                                                </button>';
+
+                                                    if ($_SESSION["privelege"] == "admin") {
+                                                        echo '<button class="btn btn-xs btn-warning">
+                                                                <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
+                                                            </button>
+
+                                                            <button onclick="deleteRow(this)" class="btn btn-xs btn-danger">
+                                                                <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
+                                                            </button>';
+                                                    }
+                                      echo '</td>
+                                        </tr>';
+                                }
+                            ?>
+
+
+
+
+
 
                             </tbody>
                         </table>
