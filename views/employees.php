@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+require_once '../includes/config/db.php';
+
 if (!$_SESSION['logged'] || $_SESSION['privelege'] != "admin") {
     header("Location: ../index.php");
     exit;
@@ -9,6 +11,21 @@ if (!$_SESSION['logged'] || $_SESSION['privelege'] != "admin") {
 include '../includes/views/menu.php';
 include '../includes/views/head.php';
 include '../includes/views/scripts.php';
+
+
+try {
+    //Connect to the databasse
+    $db  = new PDO("mysql:dbname=$dbDatabase;host=$dbHost", $dbUser, $dbPass);
+} catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+}
+
+
+$sql = $db->prepare("SELECT * FROM employee"); 
+$sql->execute(); 
+$employees = $sql->fetchAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -19,20 +36,12 @@ include '../includes/views/scripts.php';
 </head>
 
 <body>
-
-
-
-
+    
 <div id="wrapper">
 
     <!-- Navigation -->
     <?php menu(); ?>
-
-
-
-
     <div id="page-wrapper">
-
         <div class="container-fluid">
             <!-- Page Heading -->
             <div class="row">
@@ -40,8 +49,6 @@ include '../includes/views/scripts.php';
                     <h1 class="page-header">
                         Employees
                     </h1>
-
-
                     <ol class="breadcrumb">
                         <li>
                             <i class="fa fa-dashboard"></i> <a href="protected.php">Dashboard</a>
@@ -93,40 +100,42 @@ include '../includes/views/scripts.php';
                         <table class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Seniority</th>
-                                <th>$ Sales</th>
+                                <th>Name</th>
+                                <th>Commission</th>
+                                <th>Date of Entry</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Andrew</td>
-                                <td>Costa</td>
-                                <td>Store Manager</td>
-                                <td>39 000</td>
-                                <td>
-                                    <button class="btn btn-xs btn-success" onclick="route_viewEmployee(1)">
-                                        <span class="fa fa-fw fa-eye"  style="vertical-align:middle"></span> View
-                                    </button>
+                            <?php 
+                                foreach ($employees as $employee){
+                                    echo '
+                                        <tr>
+                                            <td>'.$employee["Name"].'</td>
+                                            <td>'.$employee["Commission"].'</td>
+                                            <td>'.$employee["DOE"].'</td>
+                                            <td>
+                                                <button class="btn btn-xs btn-success" onclick="route_viewEmployee(1)">
+                                                    <span class="fa fa-fw fa-eye"  style="vertical-align:middle"></span> View
+                                                </button>
 
-                                    <button class="btn btn-xs btn-warning">
-                                        <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
-                                    </button>
+                                                <button class="btn btn-xs btn-warning">
+                                                    <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
+                                                </button>
 
-                                    <button onclick="deleteRow(this)" class="btn btn-xs btn-danger">
-                                        <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
-                                    </button>
+                                                <button onclick="deleteRow(this)" class="btn btn-xs btn-danger">
+                                                    <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
+                                                </button>
 
-                                </td>
-                            </tr>
-
+                                            </td>
+                                        </tr>
+                                    ';
+                                }
+                            ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
-
             </div>
             <!-- /.row -->
 
