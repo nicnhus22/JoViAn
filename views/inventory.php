@@ -39,7 +39,7 @@ $Parts = $Part_sql->fetchAll();
 // Fetch Software
 $Software_sql = $db->prepare("SELECT * FROM Software");
 $Software_sql->execute();
-$Softwares = $Sodtware_sql->fetchAll();
+$Softwares = $Software_sql->fetchAll();
 
 ?>
 
