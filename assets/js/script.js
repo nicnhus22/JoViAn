@@ -36,10 +36,6 @@ $(document).ready(function () {
                                  changeYear: true});
 });
 
-function deleteRow(button) {
-    button.closest('tr').remove();
-}
-
 $(".employeeTab").click(function () {
 
     $(".tab").removeClass("active");

@@ -135,7 +135,7 @@ $employees = $sql->fetchAll();
                                                     <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
                                                 </button>
 
-                                                <button onclick="deleteRow(this)" class="btn btn-xs btn-danger">
+                                                <button onclick="deleteRow(this,'.$employee['ID'].')" class="btn btn-xs btn-danger">
                                                     <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
                                                 </button>
 
@@ -166,6 +166,23 @@ $employees = $sql->fetchAll();
 <?php scripts() ?>
 <script type="text/javascript">
     $("#nav_employees").addClass("active");
+
+    function deleteRow(button, employeeID) {
+        $.ajax({
+
+                type: "POST",
+                url: "../includes/deleteEmployee.php",
+                data: 'ID='+employeeID,
+                cache: false,
+                success: function (data) {
+                    if (data == '1') {
+                        button.closest('tr').remove();
+                    } else {
+                        console.log("ERROR");
+                    }
+                }
+            }); 
+    }
 </script>
 
 </body>
