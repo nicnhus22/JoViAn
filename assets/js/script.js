@@ -90,18 +90,20 @@ function renderTable (type) {
             var tBodyRows = '';
 
             if(type == "Sale") {
-                tHeadRows = '<tr><td>Date</td><td>Customer Name</td><td>Product ID</td><td></td></tr>';
+                tHeadRows = '<tr><td>Date</td><td>Employee ID</td><td>Customer Name</td><td>Product ID</td><td></td></tr>';
                 for(var i = 0; i < dataAsJson.length; i++) {
                     tBodyRows += '<tr><td>' + dataAsJson[i].Date +'</td>' +
+                        '<td>' + dataAsJson[i].EmployeeID +'</td>' +
                         '<td>' + dataAsJson[i].CName +'</td>' +
                         '<td>' + dataAsJson[i].ProductID +'</td> +' +
                         '<td><button class="btn btn-xs btn-success"><span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View</button></td></tr>';
                 }
             }
             else if (type == "OnlineSale") {
-                tHeadRows = '<tr><td>Date</td><td>Customer Name</td><td>Product ID</td><td>Store Name</td><td></td></tr>';
+                tHeadRows = '<tr><td>Date</td><td>Employee ID</td><td>Customer Name</td><td>Product ID</td><td>Store Name</td><td></td></tr>';
                 for(var i = 0; i < dataAsJson.length; i++) {
                     tBodyRows += '<tr><td>' + dataAsJson[i].Date +'</td>' +
+                        '<td>' + dataAsJson[i].EmployeeID +'</td>' +
                         '<td>' + dataAsJson[i].CName +'</td>' +
                         '<td>' + dataAsJson[i].ProductID +'</td>' +
                         '<td>' + dataAsJson[i].StoreName +'</td>' +
@@ -109,9 +111,10 @@ function renderTable (type) {
                 }
             }
             else if (type == "Repair") {
-                tHeadRows = '<tr><td>Date</td><td>Customer Name</td><td>Computer ID</td><td>Type</td><td>Service Cost</td><td></td></tr>';
+                tHeadRows = '<tr><td>Date</td><td>Employee ID</td><td>Customer Name</td><td>Computer ID</td><td>Type</td><td>Service Cost</td><td></td></tr>';
                 for(var i = 0; i < dataAsJson.length; i++) {
                     tBodyRows += '<tr><td>' + dataAsJson[i].Date +'</td>' +
+                        '<td>' + dataAsJson[i].EmployeeID +'</td>' +
                         '<td>' + dataAsJson[i].CName +'</td>' +
                         '<td>' + dataAsJson[i].ComputerID +'</td>' +
                         '<td>' + dataAsJson[i].Type +'</td>' +
@@ -121,9 +124,10 @@ function renderTable (type) {
                 }
             }
             else if (type == "Upgrade") {
-                tHeadRows = '<tr><td>Date</td><td>Customer Name</td><td>Computer ID</td><td>Part ID</td><td>Service Cost</td><td></td></tr>';
+                tHeadRows = '<tr><td>Date</td><td>Employee ID</td><td>Customer Name</td><td>Computer ID</td><td>Part ID</td><td>Service Cost</td><td></td></tr>';
                 for(var i = 0; i < dataAsJson.length; i++) {
                     tBodyRows += '<tr><td>' + dataAsJson[i].Date +'</td>' +
+                        '<td>' + dataAsJson[i].EmployeeID +'</td>' +
                         '<td>' + dataAsJson[i].CName +'</td>' +
                         '<td>' + dataAsJson[i].ComputerID +'</td>' +
                         '<td>' + dataAsJson[i].PartID +'</td>' +
@@ -133,9 +137,10 @@ function renderTable (type) {
                 }
             }
             else if (type == "Install") {
-                tHeadRows = '<tr><td>Date</td><td>Customer Name</td><td>Computer ID</td><td>Software ID</td><td>Service Cost</td><td></td></tr>';
+                tHeadRows = '<tr><td>Date</td><td>Employee ID</td><td>Customer Name</td><td>Computer ID</td><td>Software ID</td><td>Service Cost</td><td></td></tr>';
                 for(var i = 0; i < dataAsJson.length; i++) {
                     tBodyRows += '<tr><td>' + dataAsJson[i].Date +'</td>' +
+                        '<td>' + dataAsJson[i].EmployeeID +'</td>' +
                         '<td>' + dataAsJson[i].CName +'</td>' +
                         '<td>' + dataAsJson[i].ComputerID +'</td>' +
                         '<td>' + dataAsJson[i].SoftwareID +'</td>' +
