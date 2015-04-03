@@ -112,7 +112,7 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
                 </div>
             </div>
 
-            <h2>Order History</h2>
+            <h2>Activity History</h2>
 
             <hr>
 
