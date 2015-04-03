@@ -48,7 +48,7 @@ function menu()
                         <a href="inventory.php"><i class="fa fa-fw fa-tasks"></i> Inventory</a>
                     </li>
                     <li id="nav_orders">
-                        <a href="orders.php"><i class="fa fa-fw fa-truck"></i> Orders</a>
+                        <a href="orders.php"><i class="fa fa-fw fa-history"></i> Activity History</a>
                     </li>';
 
 

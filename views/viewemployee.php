@@ -112,7 +112,7 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
                 </div>
             </div>
 
-            <h2>Order History</h2>
+            <h2>Activity History</h2>
 
             <hr>
 
@@ -120,18 +120,18 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 
                 <div class="col-lg-2">
                     <div class="form-group">
-                        <input id="beginDate" class="datepicker form-control" type="text" placeholder="yyyy/mm/dd">
+                        <input id="beginDate" class="datepicker form-control" type="text" placeholder="1990-01-01">
                     </div>
                 </div>
 
                 <div class="col-lg-2">
                     <div class="form-group">
-                        <input id="endDate" class="datepicker form-control" type"text"  placeholder="yyyy/mm/dd">
+                        <input id="endDate" class="datepicker form-control" type"text"  placeholder="2015-01-01">
                     </div>
                 </div>
 
                 <div class="col-lg-2">
-                    <button class="btn btn-sm btn-success">
+                    <button id="goActivity" class="btn btn-sm btn-success">
                         <span class="fa fa-fw fa-arrow-right" style="vertical-align:middle"></span>
                         Go
                     </button>
@@ -141,79 +141,17 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 
             <ul class="nav nav-tabs">
                 <li role="presentation" class="tab active"><a class="employeeTab" id="Sale" href="#Sales">Sales</a></li>
+                <li role="presentation"><a class="employeeTab" id="OnlineSale" href="#OnlineSales">Online Sales</a></li>
                 <li role="presentation"><a class="employeeTab" id="Repair" href="#Repairs" href="#">Repairs</a></li>
                 <li role="presentation"><a class="employeeTab" id="Upgrade" href="#Upgrades">Upgrades</a></li>
+                <li role="presentation"><a class="employeeTab" id="Install" href="#Installs">Installs</a></li>
             </ul>
 
             <div class="row">
                 <div class="col-lg-12">
 
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover" style="border: 0px;">
-                            <thead>
-                            <tr>
-                                <th>Customer ID</th>
-                                <th>Description</th>
-                                <th>Total</th>
-                                <th>Status</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>/index.html</td>
-                                <td>1265</td>
-                                <td>11.99</td>
-                                <td>Opened</td>
-                                <td>
-
-                                    <button class="btn btn-xs btn-success">
-                                        <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
-                                        View
-                                    </button>
-
-                                    <button class="btn btn-xs btn-info">
-                                        <span class="fa fa-fw fa-truck" style="vertical-align:middle"></span> Process
-                                    </button>
-                                    <button class="btn btn-xs btn-warning">
-                                        <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
-                                    </button>
-
-                                    <button onclick="deleteRow(this)" class="btn btn-xs btn-danger">
-                                        <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
-                                    </button>
-
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>/index.html</td>
-                                <td>1265</td>
-                                <td>11.99</td>
-                                <td>Opened</td>
-                                <td>
-
-                                    <button class="btn btn-xs btn-success">
-                                        <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
-                                        View
-                                    </button>
-
-                                    <button class="btn btn-xs btn-info">
-                                        <span class="fa fa-fw fa-truck" style="vertical-align:middle"></span> Process
-                                    </button>
-                                    <button class="btn btn-xs btn-warning">
-                                        <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
-                                    </button>
-
-                                    <button onclick="deleteRow(this)" class="btn btn-xs btn-danger">
-                                        <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
-                                    </button>
-
-
-                                </td>
-                            </tr>
-
-                            </tbody>
+                        <table id="activityTable" class="table table-bordered table-hover" style="border: 0px;">
                         </table>
                     </div>
                 </div>
@@ -233,6 +171,14 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 
 <?php scripts() ?>
 <script type="text/javascript">
+
+    $(document).ready(function(){
+
+        renderTable("Sale");
+
+    });
+
+
     $("#nav_employees").addClass("active");
 </script>
 
