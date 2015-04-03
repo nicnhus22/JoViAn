@@ -36,6 +36,28 @@ function deleteRow(button) {
     button.closest('tr').remove();
 }
 
+$(".employeeTab").click(function(){
 
+    $(".tab").removeClass("active");
+    $(".tab").removeClass("tab");
+    $(this).closest("li").addClass("tab");
+    $(this).closest("li").addClass("active");
+
+
+    var parent = $(this).nex
+    var type = $(this).attr("id");
+    var empID = $("#empID").text();
+    var beginDate = $("#beginDate").val();
+    var endDate = $("#endDate").val();
+
+    $.ajax({
+        url: "../includes/getEmployeeServiceRecords.php?id=" + empID + "&type=" + type + "&beginDate=" + beginDate + "&endDate=" + endDate,
+        cache: false,
+        success: function(data){
+            console.log(data);
+        }
+    });
+
+});
 
 

@@ -95,7 +95,7 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
                 </div>
                 <div class="col-sm-4">
                     <ul class="list-group">
-                        <li class="list-group-item">Employee ID: <?= $row["ID"]?> </li>
+                        <li class="list-group-item">Employee ID: <span id="empID"><?= $row["ID"]?></span></li>
                         <li class="list-group-item">Name: <?= $row["Name"]?> </li>
                         <li class="list-group-item">Email: <?= $row["email"]?> </li>
                         <li class="list-group-item">Username: <?= $row["username"]?> </li>
@@ -120,13 +120,13 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 
                 <div class="col-lg-2">
                     <div class="form-group">
-                        <input class="datepicker form-control" type="text" placeholder="dd/mm/yyyy">
+                        <input id="beginDate" class="datepicker form-control" type="text" placeholder="yyyy/mm/dd">
                     </div>
                 </div>
 
                 <div class="col-lg-2">
                     <div class="form-group">
-                        <input class="datepicker form-control" type"text"  placeholder="dd/mm/yyyy">
+                        <input id="endDate" class="datepicker form-control" type"text"  placeholder="yyyy/mm/dd">
                     </div>
                 </div>
 
@@ -140,9 +140,9 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
             </div>
 
             <ul class="nav nav-tabs">
-                <li role="presentation" class="active"><a href="#">Sales</a></li>
-                <li role="presentation"><a href="#">Repairs</a></li>
-                <li role="presentation"><a href="#">Upgrades</a></li>
+                <li role="presentation" class="tab active"><a class="employeeTab" id="Sale" href="#Sales">Sales</a></li>
+                <li role="presentation"><a class="employeeTab" id="Repair" href="#Repairs" href="#">Repairs</a></li>
+                <li role="presentation"><a class="employeeTab" id="Upgrade" href="#Upgrades">Upgrades</a></li>
             </ul>
 
             <div class="row">
