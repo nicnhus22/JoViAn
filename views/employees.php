@@ -110,6 +110,7 @@ $employees = $sql->fetchAll();
                         <table class="table table-bordered table-hover">
                             <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Commission</th>
                                 <th>Date of Entry</th>
@@ -121,11 +122,12 @@ $employees = $sql->fetchAll();
                                 foreach ($employees as $employee){
                                     echo '
                                         <tr>
+                                            <td>'.$employee["ID"].'</td>
                                             <td>'.$employee["Name"].'</td>
                                             <td>'.$employee["Commission"].'</td>
                                             <td>'.$employee["DOE"].'</td>
                                             <td>
-                                                <button class="btn btn-xs btn-success" onclick="route_viewEmployee(1)">
+                                                <button class="btn btn-xs btn-success" onclick="route_viewEmployee('. $employee["ID"] .')">
                                                     <span class="fa fa-fw fa-eye"  style="vertical-align:middle"></span> View
                                                 </button>
 

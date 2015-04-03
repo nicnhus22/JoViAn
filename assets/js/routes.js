@@ -7,5 +7,5 @@ function route_newEmployee() {
 }
 
 function route_viewEmployee(empID) {
-    window.location.href = "viewemployee.php?empID=" + empID;
+    window.location.href = "viewemployee.php?ID=" + empID;
 }

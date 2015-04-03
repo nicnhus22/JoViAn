@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+require_once '../includes/config/db.php';
+
 if (!$_SESSION['logged']) {
     header("Location: index.php");
     exit;
@@ -9,6 +11,23 @@ if (!$_SESSION['logged']) {
 include '../includes/views/menu.php';
 include '../includes/views/head.php';
 include '../includes/views/scripts.php';
+
+try {
+    //Connect to the databasse
+    $db  = new PDO("mysql:dbname=$dbDatabase;host=$dbHost", $dbUser, $dbPass);
+} catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+}
+
+$ID = intval($_GET["ID"]);
+
+$sql = $db->prepare("SELECT * FROM Employee, users WHERE users.EmployeeID = ? AND users.EmployeeID = Employee.ID");
+$sql->bindValue(1, $ID);
+$sql->execute();
+$row = $sql->fetch(PDO::FETCH_ASSOC);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +35,7 @@ include '../includes/views/scripts.php';
 
 <head>
     <?php head(); ?>
-    <title>View Employee | <?php echo $_SESSION["username"] ?></title>
+    <title>View Employee | <?php echo $row["Name"]; ?></title>
 </head>
 
 <body>
@@ -56,7 +75,7 @@ include '../includes/views/scripts.php';
             <div class="row">
                 <div class="col-lg-4">
                     <h2>
-                        <?php echo $_SESSION["username"] ?>
+                        <?php echo $row["Name"]; ?>
                     </h2>
                 </div>
                 <div class="col-lg-4">
@@ -76,21 +95,19 @@ include '../includes/views/scripts.php';
                 </div>
                 <div class="col-sm-4">
                     <ul class="list-group">
-                        <li class="list-group-item">First Name</li>
-                        <li class="list-group-item">Last Name</li>
-                        <li class="list-group-item">Date of birth</li>
-                        <li class="list-group-item">Porta ac consectetur ac</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Employee ID: <?= $row["ID"]?> </li>
+                        <li class="list-group-item">Name: <?= $row["Name"]?> </li>
+                        <li class="list-group-item">Email: <?= $row["email"]?> </li>
+                        <li class="list-group-item">Username: <?= $row["username"]?> </li>
                     </ul>
                 </div>
 
                 <div class="col-sm-4">
                     <ul class="list-group">
-                        <li class="list-group-item">Seniority</li>
-                        <li class="list-group-item">Date of Hire</li>
-                        <li class="list-group-item">Service Commission</li>
-                        <li class="list-group-item">Porta ac consectetur ac</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Seniority: <?= $row["privelege"]?> </li>
+                        <li class="list-group-item">Date of Hire: <?= $row["DOE"]?></li>
+                        <li class="list-group-item">Service Commission: <?= $row["Commission"]?> %</li>
+                        <li class="list-group-item">Yearly Salary: <?= $row["AnnualPay"]?> $</li>
                     </ul>
                 </div>
             </div>
@@ -122,6 +139,11 @@ include '../includes/views/scripts.php';
 
             </div>
 
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="#">Sales</a></li>
+                <li role="presentation"><a href="#">Repairs</a></li>
+                <li role="presentation"><a href="#">Upgrades</a></li>
+            </ul>
 
             <div class="row">
                 <div class="col-lg-12">
