@@ -36,7 +36,7 @@ $(document).ready(function () {
                                  changeYear: true});
 });
 
-$(".employeeTab").click(function () {
+$(".activityTab").click(function () {
 
     $(".tab").removeClass("active");
     $(".tab").removeClass("tab");
@@ -51,6 +51,7 @@ $(".employeeTab").click(function () {
     $target.animate({scrollTop: $target.height()}, 1000);
 
 });
+
 
 $("#goActivity").click(function () {
 
@@ -77,6 +78,8 @@ function renderTable (type) {
         cache: false,
         success: function (data) {
             var dataAsJson = JSON.parse(data);
+
+            console.log(dataAsJson);
 
             if(dataAsJson == "") {
                 buildTable = '<thead><tr><td>No ' + type +'s to display!</td></tr></thead>';

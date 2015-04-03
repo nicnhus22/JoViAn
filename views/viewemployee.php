@@ -140,11 +140,11 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
             </div>
 
             <ul class="nav nav-tabs">
-                <li role="presentation" class="tab active"><a class="employeeTab" id="Sale" href="#Sales">Sales</a></li>
-                <li role="presentation"><a class="employeeTab" id="OnlineSale" href="#OnlineSales">Online Sales</a></li>
-                <li role="presentation"><a class="employeeTab" id="Repair" href="#Repairs" href="#">Repairs</a></li>
-                <li role="presentation"><a class="employeeTab" id="Upgrade" href="#Upgrades">Upgrades</a></li>
-                <li role="presentation"><a class="employeeTab" id="Install" href="#Installs">Installs</a></li>
+                <li role="presentation" class="tab active"><a class="activityTab" id="Sale" href="#Sales">Sales</a></li>
+                <li role="presentation"><a class="activityTab" id="OnlineSale" href="#OnlineSales">Online Sales</a></li>
+                <li role="presentation"><a class="activityTab" id="Repair" href="#Repairs" href="#">Repairs</a></li>
+                <li role="presentation"><a class="activityTab" id="Upgrade" href="#Upgrades">Upgrades</a></li>
+                <li role="presentation"><a class="activityTab" id="Install" href="#Installs">Installs</a></li>
             </ul>
 
             <div class="row">

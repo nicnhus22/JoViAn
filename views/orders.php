@@ -35,14 +35,14 @@ include '../includes/views/scripts.php';
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Orders
+                        Activity History
                     </h1>
                     <ol class="breadcrumb">
                         <li>
                             <i class="fa fa-dashboard"></i> <a href="protected.php">Dashboard</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-truck"></i> Orders
+                            <i class="fa fa-history"></i> Activity History
                         </li>
                     </ol>
                 </div>
@@ -63,66 +63,57 @@ include '../includes/views/scripts.php';
 
             <hr>
 
+            <div class="row">
+
+
+
+            </div>
+
 
             <div class="row">
-                <div class="col-xs-8">
+                <div class="col-lg-7">
                     <div class=" form-group input-group">
-                        <input type="text" class="form-control" value="Search Orders...">
+                        <input type="text" class="form-control" value="Search Activitiy History ...">
                             <span class="input-group-btn"><button class="btn btn-default" type="button"><i
                                         class="fa fa-search"></i></button></span>
                     </div>
                 </div>
-                <div class="col-xs-4">
-                    <select class="form-control">
-                        <option>All</option>
-                        <option>Open</option>
-                        <option>Completed</option>
-                    </select>
+                <div class="col-lg-2">
+                    <div class="form-group">
+                        <input id="beginDate" class="datepicker form-control" type="text" placeholder="1990-01-01">
+                    </div>
                 </div>
+
+                <div class="col-lg-2">
+                    <div class="form-group">
+                        <input id="endDate" class="datepicker form-control" type"text"  placeholder="2015-01-01">
+                    </div>
+                </div>
+
+                <div class="col-lg-1">
+                    <button id="goActivity" class="btn btn-sm btn-success btn-block" style="height:34px">
+                        <span class="fa fa-fw fa-arrow-right" style="vertical-align:middle"></span>
+                        Go
+                    </button>
+                </div>
+
+
             </div>
+
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="tab active"><a class="activityTab" id="Sale" href="#Sales">Sales</a></li>
+                <li role="presentation"><a class="activityTab" id="OnlineSale" href="#OnlineSales">Online Sales</a></li>
+                <li role="presentation"><a class="activityTab" id="Repair" href="#Repairs" href="#">Repairs</a></li>
+                <li role="presentation"><a class="activityTab" id="Upgrade" href="#Upgrades">Upgrades</a></li>
+                <li role="presentation"><a class="activityTab" id="Install" href="#Installs">Installs</a></li>
+            </ul>
+
             <div class="row">
                 <div class="col-lg-12">
 
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
-                            <thead>
-                            <tr>
-                                <th>Customer ID</th>
-                                <th>Description</th>
-                                <th>Total</th>
-                                <th>Status</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>/index.html</td>
-                                <td>1265</td>
-                                <td>11.99</td>
-                                <td>Opened</td>
-                                <td>
+                        <table id="activityTable" class="table table-bordered table-hover" style="border: 0px;">
 
-                                    <button class="btn btn-xs btn-success">
-                                        <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
-                                        View
-                                    </button>
-
-                                    <button class="btn btn-xs btn-info">
-                                        <span class="fa fa-fw fa-truck" style="vertical-align:middle"></span> Process
-                                    </button>
-                                         <button class="btn btn-xs btn-warning">
-                                                <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
-                                            </button>
-
-                                            <button onclick="deleteRow(this)" class="btn btn-xs btn-danger">
-                                                <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
-                                            </button>
-
-
-                                </td>
-                            </tr>
-
-                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -142,6 +133,13 @@ include '../includes/views/scripts.php';
 
     <?php scripts() ?>
     <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            renderTable("Sale");
+
+        });
+
         $("#nav_orders").addClass("active");
     </script>
 </body>
