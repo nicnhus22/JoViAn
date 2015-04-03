@@ -56,87 +56,70 @@ include '../includes/views/scripts.php';
 
             <hr>
 
-
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label>First Name</label>
-                        <input class="form-control" placeholder="Enter text">
+            <form method="POST" class="form-signin" id="add_employee_form" accept-charset="UTF-8" action="">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input class="form-control" placeholder="Frst name" id="employee_first_name" name="employee_first_name">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label>Last Name</label>
-                        <input class="form-control" placeholder="Enter text">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input class="form-control" placeholder="Last name" id="employee_last_name" name="employee_last_name">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label>Date of birth</label>
-                        <input class="form-control datepick" type="text" placeholder="dd/mm/yyyy">
+                <h2>Job Info</h2>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Annual Pay</label>
+                        <div class="form-group">
+                            <div class="input-group">
+                              <input type="text" class="form-control" id="employee_annual_pay" placeholder="Amount"  name="employee_annual_pay" style="  z-index: 0;">
+                              <div class="input-group-addon">$</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <h2>Job Info</h2>
-
-
-            <hr>
-
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label>Seniority</label>
-                        <select class="form-control">
-                            <option>Manager</option>
-                            <option>Technician</option>
-                            <option>Sales Associate</option>
-                        </select>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Service Commission</label>
+                        <div class="form-group">
+                            <div class="input-group">
+                              <input type="text" class="form-control" id="employee_commission" placeholder="Amount" name="employee_commission" style="z-index: 0;">
+                              <div class="input-group-addon">%</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label>Date of Hire</label>
-                        <input class="form-control datepicker" type="text" placeholder="dd/mm/yyyy">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Date of Hire</label>
+                            <input class="form-control datepicker" type="text" placeholder="yyyy/mm/dd" id="employee_DOE" name="employee_DOE">
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-4">
-                    <label>Service Commission</label>
-                    <div class="input-group">
-                      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
-                      <div class="input-group-addon">%</div>
-                    </div>
+                <!-- /.row -->
+                <hr>
+                <div class="row">
+                    <div class="alert alert-danger" role="alert" id="employee_add_failure" style="display:none">Oops... Something went wrong.</div>
                 </div>
-            </div>
+                <!-- Submit/Add -->
+                <button class="btn btn-success" type="submit" name="submit" id="add_employee_submit">
+                    <span class="fa fa-fw fa-plus-circle" style="vertical-align:middle"></span> Add Employee
+                </button>
+                <!-- Cancel -->
+                <button id="cancel-add-new-employee-btn" class="btn btn-danger">
+                    <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Cancel
+                </button>
 
-
-            <!-- /.row -->
-            <hr>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <button id="add-employee-btn" class="btn btn-success">
-                        <span class="fa fa-fw fa-plus-circle" style="vertical-align:middle"></span> Add Employee
-                    </button>
-                    <button id="cancel-add-new-employee-btn" class="btn btn-danger">
-                        <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Cancel
-                    </button>
-                </div>
-            </div>
-
-            <hr>
-
-
+            </form><!-- /form -->
 
         </div>
         <!-- /.container-fluid -->

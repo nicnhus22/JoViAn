@@ -27,6 +27,7 @@ function scripts()
 
             <!-- JavaScript -->
             <script src="../assets/js/script.js"></script>
+            <script src="../assets/js/addEvent.js"></script>
             <script src="../assets/js/routes.js"></script>';
 
 
