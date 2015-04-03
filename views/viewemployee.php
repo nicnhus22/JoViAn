@@ -149,7 +149,7 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
                 <div class="col-lg-12">
 
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
+                        <table class="table table-bordered table-hover" style="border: 0px;">
                             <thead>
                             <tr>
                                 <th>Customer ID</th>
@@ -160,6 +160,32 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
                             </tr>
                             </thead>
                             <tbody>
+                            <tr>
+                                <td>/index.html</td>
+                                <td>1265</td>
+                                <td>11.99</td>
+                                <td>Opened</td>
+                                <td>
+
+                                    <button class="btn btn-xs btn-success">
+                                        <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
+                                        View
+                                    </button>
+
+                                    <button class="btn btn-xs btn-info">
+                                        <span class="fa fa-fw fa-truck" style="vertical-align:middle"></span> Process
+                                    </button>
+                                    <button class="btn btn-xs btn-warning">
+                                        <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
+                                    </button>
+
+                                    <button onclick="deleteRow(this)" class="btn btn-xs btn-danger">
+                                        <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
+                                    </button>
+
+
+                                </td>
+                            </tr>
                             <tr>
                                 <td>/index.html</td>
                                 <td>1265</td>

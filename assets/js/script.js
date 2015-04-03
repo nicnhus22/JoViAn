@@ -29,7 +29,7 @@ $(document).ready(function () {
 	});
 
     //initialize the date picker for date input
-    $( ".datepicker" ).datepicker();
+    $( ".datepicker" ).datepicker({dateFormat:'yy-mm-dd' });
 });
 
 function deleteRow(button) {
