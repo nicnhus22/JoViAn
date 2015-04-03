@@ -29,7 +29,11 @@ if($TYPE == "Sale")
     $sql = $db->prepare("SELECT * FROM Sale WHERE EmployeeID = ? AND Date between ? and ?");
 else if($TYPE == "Repair")
     $sql = $db->prepare("SELECT * FROM Repair WHERE EmployeeID = ? AND Date between ? and ?");
-else
+else if($TYPE == "OnlineSale")
+    $sql = $db->prepare("SELECT * FROM OnlineSale WHERE EmployeeID = ? AND Date between ? and ?");
+else if($TYPE == "Install")
+    $sql = $db->prepare("SELECT * FROM Install WHERE EmployeeID = ? AND Date between ? and ?");
+else if($TYPE == "Upgrade")
     $sql = $db->prepare("SELECT * FROM Upgrade WHERE EmployeeID = ? AND Date between ? and ?");
 
 $sql->bindValue(1, $ID);
@@ -39,6 +43,10 @@ $sql->bindValue(3, $ENDDATE);
 $sql->execute();
 $rows = $sql->fetchALL();
 
+echo json_encode($rows);
 
-print_r($rows);
+
+
+
+
 ?>
