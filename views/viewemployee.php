@@ -120,18 +120,18 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 
                 <div class="col-lg-2">
                     <div class="form-group">
-                        <input id="beginDate" class="datepicker form-control" type="text" placeholder="yyyy/mm/dd">
+                        <input id="beginDate" class="datepicker form-control" type="text" placeholder="1990-01-01">
                     </div>
                 </div>
 
                 <div class="col-lg-2">
                     <div class="form-group">
-                        <input id="endDate" class="datepicker form-control" type"text"  placeholder="yyyy/mm/dd">
+                        <input id="endDate" class="datepicker form-control" type"text"  placeholder="2015-01-01">
                     </div>
                 </div>
 
                 <div class="col-lg-2">
-                    <button class="btn btn-sm btn-success">
+                    <button id="goActivity" class="btn btn-sm btn-success">
                         <span class="fa fa-fw fa-arrow-right" style="vertical-align:middle"></span>
                         Go
                     </button>

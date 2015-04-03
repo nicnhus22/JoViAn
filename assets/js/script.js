@@ -31,7 +31,9 @@ $(document).ready(function () {
     });
 
     //initialize the date picker for date input
-    $(".datepicker").datepicker({dateFormat: 'yy-mm-dd' });
+    $(".datepicker").datepicker({dateFormat: 'yy-mm-dd' ,
+                                 changeMonth: true,
+                                 changeYear: true});
 });
 
 function deleteRow(button) {
@@ -46,6 +48,18 @@ $(".employeeTab").click(function () {
     $(this).closest("li").addClass("active");
 
     var type = $(this).attr("id");
+
+    renderTable(type);
+
+    var $target = $('html,body');
+    $target.animate({scrollTop: $target.height()}, 1000);
+
+});
+
+$("#goActivity").click(function () {
+
+
+    var type = $(".tab").find("a").attr("id");
 
     renderTable(type);
 
