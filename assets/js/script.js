@@ -34,6 +34,10 @@ $(document).ready(function () {
     $(".datepicker").datepicker({dateFormat: 'yy-mm-dd' ,
                                  changeMonth: true,
                                  changeYear: true});
+
+
+
+
 });
 
 $(".activityTab").click(function () {
@@ -169,5 +173,31 @@ function renderTable (type) {
     });
 
 }
+
+function updateServiceModal(id, name, price, type) {
+    $("#myModalLabel").html( '<h3>' + name + '</h3>')
+    /*$(".modal-body").html(
+                              '<div class="row">'+
+                                '<div class="col-lg-6">'+
+                                    '<div class="form-group">'+
+                                        '<label>Customer Name</label>'+
+                                        '<input class="form-control" placeholder="Customer Name" id="cname" name="cname">'+
+                                    '</div>'+
+                                '</div>'+
+
+
+                                '<div class="col-lg-6">'+
+                                    '<div class="form-group">'+
+                                        '<label>Customer Address</label>'+
+                                        '<input class="form-control" placeholder="Customer Address" id="caddr" name="caddr">'+
+                                    '</div>'+
+                                  '<span>Total: ' + price +'</span>'+
+                                '</div>' +
+                            '</div>');
+
+*/
+}
+
+
 
 
