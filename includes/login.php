@@ -42,6 +42,7 @@ if(isset($_POST['email']) && isset($_POST['password'])){
         session_start(); 
         $_SESSION['username']    = $row['username'];
         $_SESSION['privelege']   = $row['privelege'] ;
+        $_SESSION['id']   = $row['EmployeeID'] ;
         $_SESSION['logged']      = TRUE;
         echo 1;
     }else{ 

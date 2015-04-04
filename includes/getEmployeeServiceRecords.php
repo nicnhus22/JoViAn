@@ -22,8 +22,10 @@ try {
 
 $ID = $_GET["id"];
 $TYPE = $_GET["type"];
+$TODAY = getDate();
+$TODAYSTRING = $TODAY["year"] . "-" . $TODAY["mon"] . "-" . $TODAY["mday"];
 $BEGINDATE = ($_GET["beginDate"] == "") ? "1900-01-01" : $_GET["beginDate"];
-$ENDDATE = ($_GET["endDate"] == "") ? "2015-01-01" : $_GET["endDate"];
+$ENDDATE = ($_GET["endDate"] == "") ? $TODAYSTRING : $_GET["endDate"];
 
 if ($ID == "") {
     if ($TYPE == "Sale")

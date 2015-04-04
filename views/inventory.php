@@ -57,7 +57,8 @@ $Softwares = $Software_sql->fetchAll();
 <!-- Navigation -->
 <?php menu(); ?>
 
-<div class="modal fade" id="serviceModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+<div class="modal fade" id="serviceModal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -66,103 +67,13 @@ $Softwares = $Software_sql->fetchAll();
             </div>
             <div class="modal-body col-lg-12">
 
-                <div class="col-lg-4">
-                    <img class="img-responsive" src="../assets/img/10361863.jpg">
-                </div>
-
-                <div class="col-lg-8">
-                <div class=" panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Details</h3>
-                    </div>
-                    <div class="panel-body" style="padding: 0;">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-striped" style="margin: 0">
-                                <tbody>
-                                <tr>
-                                    <td>Processor</td>
-                                    <td>1265 GHz</td>
-                                </tr>
-                                <tr>
-                                    <td>RAM</td>
-                                    <td>16 G</td>
-                                </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                </div>
-
-
-
-
-                <div class="col-lg-12">
-                <div class="panel panel-green">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Sale Summary</h3>
-                    </div>
-                    <div class="panel-body" style="padding: 0;">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-striped" style="margin: 0">
-                                <tbody>
-                                <tr>
-                                    <td>Acer Aspire Laptop X290</td>
-                                    <td></td>   
-                                    <td>2000 $</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>PST</td>
-                                    <td>15 $</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>GST</td>
-                                    <td>15 $</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Total</td>
-                                    <td>2030 $</td>
-                                </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                </div>
-
-                <div class="col-lg-12">
-                <div class="panel panel-red">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Customer Info</h3>
-                    </div>
-                    <div class="panel-body">
-
-                            <div class="col-lg-6">
-                                <div>
-                                    <input class="form-control" placeholder="Customer Name" id="cname" name="cname">
-                                </div>
-                            </div>
-
-
-                            <div class="col-lg-6">
-                                <div>
-                                    <input class="form-control" placeholder="Customer Address" id="caddr" name="caddr">
-                                </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
 
             </div>
+
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Process</button>
+
             </div>
+
         </div>
     </div>
 </div>
@@ -257,12 +168,14 @@ if ($_SESSION["privelege"] == "admin") {
                                             <td>' . $Laptop["Price"] . '</td>
                                             <td>' . $Laptop["Quantity"] . '</td>
                                             <td>
-                                                <button class="btn btn-xs btn-success' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Laptop["ID"] . ',&#39' . $Laptop["Name"] . '&#39,' . $Laptop["Price"] . ',&#39Laptop&#39)">
+                                                                                            <button class="btn btn-xs btn-success">
+
                                                     <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
                                                     View
                                                 </button>
 
-                                                <button class="btn btn-xs btn-info">
+                                                                                                <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Laptop["ID"] . ',&#39Laptop&#39)">
+
                                                     <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
                                                 </button>';
 
@@ -281,6 +194,13 @@ if ($_SESSION["privelege"] == "admin") {
 
                 <?php
                 foreach ($Parts as $Part) {
+
+                    $disabled = "";
+
+                    if ($Laptop["Quantity"] <= 0) {
+                        $disabled = "disabled";
+                    }
+
                     echo '
                                         <tr class="inventory_part">
                                             <td>' . $Part["Name"] . '</td>
@@ -288,12 +208,13 @@ if ($_SESSION["privelege"] == "admin") {
                                             <td>' . $Part["Price"] . '</td>
                                             <td>' . $Part["Quantity"] . '</td>
                                             <td>
-                                                <button class="btn btn-xs btn-success">
-                                                    <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
+<button class="btn btn-xs btn-success">                                                    <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
                                                     View
                                                 </button>
 
-                                                <button class="btn btn-xs btn-info">
+
+                                                                                            <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Part["ID"] . ',&#39Part&#39)">
+
                                                     <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
                                                 </button>';
 
@@ -313,6 +234,13 @@ if ($_SESSION["privelege"] == "admin") {
 
                 <?php
                 foreach ($PCS as $PC) {
+
+                    $disabled = "";
+
+                    if ($Laptop["Quantity"] <= 0) {
+                        $disabled = "disabled";
+                    }
+
                     echo '
                                         <tr class="inventory_pc">
                                             <td>' . $PC["Name"] . '</td>
@@ -320,12 +248,14 @@ if ($_SESSION["privelege"] == "admin") {
                                             <td>' . $PC["Price"] . '</td>
                                             <td>' . $PC["Quantity"] . '</td>
                                             <td>
-                                                <button class="btn btn-xs btn-success">
+                                                                                            <button class="btn btn-xs btn-success">
+
                                                     <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
                                                     View
                                                 </button>
 
-                                                <button class="btn btn-xs btn-info">
+                                                                                            <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $PC["ID"] . ',&#39PC&#39)">
+
                                                     <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
                                                 </button>';
 
@@ -346,6 +276,13 @@ if ($_SESSION["privelege"] == "admin") {
 
                 <?php
                 foreach ($Softwares as $Software) {
+
+                    $disabled = "";
+
+                    if ($Laptop["Quantity"] <= 0) {
+                        $disabled = "disabled";
+                    }
+
                     echo '
                                         <tr class="inventory_pc">
                                             <td>' . $Software["Name"] . '</td>
@@ -353,12 +290,14 @@ if ($_SESSION["privelege"] == "admin") {
                                             <td>' . $Software["Price"] . '</td>
                                             <td>' . $Software["Quantity"] . '</td>
                                             <td>
-                                                <button class="btn btn-xs btn-success">
+                                                                                            <button class="btn btn-xs btn-success">
+
                                                     <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
                                                     View
                                                 </button>
 
-                                                <button class="btn btn-xs btn-info">
+                                                                                            <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Software["ID"] . ',&#39Software&#39)">
+
                                                     <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
                                                 </button>';
 
