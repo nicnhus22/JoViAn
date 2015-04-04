@@ -285,21 +285,23 @@ $(document).ready(function () {
                 }
 
                 if(valid){
-                    var dataString = 'firstName=' + firstName + '&lastName=' + lastName+'&DOE=' + DOE + '&commission=' + commission+ '&annualPay=' + annualPay + '&seniority='+seniority;
+                    var dataString = 'part_name=' + part_name + '&part_type=' + part_type+'&part_value=' + part_value + 
+                                    '&part_price=' + part_price+ '&part_quantity=' + part_quantity;
                     $.ajax({
                         type: "POST",
-                        url: "../includes/items/addLaptop.php",
+                        url: "../includes/items/addPart.php",
                         data: dataString,
                         cache: false,
                         success: function(data){
                             if (data == '1'){
-                                window.location.href = "employees.php";
+                                window.location.href = "inventory.php";
                             }else{
+                                $("#employee_add_failure").html(data);
                                 $("#employee_add_failure").show();
                             }
                         }
                     });
-                } 
+                }  
 
                 break;
         }
