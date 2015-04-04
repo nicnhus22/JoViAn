@@ -97,7 +97,7 @@ include '../includes/views/scripts.php';
                 </div>
                 
                 <!-- Submit/Add -->
-                <button class="btn btn-success" type="submit" name="submit" id="add_employee_submit">
+                <button class="btn btn-success" type="submit" name="submit" id="add_item_submit">
                     <span class="fa fa-fw fa-plus-circle" style="vertical-align:middle"></span> Add Item
                 </button>
                 <!-- Cancel -->

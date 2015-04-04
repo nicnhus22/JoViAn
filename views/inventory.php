@@ -192,14 +192,13 @@ $Softwares = $Software_sql->fetchAll();
 <?php
 
 if ($_SESSION["privelege"] == "admin") {
-    echo '
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <button class="btn btn-success" onclick="route_newItem()">
-                                    <span class="fa fa-fw fa-plus-circle" style="vertical-align:middle"></span> New Item
-                                </button>
-                            </div>
-                         </div>';
+    echo '<div class="row">
+                <div class="col-lg-12">
+                    <button class="btn btn-success" onclick="route_newItem()">
+                        <span class="fa fa-fw fa-plus-circle" style="vertical-align:middle"></span> New Item
+                    </button>
+                </div>
+             </div>';
 }
 
 ?>
