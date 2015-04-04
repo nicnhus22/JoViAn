@@ -56,7 +56,7 @@ include '../includes/views/scripts.php';
 
             <hr>
 
-            <form method="POST" class="form-signin" id="add_employee_form" accept-charset="UTF-8" action="">
+            <form method="POST" class="form-signin" id="add_item" accept-charset="UTF-8" action="">
                 <!-- Product Type -->
                 <div class="row">
                     <div class="col-lg-4">
@@ -74,34 +74,19 @@ include '../includes/views/scripts.php';
 
                 <!-- Add Laptop -->
                 <section id="laptop">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>First Name</label>
-                                <input class="form-control" placeholder="Frst name" id="employee_first_name" name="employee_first_name">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Last Name</label>
-                                <input class="form-control" placeholder="Last name" id="employee_last_name" name="employee_last_name">
-                            </div>
-                        </div>
-                    </div>
+                    <?php require("/items/laptop.html"); ?>
                 </section>
 
                 <section id="pc">
-                    PC
+                    <?php require("/items/pc.html"); ?>
                 </section>
 
                 <section id="part">
-                    Part
+                    <?php require("/items/part.html"); ?>
                 </section>
 
                 <section id="software">
-                    Software
+                    <?php require("/items/software.html"); ?>
                 </section>
                 
                 <!-- /.row -->
@@ -165,6 +150,15 @@ include '../includes/views/scripts.php';
             $("#part").hide();
             $("#laptop").hide();
         }
+    });
+</script>
+
+<script type="text/javascript">
+    $("#part_type").change(function(){
+        var type = $("#part_type").val();
+        if(type=="HD") $("span#type").html("GB");
+        if(type=="RAM") $("span#type").html("GB");
+        if(type=="CPU") $("span#type").html("MHz");
     });
 </script>
 
