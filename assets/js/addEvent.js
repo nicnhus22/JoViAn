@@ -121,6 +121,24 @@ $(document).ready(function () {
                 }else {
                     $("#laptop_screen").css("border","1px solid #ccc");
                 }
+
+                // if(valid){
+                //     var dataString = 'firstName=' + firstName + '&lastName=' + lastName+'&DOE=' + DOE + '&commission=' + commission+ '&annualPay=' + annualPay + '&seniority='+seniority;
+                //     $.ajax({
+                //         type: "POST",
+                //         url: "../includes/addEmployee.php",
+                //         data: dataString,
+                //         cache: false,
+                //         success: function(data){
+                //             if (data == '1'){
+                //                 window.location.href = "employees.php";
+                //             }else{
+                //                 $("#employee_add_failure").show();
+                //             }
+                //         }
+                //     });
+                // } 
+
                 break;
             case "pc":
                 var pc_name     = $("#pc_name").val();
@@ -163,38 +181,74 @@ $(document).ready(function () {
 
                 break;
             case "software":
+                var software_name     = $("#software_name").val();
+                var software_type     = $("#software_type").val();
+                var software_price    = $("#software_price").val();
+                var software_size     = $("#software_size").val();
+                var software_quantity = $("#software_quantity").val();
 
-
-
-
+                if (software_name == "") {
+                    $("#software_name").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
+                }else{
+                    $("#software_name").css("border","1px solid #ccc");
+                } 
+                if(software_type == ""){
+                    $("#software_type").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
+                }else {
+                    $("#software_type").css("border","1px solid #ccc")
+                }
+                if(!validNumbers(software_price)){
+                    $("#software_price").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
+                }else {
+                    $("#software_price").css("border","1px solid #ccc");
+                }
+                if(!validNumbers(software_size)){
+                    $("#software_size").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
+                }else {
+                    $("#software_size").css("border","1px solid #ccc")
+                }
+                if(!validNumbers(software_quantity)){
+                    $("#software_quantity").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
+                }else {
+                    $("#software_quantity").css("border","1px solid #ccc");
+                }
                 break;
             case "part":
+                var part_name     = $("#part_name").val();
+                var part_value    = $("#part_value").val();
+                var part_type     = $("#part_type").val();
+                var part_price    = $("#part_price").val();
+                var part_quantity = $("#part_quantity").val();
 
-
-
+                if (part_name == "") {
+                    $("#part_name").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
+                }else{
+                    $("#part_name").css("border","1px solid #ccc");
+                } 
+                if(part_type == ""){
+                    $("#pc_ram").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
+                }else {
+                    $("#pc_ram").css("border","1px solid #ccc");
+                }
+                if(!validNumbers(part_value)){
+                    $("#part_value").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
+                }else {
+                    $("#part_value").css("border","1px solid #ccc")
+                }
+                if(!validNumbers(part_price)){
+                    $("#part_price").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
+                }else {
+                    $("#part_price").css("border","1px solid #ccc")
+                }
+                if(!validNumbers(part_quantity)){
+                    $("#part_quantity").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
+                }else {
+                    $("#part_quantity").css("border","1px solid #ccc");
+                }
 
                 break;
         }
 
-
-
-
-        if(valid){
-            var dataString = 'firstName=' + firstName + '&lastName=' + lastName+'&DOE=' + DOE + '&commission=' + commission+ '&annualPay=' + annualPay + '&seniority='+seniority;
-            $.ajax({
-                type: "POST",
-                url: "../includes/addEmployee.php",
-                data: dataString,
-                cache: false,
-                success: function(data){
-                    if (data == '1'){
-                        window.location.href = "employees.php";
-                    }else{
-                        $("#employee_add_failure").show();
-                    }
-                }
-            });
-        } 
 
         return false;
     });
