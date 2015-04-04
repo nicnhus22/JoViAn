@@ -200,6 +200,8 @@ function updateServiceModal(id, type) {
             if (type == "Software") {
                 detailTrs += '<tr><td>Category</td><td>' + item.Type + '</td></tr>';
                 detailTrs += '<tr><td>Size</td><td>' + item.Size + ' G</td></tr>';
+                detailTrs += '<tr><td></td><td><div class="checkbox" style="margin: 0;"><label><input id="service" type="checkbox" value="Install">Install</label></div></td></tr>';
+
             }
 
             if (type == "Part") {
@@ -215,10 +217,10 @@ function updateServiceModal(id, type) {
                 }
             }
 
-            saleTrs += '<tr><td>' + item.Name + '</td><td></td><td>$ ' + item.Price + '</td></tr>';
-            saleTrs += '<tr><td></td><td>PST</td><td>$ ' + pst.toFixed(2) + '</td></tr>';
-            saleTrs += '<tr><td></td><td>GST</td><td>$ ' + gst.toFixed(2) + '</td></tr>';
-            saleTrs += '<tr><td></td><td>Total</td><td>$ ' + total.toFixed(2) + '</td></tr>';
+            saleTrs += '<tr><td>' + item.Name + '</td><td></td><td>$ ' + '<span id="price">' +item.Price + '</span></td></tr>';
+            saleTrs += '<tr id="pst"><td></td><td>PST</td><td>$ ' + '<span id="pstTax">'+pst.toFixed(2) + '</span></td></tr>';
+            saleTrs += '<tr><td></td><td>GST</td><td>$ ' + '<span id="gstTax">'+gst.toFixed(2) + '</span></td></tr>';
+            saleTrs += '<tr><td></td><td>Total</td><td>$ ' + '<span id="total">'+total.toFixed(2) + '</span></td></tr>';
 
             $(".modal-body").html(
                 '<div class="modal-body col-lg-12">' +
@@ -302,9 +304,9 @@ function sellItem(id, type) {
 
     var valid = true;
     var focus = "";
-
     var cname = $("#cname").val();
     var caddr = $("#caddr").val();
+    var service = $("#service").val();
 
     if (cname == "") {
         $("#cname").css("border", "1px solid rgba(255,0,0,0.5)");
@@ -323,16 +325,27 @@ function sellItem(id, type) {
     }
 
     if (valid) {
+
+
+        dataString = "id=" + id + "&type=" + type + "&cname=" + cname + "&caddr=" + caddr;
+
+
+        if($("#service").is(':checked')) {
+            dataString += "&service=" + service + "&serviceCost=" + parseFloat($("#serviceCost").html());
+
+        }
+
         $.ajax({
             type: "POST",
             url: "../includes/sellItem.php",
-            data: "id=" + id + "&type=" + type + "&cname=" + cname + "&caddr=" + caddr,
+            data: dataString,
             cache: false,
             success: function (data) {
+                console.log(data);
                 if(data == 1) {
                     $(".modal-footer").html(
                         '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
-                            '<button onclick="sellItem(' + id + ',&#39' + type + '&#39)" id="processBtn" type="button" class="btn btn-danger">Retry</button>'
+                        '<button onclick="sellItem(' + id + ',&#39' + type + '&#39)" id="processBtn" type="button" class="btn btn-danger">Retry</button>'
                     );
                 }
                 else {
@@ -348,6 +361,40 @@ function sellItem(id, type) {
 
 }
 
+$(document).on('change', '#service', function() {
+    if($("#service").is(':checked')) {
 
+        var price = parseFloat($("#price").html()) + 2.99;
+        var pst = getPst(price);
+        var gst = getGst(price)
+        var total = price + gst + pst;
+
+        $('<tr id="serviceRow"><td>Install</td><td></td><td><span id="serviceCost">2.99</span></td></tr>').insertBefore('#pst');
+        $("#pstTax").html(pst.toFixed(2));
+        $("#gstTax").html(gst.toFixed(2));
+        $("#total").html(total.toFixed(2));
+
+    }
+    else {
+
+        var price = parseFloat($("#price").html());
+        var pst = getPst(price);
+        var gst = getGst(price)
+        var total = price + gst + pst;
+
+        $('#serviceRow').remove();
+        $("#pstTax").html(pst.toFixed(2));
+        $("#gstTax").html(gst.toFixed(2));
+        $("#total").html(total.toFixed(2));
+    }
+});
+
+function getPst(price) {
+    return price * (9.975/100);
+}
+
+function getGst(price) {
+    return price * (5/100);
+}
 
 

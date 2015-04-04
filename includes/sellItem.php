@@ -60,9 +60,30 @@ try {
     $sql->bindValue(1, $ID);
     $sql->execute();
 
+    if($_POST["service"]) {
+        $SERVICECOST = $_POST["serviceCost"];
+
+        if($_POST["service"] == "Install") {
+
+            echo 'yeeee dawg';
+
+            $sql = $db->prepare("INSERT INTO Install (SoftwareID, EmployeeID, Date, CName, CAddress, ServiceCost) VALUES(?,?,?,?,?,?)");
+
+            $sql->bindValue(1, $ID);
+            $sql->bindValue(2, $EMPID);
+            $sql->bindValue(3, $TODAYSTRING);
+            $sql->bindValue(4, $CNAME);
+            $sql->bindValue(5, $CADDR);
+            $sql->bindValue(6, $SERVICECOST);
+            $sql->execute();
+
+        }
 
 
-    echo 0;
+
+    }
+
+
 } catch (PDOException $e) {
     echo 1;
 }

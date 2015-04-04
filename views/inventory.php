@@ -48,6 +48,7 @@ $Softwares = $Software_sql->fetchAll();
 
 <head>
     <?php head(); ?>
+
 </head>
 
 <body>
