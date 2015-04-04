@@ -122,22 +122,23 @@ $(document).ready(function () {
                     $("#laptop_screen").css("border","1px solid #ccc");
                 }
 
-                // if(valid){
-                //     var dataString = 'firstName=' + firstName + '&lastName=' + lastName+'&DOE=' + DOE + '&commission=' + commission+ '&annualPay=' + annualPay + '&seniority='+seniority;
-                //     $.ajax({
-                //         type: "POST",
-                //         url: "../includes/addEmployee.php",
-                //         data: dataString,
-                //         cache: false,
-                //         success: function(data){
-                //             if (data == '1'){
-                //                 window.location.href = "employees.php";
-                //             }else{
-                //                 $("#employee_add_failure").show();
-                //             }
-                //         }
-                //     });
-                // } 
+                if(valid){
+                    var dataString = 'laptop_name=' + laptop_name + '&laptop_cpu=' + laptop_cpu+'&laptop_ram=' + laptop_ram + 
+                                    '&laptop_screen=' + laptop_screen+ '&laptop_hd=' + laptop_hd + '&laptop_price='+laptop_price+ '&laptop_quantity='+laptop_quantity;
+                    $.ajax({
+                        type: "POST",
+                        url: "../includes/items/addLaptop.php",
+                        data: dataString,
+                        cache: false,
+                        success: function(data){
+                            if (data == '1'){
+                                window.location.href = "inventory.php";
+                            }else{
+                                $("#employee_add_failure").show();
+                            }
+                        }
+                    });
+                } 
 
                 break;
             case "pc":
@@ -179,6 +180,24 @@ $(document).ready(function () {
                     $("#pc_quantity").css("border","1px solid #ccc");
                 }
 
+
+                if(valid){
+                    var dataString = 'firstName=' + firstName + '&lastName=' + lastName+'&DOE=' + DOE + '&commission=' + commission+ '&annualPay=' + annualPay + '&seniority='+seniority;
+                    $.ajax({
+                        type: "POST",
+                        url: "../includes/items/addLaptop.php",
+                        data: dataString,
+                        cache: false,
+                        success: function(data){
+                            if (data == '1'){
+                                window.location.href = "employees.php";
+                            }else{
+                                $("#employee_add_failure").show();
+                            }
+                        }
+                    });
+                } 
+
                 break;
             case "software":
                 var software_name     = $("#software_name").val();
@@ -212,6 +231,24 @@ $(document).ready(function () {
                 }else {
                     $("#software_quantity").css("border","1px solid #ccc");
                 }
+
+                if(valid){
+                    var dataString = 'firstName=' + firstName + '&lastName=' + lastName+'&DOE=' + DOE + '&commission=' + commission+ '&annualPay=' + annualPay + '&seniority='+seniority;
+                    $.ajax({
+                        type: "POST",
+                        url: "../includes/items/addLaptop.php",
+                        data: dataString,
+                        cache: false,
+                        success: function(data){
+                            if (data == '1'){
+                                window.location.href = "employees.php";
+                            }else{
+                                $("#employee_add_failure").show();
+                            }
+                        }
+                    });
+                } 
+
                 break;
             case "part":
                 var part_name     = $("#part_name").val();
@@ -245,6 +282,23 @@ $(document).ready(function () {
                 }else {
                     $("#part_quantity").css("border","1px solid #ccc");
                 }
+
+                if(valid){
+                    var dataString = 'firstName=' + firstName + '&lastName=' + lastName+'&DOE=' + DOE + '&commission=' + commission+ '&annualPay=' + annualPay + '&seniority='+seniority;
+                    $.ajax({
+                        type: "POST",
+                        url: "../includes/items/addLaptop.php",
+                        data: dataString,
+                        cache: false,
+                        success: function(data){
+                            if (data == '1'){
+                                window.location.href = "employees.php";
+                            }else{
+                                $("#employee_add_failure").show();
+                            }
+                        }
+                    });
+                } 
 
                 break;
         }
