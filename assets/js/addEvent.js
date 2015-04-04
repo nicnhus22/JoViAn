@@ -180,17 +180,17 @@ $(document).ready(function () {
                     $("#pc_quantity").css("border","1px solid #ccc");
                 }
 
-
                 if(valid){
-                    var dataString = 'firstName=' + firstName + '&lastName=' + lastName+'&DOE=' + DOE + '&commission=' + commission+ '&annualPay=' + annualPay + '&seniority='+seniority;
+                    var dataString = 'pc_name=' + pc_name + '&pc_cpu=' + pc_cpu+'&pc_ram=' + pc_ram + 
+                                    '&pc_hd=' + pc_hd+ '&pc_price=' + pc_price + '&pc_quantity='+pc_quantity;
                     $.ajax({
                         type: "POST",
-                        url: "../includes/items/addLaptop.php",
+                        url: "../includes/items/addPC.php",
                         data: dataString,
                         cache: false,
                         success: function(data){
                             if (data == '1'){
-                                window.location.href = "employees.php";
+                                window.location.href = "inventory.php";
                             }else{
                                 $("#employee_add_failure").show();
                             }
@@ -233,15 +233,16 @@ $(document).ready(function () {
                 }
 
                 if(valid){
-                    var dataString = 'firstName=' + firstName + '&lastName=' + lastName+'&DOE=' + DOE + '&commission=' + commission+ '&annualPay=' + annualPay + '&seniority='+seniority;
+                    var dataString = 'software_name=' + software_name + '&software_type=' + software_type+'&software_price=' + software_price + 
+                                    '&software_size=' + software_size+ '&software_quantity=' + software_quantity;
                     $.ajax({
                         type: "POST",
-                        url: "../includes/items/addLaptop.php",
+                        url: "../includes/items/addSoftware.php",
                         data: dataString,
                         cache: false,
                         success: function(data){
                             if (data == '1'){
-                                window.location.href = "employees.php";
+                                window.location.href = "inventory.php";
                             }else{
                                 $("#employee_add_failure").show();
                             }
