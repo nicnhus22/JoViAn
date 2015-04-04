@@ -64,10 +64,14 @@ $Softwares = $Software_sql->fetchAll();
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
                 <h4 class="modal-title" id="myModalLabel"></h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body col-lg-12">
 
+                <div class="col-lg-4">
+                    <img class="img-responsive" src="../assets/img/10361863.jpg">
+                </div>
 
-                <div class="panel panel-primary">
+                <div class="col-lg-8">
+                <div class=" panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Details</h3>
                     </div>
@@ -89,12 +93,12 @@ $Softwares = $Software_sql->fetchAll();
                         </div>
                     </div>
                 </div>
+                </div>
 
 
 
 
-
-
+                <div class="col-lg-12">
                 <div class="panel panel-green">
                     <div class="panel-heading">
                         <h3 class="panel-title">Sale Summary</h3>
@@ -129,7 +133,9 @@ $Softwares = $Software_sql->fetchAll();
                         </div>
                     </div>
                 </div>
+                </div>
 
+                <div class="col-lg-12">
                 <div class="panel panel-red">
                     <div class="panel-heading">
                         <h3 class="panel-title">Customer Info</h3>
@@ -150,7 +156,7 @@ $Softwares = $Software_sql->fetchAll();
                             </div>
                     </div>
                 </div>
-
+            </div>
 
             </div>
             <div class="modal-footer">
