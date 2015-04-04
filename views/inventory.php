@@ -168,12 +168,14 @@ if ($_SESSION["privelege"] == "admin") {
                                             <td>' . $Laptop["Price"] . '</td>
                                             <td>' . $Laptop["Quantity"] . '</td>
                                             <td>
-                                                <button class="btn btn-xs btn-success' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Laptop["ID"] . ',&#39Laptop&#39)">
+                                                                                            <button class="btn btn-xs btn-success">
+
                                                     <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
                                                     View
                                                 </button>
 
-                                                <button class="btn btn-xs btn-info">
+                                                                                                <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Laptop["ID"] . ',&#39Laptop&#39)">
+
                                                     <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
                                                 </button>';
 
@@ -206,12 +208,13 @@ if ($_SESSION["privelege"] == "admin") {
                                             <td>' . $Part["Price"] . '</td>
                                             <td>' . $Part["Quantity"] . '</td>
                                             <td>
-                                            <button class="btn btn-xs btn-success' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Part["ID"] . ',&#39Part&#39)">
-                                                    <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
+<button class="btn btn-xs btn-success">                                                    <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
                                                     View
                                                 </button>
 
-                                                <button class="btn btn-xs btn-info">
+
+                                                                                            <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Part["ID"] . ',&#39Part&#39)">
+
                                                     <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
                                                 </button>';
 
@@ -245,12 +248,14 @@ if ($_SESSION["privelege"] == "admin") {
                                             <td>' . $PC["Price"] . '</td>
                                             <td>' . $PC["Quantity"] . '</td>
                                             <td>
-                                            <button class="btn btn-xs btn-success' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $PC["ID"] . ',&#39PC&#39)">
+                                                                                            <button class="btn btn-xs btn-success">
+
                                                     <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
                                                     View
                                                 </button>
 
-                                                <button class="btn btn-xs btn-info">
+                                                                                            <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $PC["ID"] . ',&#39PC&#39)">
+
                                                     <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
                                                 </button>';
 
@@ -285,12 +290,14 @@ if ($_SESSION["privelege"] == "admin") {
                                             <td>' . $Software["Price"] . '</td>
                                             <td>' . $Software["Quantity"] . '</td>
                                             <td>
-                                            <button class="btn btn-xs btn-success' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Software["ID"] . ',&#39Software&#39)">
+                                                                                            <button class="btn btn-xs btn-success">
+
                                                     <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
                                                     View
                                                 </button>
 
-                                                <button class="btn btn-xs btn-info">
+                                                                                            <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Software["ID"] . ',&#39Software&#39)">
+
                                                     <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
                                                 </button>';
 
