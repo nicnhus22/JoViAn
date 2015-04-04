@@ -12,6 +12,7 @@ $(document).ready(function () {
         var DOE 		= $("#employee_DOE").val();
         var commission  = $("#employee_commission").val();
         var annualPay  	= $("#employee_annual_pay").val();
+        var seniority   = $("#privilege").val();
 
         if (firstName == "") {
         	$("#employee_first_name").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
@@ -40,7 +41,7 @@ $(document).ready(function () {
 		}
 
 		if(valid){
-			var dataString = 'firstName=' + firstName + '&lastName=' + lastName+'&DOE=' + DOE + '&commission=' + commission+ '&annualPay=' + annualPay;
+			var dataString = 'firstName=' + firstName + '&lastName=' + lastName+'&DOE=' + DOE + '&commission=' + commission+ '&annualPay=' + annualPay + '&seniority='+seniority;
 			$.ajax({
 				type: "POST",
 				url: "../includes/addEmployee.php",

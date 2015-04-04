@@ -13,12 +13,15 @@ try {
 }
 
 try {
-    $sql = $db->prepare("DELETE FROM Employee WHERE ID=?");
-    $sql->bindValue(1, $ID);
-    $sql->execute();
+    $sqlEmployee = $db->prepare("DELETE FROM users WHERE EmployeeID=?;DELETE FROM Employee WHERE ID=?");
+    $sqlEmployee->bindValue(1, $ID);
+    $sqlEmployee->bindValue(2, $ID);
+
+    $sqlEmployee->execute();
+
     echo 1;
 }catch(PDOException $e){
-    echo 0;
+    echo $e;
 }
 
 ?>

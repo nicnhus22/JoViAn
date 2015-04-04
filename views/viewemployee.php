@@ -22,6 +22,7 @@ try {
 
 $ID = intval($_GET["ID"]);
 
+# OLD: $sql = $db->prepare("SELECT * FROM Employee, users WHERE users.EmployeeID = ? AND users.EmployeeID = Employee.ID");
 $sql = $db->prepare("SELECT * FROM Employee, users WHERE users.EmployeeID = ? AND users.EmployeeID = Employee.ID");
 $sql->bindValue(1, $ID);
 $sql->execute();
@@ -61,7 +62,7 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 
                     <ol class="breadcrumb">
                         <li>
-                            <i class="fa fa-dashboard"></i> <a href="dashboard.php">Dashboard</a>
+                            <i class="fa fa-dashboard"></i> <a href="employees.php">Employees</a>
                         </li>
                         <li class="active">
                             <i class="fa fa-group"></i> View Employee

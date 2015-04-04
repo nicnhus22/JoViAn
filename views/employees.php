@@ -178,7 +178,7 @@ $employees = $sql->fetchAll();
                     if (data == '1') {
                         button.closest('tr').remove();
                     } else {
-                        console.log("ERROR");
+                        console.log(data);
                     }
                 }
             }); 

@@ -105,6 +105,16 @@ include '../includes/views/scripts.php';
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Seniority</label>
+                        <select class="form-control" name="privilege" id="privilege">
+                            <option value="admin">Admin</option>
+                            <option value="regular">Regular</option>
+                        </select>
+                    </div>
+                    </div>
+                </div>
                 <!-- /.row -->
                 <hr>
                 <div class="row">
