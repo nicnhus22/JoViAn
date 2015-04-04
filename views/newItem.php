@@ -74,19 +74,19 @@ include '../includes/views/scripts.php';
 
                 <!-- Add Laptop -->
                 <section id="laptop">
-                    <?php require("/items/laptop.html"); ?>
+                    <?php require("../views/items/laptop.html"); ?>
                 </section>
 
                 <section id="pc">
-                    <?php require("/items/pc.html"); ?>
+                    <?php require("../views/items/pc.html"); ?>
                 </section>
 
                 <section id="part">
-                    <?php require("/items/part.html"); ?>
+                    <?php require("../views/items/part.html"); ?>
                 </section>
 
                 <section id="software">
-                    <?php require("/items/software.html"); ?>
+                    <?php require("../views/items/software.html"); ?>
                 </section>
                 
                 <!-- /.row -->
