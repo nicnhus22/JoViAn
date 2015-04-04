@@ -23,6 +23,7 @@ try {
 
 
 $ID = $_POST["id"];
+$TYPE = $_POST["type"];
 $CADDR = $_POST["caddr"];
 $CNAME = $_POST["cname"];
 $EMPID = $_SESSION["id"];
@@ -39,6 +40,27 @@ try {
     $sql->bindValue(4, $CNAME);
     $sql->bindValue(5, $CADDR);
     $sql->execute();
+
+    if($TYPE == "Laptop") {
+        $sql = $db->prepare("UPDATE Laptop SET Quantity = Quantity - 1 WHERE ID = ?");
+    }
+
+    else if($TYPE == "PC"){
+        $sql = $db->prepare("UPDATE PC SET Quantity = Quantity - 1 WHERE ID = ?");
+    }
+
+    else if($TYPE == "Part"){
+        $sql = $db->prepare("UPDATE Part SET Quantity = Quantity - 1 WHERE ID = ?");
+    }
+
+    else if($TYPE == "Software"){
+        $sql = $db->prepare("UPDATE Software SET Quantity = Quantity - 1 WHERE ID = ?");
+    }
+
+    $sql->bindValue(1, $ID);
+    $sql->execute();
+
+
 
     echo 0;
 } catch (PDOException $e) {

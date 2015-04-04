@@ -336,7 +336,7 @@ function sellItem(id, type) {
                     );
                 }
                 else {
-                    $(".modal-body").html("<h4>Sale succesfully processed!</h4>");
+                    $(".modal-body").html("Sale succesfully processed!");
                     $("#processBtn").remove();
                 }
             }
