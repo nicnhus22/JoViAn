@@ -109,7 +109,7 @@ $Softwares = $Software_sql->fetchAll();
                                 <tbody>
                                 <tr>
                                     <td>Acer Aspire Laptop X290</td>
-                                    <td></td>
+                                    <td></td>   
                                     <td>2000 $</td>
                                 </tr>
                                 <tr>
@@ -179,7 +179,7 @@ $Softwares = $Software_sql->fetchAll();
         </h1>
         <ol class="breadcrumb">
             <li>
-                <i class="fa fa-dashboard"></i> <a href="protected.php">Dashboard</a>
+                <i class="fa fa-dashboard"></i> <a href="dashboard.php">Dashboard</a>
             </li>
             <li class="active">
                 <i class="fa fa-tasks"></i> Inventory
@@ -195,7 +195,7 @@ if ($_SESSION["privelege"] == "admin") {
     echo '
                         <div class="row">
                             <div class="col-lg-12">
-                                <button class="btn btn-success">
+                                <button class="btn btn-success" onclick="route_newItem()">
                                     <span class="fa fa-fw fa-plus-circle" style="vertical-align:middle"></span> New Item
                                 </button>
                             </div>
