@@ -133,6 +133,7 @@ if ($_SESSION["privelege"] == "admin") {
             <option>PCs</option>
             <option>Laptops</option>
             <option>Parts</option>
+            <option>Software</option>
         </select>
     </div>
 </div>
@@ -284,7 +285,7 @@ if ($_SESSION["privelege"] == "admin") {
                     }
 
                     echo '
-                                        <tr class="inventory_pc">
+                                        <tr class="inventory_software">
                                             <td>' . $Software["Name"] . '</td>
                                             <td>Software - ' . $Software["Type"] . '</td>
                                             <td>' . $Software["Price"] . '</td>
@@ -344,14 +345,23 @@ if ($_SESSION["privelege"] == "admin") {
             $('.inventory_laptop').show();
             $('.inventory_pc').hide();
             $('.inventory_part').hide();
+            $('.inventory_software').hide();
         }
         else if (selected == "Parts") {
             $('.inventory_part').show();
             $('.inventory_laptop').hide();
             $('.inventory_pc').hide();
+            $('.inventory_software').hide();
         }
         else if (selected == "PCs") {
             $('.inventory_pc').show();
+            $('.inventory_laptop').hide();
+            $('.inventory_part').hide();
+            $('.inventory_software').hide();
+        }
+        else if (selected == "Software"){
+            $('.inventory_software').show();
+            $('.inventory_pc').hide();
             $('.inventory_laptop').hide();
             $('.inventory_part').hide();
         }
@@ -359,7 +369,9 @@ if ($_SESSION["privelege"] == "admin") {
             $('.inventory_pc').show();
             $('.inventory_part').show();
             $('.inventory_laptop').show();
-        }
+            $('.inventory_software').show();
+        } 
+
     });
 
 </script>
