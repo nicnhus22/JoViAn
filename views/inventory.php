@@ -67,6 +67,7 @@ $Softwares = $Software_sql->fetchAll();
             </div>
             <div class="modal-body col-lg-12">
 
+
             </div>
 
             <div class="modal-footer">
@@ -89,7 +90,7 @@ $Softwares = $Software_sql->fetchAll();
         </h1>
         <ol class="breadcrumb">
             <li>
-                <i class="fa fa-dashboard"></i> <a href="protected.php">Dashboard</a>
+                <i class="fa fa-dashboard"></i> <a href="dashboard.php">Dashboard</a>
             </li>
             <li class="active">
                 <i class="fa fa-tasks"></i> Inventory
@@ -102,14 +103,13 @@ $Softwares = $Software_sql->fetchAll();
 <?php
 
 if ($_SESSION["privelege"] == "admin") {
-    echo '
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <button class="btn btn-success">
-                                    <span class="fa fa-fw fa-plus-circle" style="vertical-align:middle"></span> New Item
-                                </button>
-                            </div>
-                         </div>';
+    echo '<div class="row">
+                <div class="col-lg-12">
+                    <button class="btn btn-success" onclick="route_newItem()">
+                        <span class="fa fa-fw fa-plus-circle" style="vertical-align:middle"></span> New Item
+                    </button>
+                </div>
+             </div>';
 }
 
 ?>
