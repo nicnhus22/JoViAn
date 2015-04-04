@@ -178,7 +178,7 @@ if ($_SESSION["privelege"] == "admin") {
                                                                                                 <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Laptop["ID"] . ',&#39Laptop&#39)">
 
                                                     <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
-                                                </button>';
+                                                </button> ';
 
                     if ($_SESSION["privelege"] == "admin") {
                         echo '<button class="btn btn-xs btn-warning">
@@ -217,7 +217,7 @@ if ($_SESSION["privelege"] == "admin") {
                                                                                             <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Part["ID"] . ',&#39Part&#39)">
 
                                                     <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
-                                                </button>';
+                                                </button> ';
 
                     if ($_SESSION["privelege"] == "admin") {
                         echo '<button class="btn btn-xs btn-warning">
@@ -258,7 +258,7 @@ if ($_SESSION["privelege"] == "admin") {
                                                                                             <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $PC["ID"] . ',&#39PC&#39)">
 
                                                     <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
-                                                </button>';
+                                                </button> ';
 
                     if ($_SESSION["privelege"] == "admin") {
                         echo '<button class="btn btn-xs btn-warning">
@@ -300,7 +300,7 @@ if ($_SESSION["privelege"] == "admin") {
                                                                                             <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Software["ID"] . ',&#39Software&#39)">
 
                                                     <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
-                                                </button>';
+                                                </button> ';
 
                     if ($_SESSION["privelege"] == "admin") {
                         echo '<button class="btn btn-xs btn-warning">
