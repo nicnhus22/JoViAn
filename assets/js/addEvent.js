@@ -122,22 +122,23 @@ $(document).ready(function () {
                     $("#laptop_screen").css("border","1px solid #ccc");
                 }
 
-                // if(valid){
-                //     var dataString = 'firstName=' + firstName + '&lastName=' + lastName+'&DOE=' + DOE + '&commission=' + commission+ '&annualPay=' + annualPay + '&seniority='+seniority;
-                //     $.ajax({
-                //         type: "POST",
-                //         url: "../includes/addEmployee.php",
-                //         data: dataString,
-                //         cache: false,
-                //         success: function(data){
-                //             if (data == '1'){
-                //                 window.location.href = "employees.php";
-                //             }else{
-                //                 $("#employee_add_failure").show();
-                //             }
-                //         }
-                //     });
-                // } 
+                if(valid){
+                    var dataString = 'laptop_name=' + laptop_name + '&laptop_cpu=' + laptop_cpu+'&laptop_ram=' + laptop_ram + 
+                                    '&laptop_screen=' + laptop_screen+ '&laptop_hd=' + laptop_hd + '&laptop_price='+laptop_price+ '&laptop_quantity='+laptop_quantity;
+                    $.ajax({
+                        type: "POST",
+                        url: "../includes/items/addLaptop.php",
+                        data: dataString,
+                        cache: false,
+                        success: function(data){
+                            if (data == '1'){
+                                window.location.href = "inventory.php";
+                            }else{
+                                $("#employee_add_failure").show();
+                            }
+                        }
+                    });
+                } 
 
                 break;
             case "pc":
@@ -179,6 +180,24 @@ $(document).ready(function () {
                     $("#pc_quantity").css("border","1px solid #ccc");
                 }
 
+                if(valid){
+                    var dataString = 'pc_name=' + pc_name + '&pc_cpu=' + pc_cpu+'&pc_ram=' + pc_ram + 
+                                    '&pc_hd=' + pc_hd+ '&pc_price=' + pc_price + '&pc_quantity='+pc_quantity;
+                    $.ajax({
+                        type: "POST",
+                        url: "../includes/items/addPC.php",
+                        data: dataString,
+                        cache: false,
+                        success: function(data){
+                            if (data == '1'){
+                                window.location.href = "inventory.php";
+                            }else{
+                                $("#employee_add_failure").show();
+                            }
+                        }
+                    });
+                } 
+
                 break;
             case "software":
                 var software_name     = $("#software_name").val();
@@ -212,6 +231,25 @@ $(document).ready(function () {
                 }else {
                     $("#software_quantity").css("border","1px solid #ccc");
                 }
+
+                if(valid){
+                    var dataString = 'software_name=' + software_name + '&software_type=' + software_type+'&software_price=' + software_price + 
+                                    '&software_size=' + software_size+ '&software_quantity=' + software_quantity;
+                    $.ajax({
+                        type: "POST",
+                        url: "../includes/items/addSoftware.php",
+                        data: dataString,
+                        cache: false,
+                        success: function(data){
+                            if (data == '1'){
+                                window.location.href = "inventory.php";
+                            }else{
+                                $("#employee_add_failure").show();
+                            }
+                        }
+                    });
+                } 
+
                 break;
             case "part":
                 var part_name     = $("#part_name").val();
@@ -245,6 +283,25 @@ $(document).ready(function () {
                 }else {
                     $("#part_quantity").css("border","1px solid #ccc");
                 }
+
+                if(valid){
+                    var dataString = 'part_name=' + part_name + '&part_type=' + part_type+'&part_value=' + part_value + 
+                                    '&part_price=' + part_price+ '&part_quantity=' + part_quantity;
+                    $.ajax({
+                        type: "POST",
+                        url: "../includes/items/addPart.php",
+                        data: dataString,
+                        cache: false,
+                        success: function(data){
+                            if (data == '1'){
+                                window.location.href = "inventory.php";
+                            }else{
+                                $("#employee_add_failure").html(data);
+                                $("#employee_add_failure").show();
+                            }
+                        }
+                    });
+                }  
 
                 break;
         }
