@@ -331,7 +331,7 @@ function sellItem(id, type) {
 
 
         if($("#service").is(':checked')) {
-            dataString += "&service=" + service + "&serviceCost=" + parseFloat($("#serviceCost").html());
+            dataString += "&service=" + service + "&serviceCost=" + parseFloat($("#serviceCost").val());
 
         }
 
@@ -369,7 +369,9 @@ $(document).on('change', '#service', function() {
         var gst = getGst(price)
         var total = price + gst + pst;
 
-        $('<tr id="serviceRow"><td>Install</td><td></td><td><span id="serviceCost">2.99</span></td></tr>').insertBefore('#pst');
+        $('<tr id="serviceRow"><td>Install</td><td>' +
+            ' <button onclick="refreshSale()" class="btn btn-xs btn-success"><span class="fa fa-fw fa-refresh" style="vertical-align:middle"></span></button>' +
+            '</td><td>$ <input style="width:50px; margin:0; border: none;" type="text" id="serviceCost" value="2.99"></td></tr>').insertBefore('#pst');
         $("#pstTax").html(pst.toFixed(2));
         $("#gstTax").html(gst.toFixed(2));
         $("#total").html(total.toFixed(2));
@@ -397,4 +399,15 @@ function getGst(price) {
     return price * (5/100);
 }
 
+function refreshSale() {
 
+    var price = parseFloat($("#price").html()) + parseFloat($("#serviceCost").val());
+    var pst = getPst(price);
+    var gst = getGst(price)
+    var total = price + gst + pst;
+
+    $("#pstTax").html(pst.toFixed(2));
+    $("#gstTax").html(gst.toFixed(2));
+    $("#total").html(total.toFixed(2));
+
+}
