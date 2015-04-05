@@ -346,7 +346,6 @@ function sellItem(id, type) {
             data: dataString,
             cache: false,
             success: function (data) {
-                console.log(data);
                 if(data == 1) {
                     $(".modal-footer").html(
                         '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
@@ -534,7 +533,6 @@ function viewActivityDetails(type,productID,employeeID,partID){
                 var ajaxUrl = "../includes/getOnlineSales.php?ProductID="+productID+"&EmployeeID="+employeeID;
             else
                 var ajaxUrl = "../includes/getOnlineSales.php?ProductID="+productID;
-            console.log(ajaxUrl);
             $.ajax({
                 type: "GET",
                 url: ajaxUrl,
@@ -616,7 +614,6 @@ function viewActivityDetails(type,productID,employeeID,partID){
                 cache: false,
                 success: function (data) {
                     var dataAsJson = JSON.parse(data);
-                    console.log(dataAsJson);
 
                     $("#activity_title").html("Reparation - ProductID#"+productID);
 
@@ -693,9 +690,8 @@ function viewActivityDetails(type,productID,employeeID,partID){
                 cache: false,
                 success: function (data) {
                     var dataAsJson = JSON.parse(data);
-                    console.log(dataAsJson);
 
-                    $("#activity_title").html("Upgrade] - ProductID#"+productID);
+                    $("#activity_title").html("Upgrade - ProductID#"+productID);
 
                     $(".modal-body").html(   
 
@@ -743,7 +739,7 @@ function viewActivityDetails(type,productID,employeeID,partID){
                                 '<div class="table-responsive">' +
                                     '<table class="table table-hover table-striped" style="margin: 0">' +
                                         '<tbody>' +
-                                            '<tr><td>Repaired Part</td><td>'+ dataAsJson.Part.Name+'</td></tr>'+
+                                            '<tr><td>Upgraded Part</td><td>'+ dataAsJson.Part.Name+'</td></tr>'+
                                             '<tr><td>Client Name</td><td>'+ dataAsJson.Upgrade.CName+'</td></tr>'+
                                             '<tr><td>Client Address</td><td>'+ dataAsJson.Upgrade.CAddress+'</td></tr>'+
                                             '<tr><td>Sale Date</td><td>'+ dataAsJson.Upgrade.Date+'</td></tr>'+
@@ -770,7 +766,6 @@ function viewActivityDetails(type,productID,employeeID,partID){
                 cache: false,
                 success: function (data) {
                     var dataAsJson = JSON.parse(data);
-                    console.log(dataAsJson);
 
                     $("#activity_title").html("Upgrade] - ProductID#"+productID);
 
@@ -834,9 +829,6 @@ function viewActivityDetails(type,productID,employeeID,partID){
 
                     $(".modal-footer").html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>');
 
-                },
-                error: function (data) {
-                    console.log(data);
                 }
             });
             break;
