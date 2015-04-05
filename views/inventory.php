@@ -155,10 +155,9 @@
                                                                      View
                                                                  </button>
                                  
-                                                                                                                 <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Laptop["ID"] . ',&#39Laptop&#39)">
-                                 
-                                                                     <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
-                                                                 </button> ';
+                                                                <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Laptop["ID"] . ',&#39Laptop&#39)">
+                                                                    <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
+                                                                </button> ';
                                  
                                      if ($_SESSION["privelege"] == "admin") {
                                          echo '<button class="btn btn-xs btn-warning">
