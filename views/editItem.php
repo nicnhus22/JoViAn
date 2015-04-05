@@ -174,6 +174,7 @@ if($ProductType == "laptop"){
                 $("#pc_hd").val(pc.HD);
                 $("#pc_price").val(pc.Price);
                 $("#pc_quantity").val(pc.Quantity);
+                $("#pc_id").val(pc.ID);
                 break;
             case 'part':
                 var part = <?php echo(json_encode($product))?>;
@@ -182,6 +183,7 @@ if($ProductType == "laptop"){
                 $("#part_value").val(part.Value);
                 $("#part_price").val(part.Price);
                 $("#part_quantity").val(part.Quantity);
+                $("#part_id").val(part.ID);
                 break;
             case 'software':
                 var software = <?php echo(json_encode($product))?>;
@@ -190,6 +192,7 @@ if($ProductType == "laptop"){
                 $("#software_size").val(software.Size);
                 $("#software_price").val(software.Price);
                 $("#software_quantity").val(software.Quantity);
+                $("#software_id").val(software.ID);
                 break;
         }
 

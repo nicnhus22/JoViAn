@@ -84,6 +84,7 @@ $(document).ready(function () {
                 var pc_hd       = $("#pc_hd").val();
                 var pc_price    = $("#pc_price").val();
                 var pc_quantity = $("#pc_quantity").val();
+                var pc_id       = $("#pc_id").val();
 
                 if (pc_name == "") {
                     $("#pc_name").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
@@ -117,21 +118,21 @@ $(document).ready(function () {
                 }
 
                 if(valid){
-                    // var dataString = 'pc_name=' + pc_name + '&pc_cpu=' + pc_cpu+'&pc_ram=' + pc_ram + 
-                    //                 '&pc_hd=' + pc_hd+ '&pc_price=' + pc_price + '&pc_quantity='+pc_quantity;
-                    // $.ajax({
-                    //     type: "POST",
-                    //     url: "../includes/items/addPC.php",
-                    //     data: dataString,
-                    //     cache: false,
-                    //     success: function(data){
-                    //         if (data == '1'){
-                    //             window.location.href = "inventory.php";
-                    //         }else{
-                    //             $("#employee_add_failure").show();
-                    //         }
-                    //     }
-                    // });
+                    var dataString = 'pc_id=' + pc_id + '&pc_name=' + pc_name + '&pc_cpu=' + pc_cpu+'&pc_ram=' + pc_ram + 
+                                    '&pc_hd=' + pc_hd+ '&pc_price=' + pc_price + '&pc_quantity='+pc_quantity;
+                    $.ajax({
+                        type: "POST",
+                        url: "../includes/items/editPC.php",
+                        data: dataString,
+                        cache: false,
+                        success: function(data){
+                            if (data == '1'){
+                                window.location.href = "inventory.php";
+                            }else{
+                                $("#employee_add_failure").show();
+                            }
+                        }
+                    });
                 } 
 
                 break;
