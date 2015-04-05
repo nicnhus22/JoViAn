@@ -129,7 +129,7 @@
                                  <th>Type</th>
                                  <th>Price</th>
                                  <th>Quantity</th>
-                                 <th style="width:260px;"></th>
+                                 <th style="width:200px;"></th>
                               </tr>
                            </thead>
                            <tbody>
@@ -162,10 +162,6 @@
                                      if ($_SESSION["privelege"] == "admin") {
                                          echo '<button class="btn btn-xs btn-warning">
                                                                                  <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
-                                                                             </button>
-                                 
-                                                                             <button onclick="deleteRow(this)" class="btn btn-xs btn-danger">
-                                                                                 <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
                                                                              </button>';
                                      }
                                      echo '</td></tr>';
@@ -200,10 +196,6 @@
                                      if ($_SESSION["privelege"] == "admin") {
                                          echo '<button class="btn btn-xs btn-warning">
                                                                                  <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
-                                                                             </button>
-                                 
-                                                                             <button onclick="deleteRow(this)" class="btn btn-xs btn-danger">
-                                                                                 <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
                                                                              </button>';
                                      }
                                      echo '</td>
@@ -240,10 +232,6 @@
                                      if ($_SESSION["privelege"] == "admin") {
                                          echo '<button class="btn btn-xs btn-warning">
                                                                                  <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
-                                                                             </button>
-                                 
-                                                                             <button onclick="deleteRow(this)" class="btn btn-xs btn-danger">
-                                                                                 <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
                                                                              </button>';
                                      }
                                      echo '</td>
@@ -280,10 +268,6 @@
                                      if ($_SESSION["privelege"] == "admin") {
                                          echo '<button class="btn btn-xs btn-warning">
                                                                                  <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
-                                                                             </button>
-                                 
-                                                                             <button onclick="deleteRow(this)" class="btn btn-xs btn-danger">
-                                                                                 <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
                                                                              </button>';
                                      }
                                      echo '</td>
