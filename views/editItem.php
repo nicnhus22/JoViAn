@@ -164,6 +164,7 @@ if($ProductType == "laptop"){
                 $("#laptop_screen").val(laptop.Screen);
                 $("#laptop_price").val(laptop.Price);
                 $("#laptop_quantity").val(laptop.Quantity);
+                $("#laptop_id").val(laptop.ID);
                 break;
             case 'pc':
                 var pc = <?php echo(json_encode($product))?>;
