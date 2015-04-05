@@ -138,7 +138,7 @@ function renderTable(type) {
                             '<td>' + dataAsJson[i].ComputerID + '</td>' +
                             '<td>' + dataAsJson[i].PartID + '</td>' +
                             '<td>' + dataAsJson[i].ServiceCost + '</td>' +
-                            '<td><button class="btn btn-xs btn-success"data-toggle="modal" data-target="#serviceModal" onclick="viewActivityDetails(4,'+productID+','+employeeID+')"><span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View</button></td></tr>';
+                            '<td><button class="btn btn-xs btn-success"data-toggle="modal" data-target="#serviceModal" onclick="viewActivityDetails(4,'+productID+','+employeeID+','+dataAsJson[i].PartID+')"><span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View</button></td></tr>';
 
                     }
                 }
@@ -449,7 +449,7 @@ function refreshSale() {
 
 
 
-function viewActivityDetails(type,productID,employeeID){
+function viewActivityDetails(type,productID,employeeID,partID){
 
     switch(type){
         // Sale
@@ -688,7 +688,7 @@ function viewActivityDetails(type,productID,employeeID){
         case 4:
             $.ajax({
                 type: "GET",
-                url: "../includes/getRepairs.php?ProductID="+productID+"&EmployeeID="+employeeID,
+                url: "../includes/getUpgrades.php?ProductID="+productID+"&EmployeeID="+employeeID+"&PartID="+partID,
                 cache: false,
                 success: function (data) {
                     var dataAsJson = JSON.parse(data);
@@ -742,10 +742,10 @@ function viewActivityDetails(type,productID,employeeID){
                                 '<div class="table-responsive">' +
                                     '<table class="table table-hover table-striped" style="margin: 0">' +
                                         '<tbody>' +
-                                            '<tr><td>Repair Type</td><td>'+ dataAsJson.Repair.Type+'</td></tr>'+
-                                            '<tr><td>Client Name</td><td>'+ dataAsJson.Repair.CName+'</td></tr>'+
-                                            '<tr><td>Client Address</td><td>'+ dataAsJson.Repair.CAddress+'</td></tr>'+
-                                            '<tr><td>Sale Date</td><td>'+ dataAsJson.Repair.Date+'</td></tr>'+
+                                            '<tr><td>Repaired Part</td><td>'+ dataAsJson.Part.Name+'</td></tr>'+
+                                            '<tr><td>Client Name</td><td>'+ dataAsJson.Upgrade.CName+'</td></tr>'+
+                                            '<tr><td>Client Address</td><td>'+ dataAsJson.Upgrade.CAddress+'</td></tr>'+
+                                            '<tr><td>Sale Date</td><td>'+ dataAsJson.Upgrade.Date+'</td></tr>'+
                                         '</tbody>' +
                                     '</table>' +
                                 '</div>' +

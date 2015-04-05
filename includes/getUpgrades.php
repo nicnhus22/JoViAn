@@ -21,10 +21,12 @@ try {
 }
 
 # Get Sale Infromation
-$sql = $db->prepare("SELECT * FROM Repair WHERE ComputerID=? LIMIT 1");
+$sql = $db->prepare("SELECT * FROM Upgrade WHERE ComputerID=? AND EmployeeID=? AND PartID=? LIMIT 1");
 $sql->bindValue(1, $_GET["ProductID"]);
+$sql->bindValue(2, $_GET["EmployeeID"]);
+$sql->bindValue(3, $_GET["PartID"]);
 $sql->execute();
-$rows["Repair"] = $sql->fetch(PDO::FETCH_ASSOC);
+$rows["Upgrade"] = $sql->fetch(PDO::FETCH_ASSOC);
 
 # Get Product Information
 $sql = $db->prepare("SELECT ID,Name,Price FROM Laptop WHERE ID=?	 UNION  
@@ -40,6 +42,12 @@ $sql = $db->prepare("SELECT Name FROM Employee WHERE ID=? LIMIT 1");
 $sql->bindValue(1, $_GET["EmployeeID"]);
 $sql->execute();
 $rows["Employee"] = $sql->fetch(PDO::FETCH_ASSOC);
+
+# Get Part ID
+$sql = $db->prepare("SELECT * FROM Part WHERE ID=? LIMIT 1");
+$sql->bindValue(1, $_GET["PartID"]);
+$sql->execute();
+$rows["Part"] = $sql->fetch(PDO::FETCH_ASSOC);
 
 
 echo json_encode($rows);
