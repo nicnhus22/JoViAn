@@ -142,6 +142,7 @@ $(document).ready(function () {
                 var software_price    = $("#software_price").val();
                 var software_size     = $("#software_size").val();
                 var software_quantity = $("#software_quantity").val();
+                var software_id       = $("#software_id").val();
 
                 if (software_name == "") {
                     $("#software_name").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
@@ -170,21 +171,21 @@ $(document).ready(function () {
                 }
 
                 if(valid){
-                    // var dataString = 'software_name=' + software_name + '&software_type=' + software_type+'&software_price=' + software_price + 
-                    //                 '&software_size=' + software_size+ '&software_quantity=' + software_quantity;
-                    // $.ajax({
-                    //     type: "POST",
-                    //     url: "../includes/items/addSoftware.php",
-                    //     data: dataString,
-                    //     cache: false,
-                    //     success: function(data){
-                    //         if (data == '1'){
-                    //             window.location.href = "inventory.php";
-                    //         }else{
-                    //             $("#employee_add_failure").show();
-                    //         }
-                    //     }
-                    // });
+                    var dataString = 'software_id=' + software_id + '&software_name=' + software_name + '&software_type=' + software_type+'&software_price=' + software_price + 
+                                    '&software_size=' + software_size+ '&software_quantity=' + software_quantity;
+                    $.ajax({
+                        type: "POST",
+                        url: "../includes/items/editSoftware.php",
+                        data: dataString,
+                        cache: false,
+                        success: function(data){
+                            if (data == '1'){
+                                window.location.href = "inventory.php";
+                            }else{
+                                $("#employee_add_failure").show();
+                            }
+                        }
+                    });
                 } 
 
                 break;
