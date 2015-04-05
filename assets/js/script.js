@@ -213,6 +213,8 @@ function updateServiceModal(id, type) {
                 if (item.Type == "Screen") {
                     detailTrs += '<tr><td>Size</td><td>' + item.Value + ' in</td></tr>';
                 }
+                detailTrs += '<tr><td></td><td><div class="checkbox" style="margin: 0;"><label><input id="service" type="checkbox" value="Upgrade">Upgrade Existing Computer</label></div></td></tr>';
+
             }
 
             saleTrs += '<tr><td>' + item.Name + '</td><td></td><td>$ ' + '<span id="price">' +item.Price + '</span></td></tr>';
@@ -274,7 +276,7 @@ function updateServiceModal(id, type) {
                     '<input class="form-control" placeholder="Customer Name" id="cname" name="cname">' +
                     '</div>' +
                     '</div>' +
-                    '<div class="col-lg-6">' +
+                    '<div id="custInfoWrapper" class="col-lg-6">' +
                     '<div>' +
                     '<input class="form-control" placeholder="Customer Address" id="caddr" name="caddr">' +
                     '</div>' +
@@ -367,9 +369,35 @@ $(document).on('change', '#service', function() {
         var gst = getGst(price)
         var total = price + gst + pst;
 
-        $('<tr id="serviceRow"><td>Install</td><td>' +
-            ' <button onclick="refreshSale()" class="btn btn-xs btn-success"><span class="fa fa-fw fa-refresh" style="vertical-align:middle"></span></button>' +
-            '</td><td>$ <input style="width:50px; margin:0; border: none;" type="text" id="serviceCost" value="2.99"></td></tr>').insertBefore('#pst');
+        if($("#service").val() == "Install") {
+            $('<tr id="serviceRow"><td>Install</td><td>' +
+                ' <button onclick="refreshSale()" class="btn btn-xs btn-success"><span class="fa fa-fw fa-refresh" style="vertical-align:middle"></span></button>' +
+                '</td><td>$ <input style="width:50px; margin:0; border: none;" type="text" id="serviceCost" value="2.99"></td></tr>').insertBefore('#pst');
+        }
+        else if ($("#service").val() == "Upgrade") {
+            $('<tr id="serviceRow"><td>Upgrade</td><td>' +
+                ' <button onclick="refreshSale()" class="btn btn-xs btn-success"><span class="fa fa-fw fa-refresh" style="vertical-align:middle"></span></button>' +
+                '</td><td>$ <input style="width:50px; margin:0; border: none;" type="text" id="serviceCost" value="2.99"></td></tr>').insertBefore('#pst');
+
+            $.ajax({
+                type: "GET",
+                url: "../includes/getComputers.php",
+                cache: false,
+                success: function (data) {
+                    var dataAsJson = JSON.parse(data);
+
+                    var computerOptions = '<div class="col-lg-12"><select id="computerSelect" class="form-control" style="margin-top: 15px;">';
+
+                    for(var i = 0; i < dataAsJson.length; i++)
+                        computerOptions+= '<option value="'+dataAsJson[i].ID+'">'+dataAsJson[i].Name+'</option>';
+
+                    computerOptions+='</select></div>';
+
+                    $(computerOptions).insertAfter("#custInfoWrapper");
+                }
+            });
+        }
+
         $("#pstTax").html(pst.toFixed(2));
         $("#gstTax").html(gst.toFixed(2));
         $("#total").html(total.toFixed(2));
@@ -383,6 +411,11 @@ $(document).on('change', '#service', function() {
         var total = price + gst + pst;
 
         $('#serviceRow').remove();
+
+        if($("#service").val() == "Upgrade") {
+            $("#computerSelect").remove();
+        }
+
         $("#pstTax").html(pst.toFixed(2));
         $("#gstTax").html(gst.toFixed(2));
         $("#total").html(total.toFixed(2));
