@@ -116,13 +116,14 @@ function renderTable(type) {
                     tHeadRows = '<tr><td>Date</td><td>Employee ID</td><td>Customer Name</td><td>Computer ID</td><td>Type</td><td>Service Cost</td><td></td></tr>';
                     for (var i = 0; i < dataAsJson.length; i++) {
                         var productID = dataAsJson[i].ComputerID;
+                        var employeeID = dataAsJson[i].EmployeeID;
                         tBodyRows += '<tr><td>' + dataAsJson[i].Date + '</td>' +
                             '<td>' + dataAsJson[i].EmployeeID + '</td>' +
                             '<td>' + dataAsJson[i].CName + '</td>' +
                             '<td>' + dataAsJson[i].ComputerID + '</td>' +
                             '<td>' + dataAsJson[i].Type + '</td>' +
                             '<td>' + dataAsJson[i].ServiceCost + '</td>' +
-                            '<td><button class="btn btn-xs btn-success" onclick="viewActivityDetails(3,'+productID+')"><span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View</button></td></tr>';
+                            '<td><button class="btn btn-xs btn-success" data-toggle="modal" data-target="#serviceModal"   onclick="viewActivityDetails(3,'+productID+','+employeeID+')"><span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View</button></td></tr>';
 
                     }
                 }
@@ -130,13 +131,14 @@ function renderTable(type) {
                     tHeadRows = '<tr><td>Date</td><td>Employee ID</td><td>Customer Name</td><td>Computer ID</td><td>Part ID</td><td>Service Cost</td><td></td></tr>';
                     for (var i = 0; i < dataAsJson.length; i++) {
                         var productID = dataAsJson[i].ComputerID;
+                        var employeeID = dataAsJson[i].EmployeeID;
                         tBodyRows += '<tr><td>' + dataAsJson[i].Date + '</td>' +
                             '<td>' + dataAsJson[i].EmployeeID + '</td>' +
                             '<td>' + dataAsJson[i].CName + '</td>' +
                             '<td>' + dataAsJson[i].ComputerID + '</td>' +
                             '<td>' + dataAsJson[i].PartID + '</td>' +
                             '<td>' + dataAsJson[i].ServiceCost + '</td>' +
-                            '<td><button class="btn btn-xs btn-success" onclick="viewActivityDetails(4,'+productID+')"><span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View</button></td></tr>';
+                            '<td><button class="btn btn-xs btn-success"data-toggle="modal" data-target="#serviceModal" onclick="viewActivityDetails(4,'+productID+','+employeeID+')"><span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View</button></td></tr>';
 
                     }
                 }
@@ -458,7 +460,6 @@ function viewActivityDetails(type,productID,employeeID){
                 cache: false,
                 success: function (data) {
                     var dataAsJson = JSON.parse(data);
-                    console.log(dataAsJson);
 
                     $("#activity_title").html("Sale - ProductID#"+productID);
 
@@ -539,7 +540,6 @@ function viewActivityDetails(type,productID,employeeID){
                 cache: false,
                 success: function (data) {
                     var dataAsJson = JSON.parse(data);
-                    console.log(dataAsJson);
 
                     $("#activity_title").html("OnlineSale - ProductID#"+productID);
 
@@ -609,11 +609,157 @@ function viewActivityDetails(type,productID,employeeID){
             break;
         // Repair
         case 3:
+            $.ajax({
+                type: "GET",
+                url: "../includes/getRepairs.php?ProductID="+productID+"&EmployeeID="+employeeID,
+                cache: false,
+                success: function (data) {
+                    var dataAsJson = JSON.parse(data);
+                    console.log(dataAsJson);
 
+                    $("#activity_title").html("Reparation - ProductID#"+productID);
+
+                    $(".modal-body").html(   
+
+                    '<div class="col-lg-12">' +
+                        '<div class="panel panel-green">' +
+                            '<div class="panel-heading">' +
+                                '<h3 class="panel-title">Product Information</h3>' +
+                            '</div>' +
+                            '<div class="panel-body" style="padding: 0;">' +
+                                '<div class="table-responsive">' +
+                                    '<table class="table table-hover table-striped" style="margin: 0">' +
+                                        '<tbody>' +
+                                            '<tr><td>Product Name</td><td>'+ dataAsJson.Product.Name+'</td></tr>'+
+                                            '<tr><td>Product Price</td><td>'+dataAsJson.Product.Price+'$</td></tr>'+
+                                        '</tbody>' +
+                                    '</table>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>'+
+
+                    '<div class="col-lg-12">' +
+                        '<div class="panel panel-red">' +
+                            '<div class="panel-heading">' +
+                                '<h3 class="panel-title">Employee Information</h3>' +
+                            '</div>' +
+                            '<div class="panel-body" style="padding: 0;">' +
+                                '<div class="table-responsive">' +
+                                    '<table class="table table-hover table-striped" style="margin: 0">' +
+                                        '<tbody>' +
+                                            '<tr><td>Employee Name</td><td>'+dataAsJson.Employee.Name+'</td></tr>'+
+                                        '</tbody>' +
+                                    '</table>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>'+
+
+                    '<div class="col-lg-12">' +
+                        '<div class="panel panel-primary">' +
+                            '<div class="panel-heading">' +
+                                '<h3 class="panel-title">General Information</h3>' +
+                            '</div>' +
+                            '<div class="panel-body" style="padding: 0;">' +
+                                '<div class="table-responsive">' +
+                                    '<table class="table table-hover table-striped" style="margin: 0">' +
+                                        '<tbody>' +
+                                            '<tr><td>Repair Type</td><td>'+ dataAsJson.Repair.Type+'</td></tr>'+
+                                            '<tr><td>Client Name</td><td>'+ dataAsJson.Repair.CName+'</td></tr>'+
+                                            '<tr><td>Client Address</td><td>'+ dataAsJson.Repair.CAddress+'</td></tr>'+
+                                            '<tr><td>Sale Date</td><td>'+ dataAsJson.Repair.Date+'</td></tr>'+
+                                        '</tbody>' +
+                                    '</table>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>'
+
+                    );
+
+
+                    $(".modal-footer").html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>');
+
+                }
+            });
             break;
         // Upgrade
         case 4:
+            $.ajax({
+                type: "GET",
+                url: "../includes/getRepairs.php?ProductID="+productID+"&EmployeeID="+employeeID,
+                cache: false,
+                success: function (data) {
+                    var dataAsJson = JSON.parse(data);
+                    console.log(dataAsJson);
 
+                    $("#activity_title").html("Upgrade] - ProductID#"+productID);
+
+                    $(".modal-body").html(   
+
+                    '<div class="col-lg-12">' +
+                        '<div class="panel panel-green">' +
+                            '<div class="panel-heading">' +
+                                '<h3 class="panel-title">Product Information</h3>' +
+                            '</div>' +
+                            '<div class="panel-body" style="padding: 0;">' +
+                                '<div class="table-responsive">' +
+                                    '<table class="table table-hover table-striped" style="margin: 0">' +
+                                        '<tbody>' +
+                                            '<tr><td>Product Name</td><td>'+ dataAsJson.Product.Name+'</td></tr>'+
+                                            '<tr><td>Product Price</td><td>'+dataAsJson.Product.Price+'$</td></tr>'+
+                                        '</tbody>' +
+                                    '</table>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>'+
+
+                    '<div class="col-lg-12">' +
+                        '<div class="panel panel-red">' +
+                            '<div class="panel-heading">' +
+                                '<h3 class="panel-title">Employee Information</h3>' +
+                            '</div>' +
+                            '<div class="panel-body" style="padding: 0;">' +
+                                '<div class="table-responsive">' +
+                                    '<table class="table table-hover table-striped" style="margin: 0">' +
+                                        '<tbody>' +
+                                            '<tr><td>Employee Name</td><td>'+dataAsJson.Employee.Name+'</td></tr>'+
+                                        '</tbody>' +
+                                    '</table>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>'+
+
+                    '<div class="col-lg-12">' +
+                        '<div class="panel panel-primary">' +
+                            '<div class="panel-heading">' +
+                                '<h3 class="panel-title">General Information</h3>' +
+                            '</div>' +
+                            '<div class="panel-body" style="padding: 0;">' +
+                                '<div class="table-responsive">' +
+                                    '<table class="table table-hover table-striped" style="margin: 0">' +
+                                        '<tbody>' +
+                                            '<tr><td>Repair Type</td><td>'+ dataAsJson.Repair.Type+'</td></tr>'+
+                                            '<tr><td>Client Name</td><td>'+ dataAsJson.Repair.CName+'</td></tr>'+
+                                            '<tr><td>Client Address</td><td>'+ dataAsJson.Repair.CAddress+'</td></tr>'+
+                                            '<tr><td>Sale Date</td><td>'+ dataAsJson.Repair.Date+'</td></tr>'+
+                                        '</tbody>' +
+                                    '</table>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>'
+
+                    );
+
+
+                    $(".modal-footer").html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>');
+
+                }
+            });
             break;
         // Install
         case 5:
