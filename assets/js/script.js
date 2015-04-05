@@ -79,8 +79,6 @@ function renderTable(type) {
         success: function (data) {
             var dataAsJson = JSON.parse(data);
 
-            console.log(dataAsJson);
-
             if (dataAsJson == "") {
                 buildTable = '<thead><tr><td>No ' + type + 's to display!</td></tr></thead>';
             }
@@ -92,60 +90,65 @@ function renderTable(type) {
                 if (type == "Sale") {
                     tHeadRows = '<tr><td>Date</td><td>Employee ID</td><td>Customer Name</td><td>Product ID</td><td></td></tr>';
                     for (var i = 0; i < dataAsJson.length; i++) {
+                        var productID  = dataAsJson[i].ProductID;
+                        var employeeID = dataAsJson[i].EmployeeID;
                         tBodyRows += '<tr><td>' + dataAsJson[i].Date + '</td>' +
                             '<td>' + dataAsJson[i].EmployeeID + '</td>' +
                             '<td>' + dataAsJson[i].CName + '</td>' +
                             '<td>' + dataAsJson[i].ProductID + '</td> +' +
-                            '<td><button class="btn btn-xs btn-success"><span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View</button></td></tr>';
+                            '<td><button class="btn btn-xs btn-success"  data-toggle="modal" data-target="#serviceModal"  onclick="viewActivityDetails(1,'+productID+','+employeeID+')"><span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View</button></td></tr>';
                     }
                 }
                 else if (type == "OnlineSale") {
                     tHeadRows = '<tr><td>Date</td><td>Employee ID</td><td>Customer Name</td><td>Product ID</td><td>Store Name</td><td></td></tr>';
                     for (var i = 0; i < dataAsJson.length; i++) {
+                        var productID = dataAsJson[i].ProductID;
                         tBodyRows += '<tr><td>' + dataAsJson[i].Date + '</td>' +
                             '<td>' + dataAsJson[i].EmployeeID + '</td>' +
                             '<td>' + dataAsJson[i].CName + '</td>' +
                             '<td>' + dataAsJson[i].ProductID + '</td>' +
                             '<td>' + dataAsJson[i].StoreName + '</td>' +
-                            '<td><button class="btn btn-xs btn-success"><span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View</button></td></tr>';
+                            '<td><button class="btn btn-xs btn-success" onclick="viewActivityDetails(2,'+productID+')"><span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View</button></td></tr>';
                     }
                 }
                 else if (type == "Repair") {
                     tHeadRows = '<tr><td>Date</td><td>Employee ID</td><td>Customer Name</td><td>Computer ID</td><td>Type</td><td>Service Cost</td><td></td></tr>';
                     for (var i = 0; i < dataAsJson.length; i++) {
+                        var productID = dataAsJson[i].ComputerID;
                         tBodyRows += '<tr><td>' + dataAsJson[i].Date + '</td>' +
                             '<td>' + dataAsJson[i].EmployeeID + '</td>' +
                             '<td>' + dataAsJson[i].CName + '</td>' +
                             '<td>' + dataAsJson[i].ComputerID + '</td>' +
                             '<td>' + dataAsJson[i].Type + '</td>' +
                             '<td>' + dataAsJson[i].ServiceCost + '</td>' +
-                            '<td><button class="btn btn-xs btn-success"><span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View</button></td></tr>';
+                            '<td><button class="btn btn-xs btn-success" onclick="viewActivityDetails(3,'+productID+')"><span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View</button></td></tr>';
 
                     }
                 }
                 else if (type == "Upgrade") {
                     tHeadRows = '<tr><td>Date</td><td>Employee ID</td><td>Customer Name</td><td>Computer ID</td><td>Part ID</td><td>Service Cost</td><td></td></tr>';
                     for (var i = 0; i < dataAsJson.length; i++) {
+                        var productID = dataAsJson[i].ComputerID;
                         tBodyRows += '<tr><td>' + dataAsJson[i].Date + '</td>' +
                             '<td>' + dataAsJson[i].EmployeeID + '</td>' +
                             '<td>' + dataAsJson[i].CName + '</td>' +
                             '<td>' + dataAsJson[i].ComputerID + '</td>' +
                             '<td>' + dataAsJson[i].PartID + '</td>' +
                             '<td>' + dataAsJson[i].ServiceCost + '</td>' +
-                            '<td><button class="btn btn-xs btn-success"><span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View</button></td></tr>';
+                            '<td><button class="btn btn-xs btn-success" onclick="viewActivityDetails(4,'+productID+')"><span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View</button></td></tr>';
 
                     }
                 }
                 else if (type == "Install") {
                     tHeadRows = '<tr><td>Date</td><td>Employee ID</td><td>Customer Name</td><td>Software ID</td><td>Service Cost</td><td></td></tr>';
                     for (var i = 0; i < dataAsJson.length; i++) {
+                        var productID = dataAsJson[i].SoftwareID;
                         tBodyRows += '<tr><td>' + dataAsJson[i].Date + '</td>' +
                             '<td>' + dataAsJson[i].EmployeeID + '</td>' +
                             '<td>' + dataAsJson[i].CName + '</td>' +
-
                             '<td>' + dataAsJson[i].SoftwareID + '</td>' +
                             '<td>' + dataAsJson[i].ServiceCost + '</td>' +
-                            '<td><button class="btn btn-xs btn-success"><span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View</button></td></tr>';
+                            '<td><button class="btn btn-xs btn-success" onclick="viewActivityDetails(5,'+productID+')"><span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View</button></td></tr>';
 
                     }
                 }
@@ -157,8 +160,6 @@ function renderTable(type) {
                     '<tbody>' +
                     tBodyRows +
                     '</tbody>';
-
-                console.log(buildTable);
             }
 
             $("#activityTable").html(buildTable);
@@ -440,5 +441,68 @@ function refreshSale() {
     $("#pstTax").html(pst.toFixed(2));
     $("#gstTax").html(gst.toFixed(2));
     $("#total").html(total.toFixed(2));
+
+}
+
+
+
+function viewActivityDetails(type,productID,employeeID){
+
+    switch(type){
+        // Sale
+        case 1:
+            $.ajax({
+                type: "GET",
+                url: "../includes/getSales.php?ProductID="+productID+"&EmployeeID="+employeeID,
+                cache: false,
+                success: function (data) {
+                    var dataAsJson = JSON.parse(data);
+                    console.log(dataAsJson);
+                }
+            });
+
+            $("#activity_title").html("Sale - ProductID#"+productID);
+
+            $(".modal-body").html(   
+
+            '<div class="col-lg-12">' +
+                '<div class="panel panel-green">' +
+                    '<div class="panel-heading">' +
+                        '<h3 class="panel-title">Sale Summary</h3>' +
+                    '</div>' +
+                    '<div class="panel-body" style="padding: 0;">' +
+                        '<div class="table-responsive">' +
+                            '<table class="table table-hover table-striped" style="margin: 0">' +
+                                '<tbody>' +
+
+                                '</tbody>' +
+                            '</table>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>'
+
+            );
+
+
+            $(".modal-footer").html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>');
+            break;
+        // Online Sale
+        case 2:
+
+            break;
+        // Repair
+        case 3:
+
+            break;
+        // Upgrade
+        case 4:
+
+            break;
+        // Install
+        case 5:
+
+            break;
+    }
 
 }
