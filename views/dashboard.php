@@ -1,14 +1,48 @@
 <?php 
-	session_start(); 
+    session_start(); 
 
-	if(!$_SESSION['logged']){ 
-	    header("Location: index.php"); 
-	    exit; 
-	}
+    // Require DB access
+   require_once '../includes/config/db.php';
+
+    if(!$_SESSION['logged']){ 
+        header("Location: index.php"); 
+        exit; 
+    }
 
     include '../includes/views/menu.php';
     include '../includes/views/head.php';
     include '../includes/views/scripts.php';
+
+
+    try {
+       //Connect to the databasse
+       $db = new PDO("mysql:dbname=$dbDatabase;host=$dbHost", $dbUser, $dbPass);
+    } catch (PDOException $e) {
+       print "Error!: " . $e->getMessage() . "<br/>";
+       die();
+    }
+
+    // Fetch Inventory Count
+    $sql = $db->prepare("SELECT (SELECT COUNT(ID) FROM Laptop) 
+                              + (SELECT COUNT(ID) FROM PC) 
+                              + (SELECT COUNT(ID) FROM Software) 
+                              + (SELECT COUNT(ID) FROM Part) as count");
+    $sql->execute();
+    $inventorySize = $sql->fetch(PDO::FETCH_ASSOC);
+
+    // Fetch Inventory Count
+    $sql = $db->prepare("SELECT COUNT(*) AS count FROM Employee");
+    $sql->execute();
+    $employeeSize = $sql->fetch(PDO::FETCH_ASSOC);
+
+    // Fetch Transaction Count
+    $sql = $db->prepare("SELECT (SELECT COUNT(*) FROM Install) 
+                              + (SELECT COUNT(*) FROM OnlineSale) 
+                              + (SELECT COUNT(*) FROM Sale) 
+                              + (SELECT COUNT(*) FROM Upgrade) as count");
+    $sql->execute();
+    $transactionSize = $sql->fetch(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -45,32 +79,22 @@
                 <!-- /.row -->
 
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i>  <strong>Like SB Admin?</strong> Try out <a href="http://startbootstrap.com/template-overviews/sb-admin-2" class="alert-link">SB Admin 2</a> for additional features!
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->
-
-                <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <i class="fa fa-comments fa-5x"></i>
+                                        <i class="fa fa-cubes fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">26</div>
-                                        <div>New Comments!</div>
+                                        <div class="huge"><?php echo $inventorySize["count"] ?></div>
+                                        <div>Products in Inventory</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="inventory.php">
                                 <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-left">View Inventory</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
@@ -82,17 +106,17 @@
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <i class="fa fa-tasks fa-5x"></i>
+                                        <i class="fa fa-users fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">12</div>
-                                        <div>New Tasks!</div>
+                                        <div class="huge"><?php echo $employeeSize["count"] ?></div>
+                                        <div>Employees</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="employees.php">
                                 <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-left">View Employees</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
@@ -107,36 +131,14 @@
                                         <i class="fa fa-shopping-cart fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">124</div>
-                                        <div>New Orders!</div>
+                                        <div class="huge"><?php echo $transactionSize["count"] ?></div>
+                                        <div>Transactions</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="orders.php">
                                 <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-red">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-support fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">13</div>
-                                        <div>Support Tickets!</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-left">View Transactions</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
