@@ -131,14 +131,9 @@ $employees = $sql->fetchAll();
                                                     <span class="fa fa-fw fa-eye"  style="vertical-align:middle"></span> View
                                                 </button>
 
-                                                <button class="btn btn-xs btn-warning">
-                                                    <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
-                                                </button>
-
                                                 <button onclick="deleteRow(this,'.$employee['ID'].')" class="btn btn-xs btn-danger">
                                                     <span class="fa fa-fw fa-remove" style="vertical-align:middle"></span> Delete
                                                 </button>
-
                                             </td>
                                         </tr>
                                     ';

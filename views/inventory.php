@@ -143,26 +143,23 @@
                                      }
                                  
                                      echo '
-                                                         <tr class="inventory_laptop">
-                                                             <td>' . $Laptop["Name"] . '</td>
-                                                             <td>Laptop</td>
-                                                             <td>' . $Laptop["Price"] . '</td>
-                                                             <td>' . $Laptop["Quantity"] . '</td>
-                                                             <td>
-                                                                                                             <button class="btn btn-xs btn-success">
-                                 
-                                                                     <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
-                                                                     View
-                                                                 </button>
-                                 
-                                                                <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Laptop["ID"] . ',&#39Laptop&#39)">
-                                                                    <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
-                                                                </button> ';
+                                           <tr class="inventory_laptop">
+                                               <td>' . $Laptop["Name"] . '</td>
+                                               <td>Laptop</td>
+                                               <td>' . $Laptop["Price"] . '</td>
+                                               <td>' . $Laptop["Quantity"] . '</td>
+                                               <td>
+                                                <button class="btn btn-xs btn-success">
+                                                  <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View
+                                                </button>
+                                                <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Laptop["ID"] . ',&#39Laptop&#39)">
+                                                  <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
+                                                </button> ';
                                  
                                      if ($_SESSION["privelege"] == "admin") {
-                                         echo '<button class="btn btn-xs btn-warning">
-                                                                                 <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
-                                                                             </button>';
+                                          echo '<button class="btn btn-xs btn-warning" onclick="editProduct('.$Laptop["ID"].',1)">
+                                                  <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
+                                                </button>';
                                      }
                                      echo '</td></tr>';
                                  }
@@ -177,29 +174,24 @@
                                      }
                                  
                                      echo '
-                                                         <tr class="inventory_part">
-                                                             <td>' . $Part["Name"] . '</td>
-                                                             <td>Part - ' . $Part["Type"] . '</td>
-                                                             <td>' . $Part["Price"] . '</td>
-                                                             <td>' . $Part["Quantity"] . '</td>
-                                                             <td>
-                                 <button class="btn btn-xs btn-success">                                                    <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
-                                                                     View
-                                                                 </button>
-                                 
-                                 
-                                                                                                             <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Part["ID"] . ',&#39Part&#39)">
-                                 
-                                                                     <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
-                                                                 </button> ';
-                                 
+                                           <tr class="inventory_part">
+                                               <td>' . $Part["Name"] . '</td>
+                                               <td>Part - ' . $Part["Type"] . '</td>
+                                               <td>' . $Part["Price"] . '</td>
+                                               <td>' . $Part["Quantity"] . '</td>
+                                               <td>
+                                                <button class="btn btn-xs btn-success">
+                                                 <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View
+                                                </button>
+                                                <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Part["ID"] . ',&#39Part&#39)">
+                                                  <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
+                                                </button> ';
                                      if ($_SESSION["privelege"] == "admin") {
-                                         echo '<button class="btn btn-xs btn-warning">
-                                                                                 <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
-                                                                             </button>';
+                                         echo  '<button class="btn btn-xs btn-warning" onclick="editProduct('.$Part["ID"].',2)">
+                                                  <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
+                                                </button>';
                                      }
-                                     echo '</td>
-                                                         </tr>';
+                                     echo '</td></tr>';
                                  }
                                  ?>
                               <?php
@@ -212,30 +204,25 @@
                                      }
                                  
                                      echo '
-                                                         <tr class="inventory_pc">
-                                                             <td>' . $PC["Name"] . '</td>
-                                                             <td>PC</td>
-                                                             <td>' . $PC["Price"] . '</td>
-                                                             <td>' . $PC["Quantity"] . '</td>
-                                                             <td>
-                                                                                                             <button class="btn btn-xs btn-success">
-                                 
-                                                                     <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
-                                                                     View
-                                                                 </button>
-                                 
-                                                                                                             <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $PC["ID"] . ',&#39PC&#39)">
-                                 
-                                                                     <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
-                                                                 </button> ';
+                                           <tr class="inventory_pc">
+                                               <td>' . $PC["Name"] . '</td>
+                                               <td>PC</td>
+                                               <td>' . $PC["Price"] . '</td>
+                                               <td>' . $PC["Quantity"] . '</td>
+                                               <td>
+                                                <button class="btn btn-xs btn-success">
+                                                 <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View
+                                                </button>
+                                                <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $PC["ID"] . ',&#39PC&#39)">
+                                                 <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
+                                                </button> ';
                                  
                                      if ($_SESSION["privelege"] == "admin") {
-                                         echo '<button class="btn btn-xs btn-warning">
-                                                                                 <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
-                                                                             </button>';
+                                         echo '<button class="btn btn-xs btn-warning" onclick="editProduct('.$PC["ID"].',3)">
+                                                   <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
+                                               </button>';
                                      }
-                                     echo '</td>
-                                                         </tr>';
+                                     echo '</td></tr>';
                                  }
                                  ?>
                               <?php
@@ -254,24 +241,19 @@
                                                              <td>' . $Software["Price"] . '</td>
                                                              <td>' . $Software["Quantity"] . '</td>
                                                              <td>
-                                                                                                             <button class="btn btn-xs btn-success">
-                                 
-                                                                     <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>
-                                                                     View
-                                                                 </button>
-                                 
-                                                                                                             <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Software["ID"] . ',&#39Software&#39)">
-                                 
-                                                                     <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
-                                                                 </button> ';
+                                                               <button class="btn btn-xs btn-success">
+                                                                 <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View
+                                                               </button>
+                                                               <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Software["ID"] . ',&#39Software&#39)">
+                                                                 <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
+                                                               </button> ';
                                  
                                      if ($_SESSION["privelege"] == "admin") {
-                                         echo '<button class="btn btn-xs btn-warning">
-                                                                                 <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
-                                                                             </button>';
+                                         echo '<button class="btn btn-xs btn-warning" onclick="editProduct('.$Software["ID"].',4)">
+                                                <span class="fa fa-fw fa-edit" style="vertical-align:middle"></span> Edit
+                                               </button>';
                                      }
-                                     echo '</td>
-                                                         </tr>';
+                                     echo '</td></tr>';
                                  }
                                  ?>
                            </tbody>
@@ -324,6 +306,30 @@
              } 
          
          });
+
+
+        
+        function editProduct(id,type){
+
+          switch(type){
+            case 1:
+              route_editItem(id,"laptop");
+            break;
+            case 2:
+              route_editItem(id,"part");
+            break;
+            case 3:
+              route_editItem(id,"pc");
+            break;
+            case 4:
+              route_editItem(id,"software");
+            break;
+          }
+
+          
+        }
+
+  
          
       </script>
    </body>
