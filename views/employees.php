@@ -22,7 +22,7 @@ try {
 }
 
 
-$sql = $db->prepare("SELECT * FROM Employee"); 
+$sql = $db->prepare("SELECT * FROM Employee WHERE DOD IS NULL"); 
 $sql->execute(); 
 $employees = $sql->fetchAll();
 

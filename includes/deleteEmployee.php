@@ -13,10 +13,12 @@ try {
 }
 
 try {
-    $sqlEmployee = $db->prepare("DELETE FROM users WHERE EmployeeID=?;DELETE FROM Employee WHERE ID=?");
+    $sqlEmployee = $db->prepare("DELETE FROM users WHERE EmployeeID=?");
     $sqlEmployee->bindValue(1, $ID);
-    $sqlEmployee->bindValue(2, $ID);
+    $sqlEmployee->execute();
 
+    $sqlEmployee = $db->prepare("UPDATE Employee SET DOD=CURDATE() WHERE ID=?");
+    $sqlEmployee->bindValue(1, $ID);
     $sqlEmployee->execute();
 
     echo 1;

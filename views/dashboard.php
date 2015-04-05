@@ -30,8 +30,8 @@
     $sql->execute();
     $inventorySize = $sql->fetch(PDO::FETCH_ASSOC);
 
-    // Fetch Inventory Count
-    $sql = $db->prepare("SELECT COUNT(*) AS count FROM Employee");
+    // Fetch Employee Count
+    $sql = $db->prepare("SELECT COUNT(*) AS count FROM Employee WHERE DOD IS NULL");
     $sql->execute();
     $employeeSize = $sql->fetch(PDO::FETCH_ASSOC);
 
@@ -39,6 +39,7 @@
     $sql = $db->prepare("SELECT (SELECT COUNT(*) FROM Install) 
                               + (SELECT COUNT(*) FROM OnlineSale) 
                               + (SELECT COUNT(*) FROM Sale) 
+                              + (SELECT COUNT(*) FROM Repair)
                               + (SELECT COUNT(*) FROM Upgrade) as count");
     $sql->execute();
     $transactionSize = $sql->fetch(PDO::FETCH_ASSOC);
