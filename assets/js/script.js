@@ -458,34 +458,72 @@ function viewActivityDetails(type,productID,employeeID){
                 success: function (data) {
                     var dataAsJson = JSON.parse(data);
                     console.log(dataAsJson);
+
+                    $("#activity_title").html("Sale - ProductID#"+productID);
+
+                    $(".modal-body").html(   
+
+                    '<div class="col-lg-12">' +
+                        '<div class="panel panel-green">' +
+                            '<div class="panel-heading">' +
+                                '<h3 class="panel-title">Product Information</h3>' +
+                            '</div>' +
+                            '<div class="panel-body" style="padding: 0;">' +
+                                '<div class="table-responsive">' +
+                                    '<table class="table table-hover table-striped" style="margin: 0">' +
+                                        '<tbody>' +
+                                            '<tr><td>Product Name</td><td>'+ dataAsJson.Product.Name+'</td></tr>'+
+                                            '<tr><td>Product Price</td><td>'+dataAsJson.Product.Price+'$</td></tr>'+
+                                        '</tbody>' +
+                                    '</table>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>'+
+
+                    '<div class="col-lg-12">' +
+                        '<div class="panel panel-red">' +
+                            '<div class="panel-heading">' +
+                                '<h3 class="panel-title">Employee Information</h3>' +
+                            '</div>' +
+                            '<div class="panel-body" style="padding: 0;">' +
+                                '<div class="table-responsive">' +
+                                    '<table class="table table-hover table-striped" style="margin: 0">' +
+                                        '<tbody>' +
+                                            '<tr><td>Employee Name</td><td>'+ dataAsJson.Employee.Name+'</td></tr>'+
+                                        '</tbody>' +
+                                    '</table>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>'+
+
+                    '<div class="col-lg-12">' +
+                        '<div class="panel panel-primary">' +
+                            '<div class="panel-heading">' +
+                                '<h3 class="panel-title">General Information</h3>' +
+                            '</div>' +
+                            '<div class="panel-body" style="padding: 0;">' +
+                                '<div class="table-responsive">' +
+                                    '<table class="table table-hover table-striped" style="margin: 0">' +
+                                        '<tbody>' +
+                                            '<tr><td>Client Name</td><td>'+ dataAsJson.Sale.CName+'</td></tr>'+
+                                            '<tr><td>Client Address</td><td>'+ dataAsJson.Sale.CAddress+'</td></tr>'+
+                                            '<tr><td>Sale Date</td><td>'+ dataAsJson.Sale.Date+'</td></tr>'+
+                                        '</tbody>' +
+                                    '</table>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>'
+
+                    );
+
+
+                    $(".modal-footer").html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>');
+
                 }
             });
-
-            $("#activity_title").html("Sale - ProductID#"+productID);
-
-            $(".modal-body").html(   
-
-            '<div class="col-lg-12">' +
-                '<div class="panel panel-green">' +
-                    '<div class="panel-heading">' +
-                        '<h3 class="panel-title">Sale Summary</h3>' +
-                    '</div>' +
-                    '<div class="panel-body" style="padding: 0;">' +
-                        '<div class="table-responsive">' +
-                            '<table class="table table-hover table-striped" style="margin: 0">' +
-                                '<tbody>' +
-
-                                '</tbody>' +
-                            '</table>' +
-                        '</div>' +
-                    '</div>' +
-                '</div>' +
-            '</div>'
-
-            );
-
-
-            $(".modal-footer").html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>');
             break;
         // Online Sale
         case 2:
