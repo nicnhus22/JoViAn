@@ -195,6 +195,7 @@ $(document).ready(function () {
                 var part_type     = $("#part_type").val();
                 var part_price    = $("#part_price").val();
                 var part_quantity = $("#part_quantity").val();
+                var part_id       = $("#part_id").val();
 
                 if (part_name == "") {
                     $("#part_name").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
@@ -223,22 +224,21 @@ $(document).ready(function () {
                 }
 
                 if(valid){
-                    // var dataString = 'part_name=' + part_name + '&part_type=' + part_type+'&part_value=' + part_value + 
-                    //                 '&part_price=' + part_price+ '&part_quantity=' + part_quantity;
-                    // $.ajax({
-                    //     type: "POST",
-                    //     url: "../includes/items/addPart.php",
-                    //     data: dataString,
-                    //     cache: false,
-                    //     success: function(data){
-                    //         if (data == '1'){
-                    //             window.location.href = "inventory.php";
-                    //         }else{
-                    //             $("#employee_add_failure").html(data);
-                    //             $("#employee_add_failure").show();
-                    //         }
-                    //     }
-                    // });
+                    var dataString = 'part_id=' + part_id + '&part_name=' + part_name + '&part_type=' + part_type+'&part_value=' + part_value + 
+                                    '&part_price=' + part_price+ '&part_quantity=' + part_quantity;
+                    $.ajax({
+                        type: "POST",
+                        url: "../includes/items/editPart.php",
+                        data: dataString,
+                        cache: false,
+                        success: function(data){
+                            if (data == '1'){
+                                window.location.href = "inventory.php";
+                            }else{
+                                $("#employee_add_failure").show();
+                            }
+                        }
+                    });
                 }  
 
                 break;

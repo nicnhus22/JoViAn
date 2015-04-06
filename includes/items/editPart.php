@@ -7,6 +7,7 @@ $part_type        = $_POST['part_type'];
 $part_value       = $_POST['part_value'];
 $part_price       = $_POST['part_price'];
 $part_quantity    = $_POST['part_quantity'];
+$part_id          = $_POST['part_id'];
 
 try {
     //Connect to the databasse
@@ -17,20 +18,16 @@ try {
 }
 
 try {
-    $sql = $db->prepare("SELECT ID FROM Part ORDER BY ID DESC LIMIT 1");
-    $sql->execute();
-    ($sql->rowCount() == 1 ? $lastID = $sql->fetch(PDO::FETCH_ASSOC) : $lastID = 4000);
+    $sql = $db->prepare("UPDATE Part 
+                         SET Name=?,Value=?,Type=?,Price=?,Quantity=?
+                         WHERE ID=?"); 
 
-    $sql = $db->prepare("INSERT INTO Part(ID,Name,Value,Type,Price,Quantity)
-                                 VALUES (?,?,?,?,?,?)"); 
-
-    $partId = (int)$lastID['ID']+1;
-    $sql->bindValue(1, $partId);
-    $sql->bindValue(2, $part_name); 
-    $sql->bindValue(3, $part_value); 
-    $sql->bindValue(4, $part_type); 
-    $sql->bindValue(5, $part_price); 
-    $sql->bindValue(6, $part_quantity); 
+    $sql->bindValue(1, $part_name); 
+    $sql->bindValue(2, $part_value); 
+    $sql->bindValue(3, $part_type); 
+    $sql->bindValue(4, $part_price); 
+    $sql->bindValue(5, $part_quantity); 
+    $sql->bindValue(6, $part_id); 
     $sql->execute(); 
 
     echo 1;
