@@ -44,6 +44,13 @@
     $sql->execute();
     $transactionSize = $sql->fetch(PDO::FETCH_ASSOC);
 
+
+    $sql = $db->prepare("SELECT (SELECT SUM(Price) FROM (SELECT ID, Price FROM Laptop UNION SELECT ID, Price FROM PC UNION SELECT ID, Price FROM Part UNION SELECT ID, Price FROM Software) AS NewTable, Sale WHERE NewTable.ID = Sale.ProductID) +
+                        (SELECT SUM(Price) FROM (SELECT ID, Price FROM Laptop UNION SELECT ID, Price FROM PC UNION SELECT ID, Price FROM Part UNION SELECT ID, Price FROM Software) AS NewTable, OnlineSale WHERE NewTable.ID = OnlineSale.ProductID) +
+                        (SELECT SUM(ServiceCost) FROM (SELECT ServiceCost FROM Install UNION SELECT ServiceCost FROM Repair UNION SELECT ServiceCost FROM Upgrade) AS NewTable) AS sum ");
+    $sql->execute();
+    $revenue = $sql->fetch(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +96,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge"><?php echo $inventorySize["count"] ?></div>
-                                        <div>Products in Inventory</div>
+                                        <div>Products</div>
                                     </div>
                                 </div>
                             </div>
@@ -140,6 +147,28 @@
                             <a href="orders.php">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Transactions</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-dollar fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge"><?php echo number_format($revenue["sum"], 0,".", " ") ?></div>
+                                        <div>in total Revenue</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="orders.php">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Analytics</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
