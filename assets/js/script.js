@@ -678,7 +678,7 @@ function viewActivityDetails(type,productID,employeeID,partID){
                 success: function (data) {
                     var dataAsJson = JSON.parse(data);
 
-                    $("#activity_title").html("Reparation - ProductID#"+productID);
+                    $("#activity_title").html("Repair - ProductID#"+productID);
 
                     $(".modal-body").html(   
 
@@ -692,7 +692,6 @@ function viewActivityDetails(type,productID,employeeID,partID){
                                     '<table class="table table-hover table-striped" style="margin: 0">' +
                                         '<tbody>' +
                                             '<tr><td>Product Name</td><td>'+ dataAsJson.Product.Name+'</td></tr>'+
-                                            '<tr><td>Product Price</td><td>'+dataAsJson.Product.Price+'$</td></tr>'+
                                         '</tbody>' +
                                     '</table>' +
                                 '</div>' +
@@ -710,6 +709,7 @@ function viewActivityDetails(type,productID,employeeID,partID){
                                     '<table class="table table-hover table-striped" style="margin: 0">' +
                                         '<tbody>' +
                                             '<tr><td>Employee Name</td><td>'+dataAsJson.Employee.Name+'</td></tr>'+
+                                            '<tr><td>Service Cost</td><td>'+dataAsJson.Repair.ServiceCost+' $</td></tr>'+
                                         '</tbody>' +
                                     '</table>' +
                                 '</div>' +
@@ -768,7 +768,6 @@ function viewActivityDetails(type,productID,employeeID,partID){
                                     '<table class="table table-hover table-striped" style="margin: 0">' +
                                         '<tbody>' +
                                             '<tr><td>Product Name</td><td>'+ dataAsJson.Product.Name+'</td></tr>'+
-                                            '<tr><td>Product Price</td><td>'+dataAsJson.Product.Price+'$</td></tr>'+
                                         '</tbody>' +
                                     '</table>' +
                                 '</div>' +
@@ -786,6 +785,7 @@ function viewActivityDetails(type,productID,employeeID,partID){
                                     '<table class="table table-hover table-striped" style="margin: 0">' +
                                         '<tbody>' +
                                             '<tr><td>Employee Name</td><td>'+dataAsJson.Employee.Name+'</td></tr>'+
+                                            '<tr><td>Service Cost</td><td>'+dataAsJson.Upgrade.ServiceCost+' $</td></tr>'+
                                         '</tbody>' +
                                     '</table>' +
                                 '</div>' +
@@ -803,6 +803,7 @@ function viewActivityDetails(type,productID,employeeID,partID){
                                     '<table class="table table-hover table-striped" style="margin: 0">' +
                                         '<tbody>' +
                                             '<tr><td>Upgraded Part</td><td>'+ dataAsJson.Part.Name+'</td></tr>'+
+                                            '<tr><td>Part Price</td><td>'+ dataAsJson.Part.Price+' $</td></tr>'+
                                             '<tr><td>Client Name</td><td>'+ dataAsJson.Upgrade.CName+'</td></tr>'+
                                             '<tr><td>Client Address</td><td>'+ dataAsJson.Upgrade.CAddress+'</td></tr>'+
                                             '<tr><td>Sale Date</td><td>'+ dataAsJson.Upgrade.Date+'</td></tr>'+
@@ -830,7 +831,7 @@ function viewActivityDetails(type,productID,employeeID,partID){
                 success: function (data) {
                     var dataAsJson = JSON.parse(data);
 
-                    $("#activity_title").html("Upgrade] - ProductID#"+productID);
+                    $("#activity_title").html("Install - ProductID#"+productID);
 
                     $(".modal-body").html(   
 
@@ -862,6 +863,7 @@ function viewActivityDetails(type,productID,employeeID,partID){
                                     '<table class="table table-hover table-striped" style="margin: 0">' +
                                         '<tbody>' +
                                             '<tr><td>Employee Name</td><td>'+dataAsJson.Employee.Name+'</td></tr>'+
+                                            '<tr><td>Service Cost</td><td>'+dataAsJson.Install.ServiceCost+'</td></tr>'+
                                         '</tbody>' +
                                     '</table>' +
                                 '</div>' +

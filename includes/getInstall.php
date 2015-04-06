@@ -21,7 +21,7 @@ try {
 }
 
 # Get Sale Infromation
-$sql = $db->prepare("SELECT CAddress,CName FROM Install WHERE SoftwareID=? LIMIT 1");
+$sql = $db->prepare("SELECT CAddress,CName, ServiceCost FROM Install WHERE SoftwareID=? LIMIT 1");
 $sql->bindValue(1, $_GET["ProductID"]);
 $sql->execute();
 $rows["Install"] = $sql->fetch(PDO::FETCH_ASSOC);

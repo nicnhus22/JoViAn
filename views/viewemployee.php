@@ -52,6 +52,20 @@ $commissionToDate = number_format($commission["sum"] * ($row["Commission"]/100),
     <!-- Navigation -->
     <?php menu(); ?>
 
+    <div class="modal fade" id="serviceModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times-circle"></i></button>
+                    <h4 class="modal-title" id="activity_title"></h4>
+                </div>
+                <div class="modal-body col-lg-12">
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <div id="page-wrapper">
