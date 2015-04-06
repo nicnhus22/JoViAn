@@ -118,8 +118,8 @@ $lastName = $nameArray[1];
 
             <form method="POST" class="form-signin" id="edit_employee_form" accept-charset="UTF-8" action="">
             <div class="row">
-                <div class="col-sm-4">
-                    <img class="img-responsive" src="../assets/img/andrew.jpg">
+                <div class="col-sm-4"> <!--src="../assets/img/andrew.jpg-->
+                    <img class="img-responsive img-circle" id="employee_pic" src="">
                 </div>
                 <div class="col-sm-4">
 
@@ -263,6 +263,18 @@ $lastName = $nameArray[1];
 <!-- /#wrapper -->
 
 <?php scripts() ?>
+<script type="text/javascript">
+
+$.ajax({
+  url: 'http://api.randomuser.me/',
+  dataType: 'json',
+  success: function(data){
+    $("#employee_pic").attr("src",data.results[0].user.picture.large);
+  }
+});
+    
+</script>
+
 <script type="text/javascript">
 
     $(document).ready(function(){
