@@ -64,7 +64,7 @@ if($ProductType == "laptop"){
     <div id="page-wrapper">
 
         <div class="container-fluid">
-
+            <input type="hidden" id="prodID" value="<?php echo $ProductID?>">
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
@@ -163,11 +163,11 @@ if($ProductType == "laptop"){
             </div>
 
             <ul class="nav nav-tabs">
-                <li role="presentation" class="tab active"><a class="activityTab" id="Sale" href="#Sales">Sales</a></li>
-                <li role="presentation"><a class="activityTab" id="OnlineSale" href="#OnlineSales">Online Sales</a></li>
-                <li role="presentation"><a class="activityTab" id="Repair" href="#Repairs" href="#">Repairs</a></li>
-                <li role="presentation"><a class="activityTab" id="Upgrade" href="#Upgrades">Upgrades</a></li>
-                <li role="presentation"><a class="activityTab" id="Install" href="#Installs">Installs</a></li>
+                <li role="presentation" class="tab active"><a class="itemActivityTab" id="Sale" href="#Sales">Sales</a></li>
+                <li role="presentation"><a class="itemActivityTab" id="OnlineSale" href="#OnlineSales">Online Sales</a></li>
+                <li role="presentation"><a class="itemActivityTab" id="Repair" href="#Repairs" href="#">Repairs</a></li>
+                <li role="presentation"><a class="itemActivityTab" id="Upgrade" href="#Upgrades">Upgrades</a></li>
+                <li role="presentation"><a class="itemActivityTab" id="Install" href="#Installs">Installs</a></li>
             </ul>
 
             <div class="row">
@@ -262,7 +262,8 @@ if($ProductType == "laptop"){
 
     $(document).ready(function(){
 
-        renderTable("Sale");
+        getPartRecords(<?php echo $_GET["id"] . "," ?>"Sale");
+
 
         var d = new Date();
 
