@@ -101,7 +101,7 @@
                <div class="row">
                   <div class="col-xs-8">
                      <div class=" form-group input-group">
-                        <input type="text" id="" class="form-control" placeholder="Search Inventory...">
+                        <input type="text" id="search_table" class="form-control" placeholder="Search Inventory...">
                         <span class="input-group-btn">
                         <button class="btn btn-default" type="button">
                         <i class="fa fa-search"></i>
@@ -332,5 +332,13 @@
   
          
       </script>
+      <script type="text/javascript">
+        $(document).ready(function(){
+            $('table.table').tableSearch({
+                searchText:'Search Table',
+                searchPlaceHolder:'Input Value'
+            });
+        });
+</script>
    </body>
 </html>
