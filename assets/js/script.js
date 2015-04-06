@@ -423,7 +423,7 @@ function sellItem(id, type, isRepair) {
 $(document).on('change', '#service', function() {
     if($("#service").is(':checked')) {
 
-        var price = parseFloat($("#price").html()) + 2.99;
+        var price = parseFloat($("#price").html()) + 14.99;
         var pst = getPst(price);
         var gst = getGst(price)
         var total = price + gst + pst;
