@@ -135,8 +135,58 @@ if($ProductType == "laptop"){
 
             </form><!-- /form -->
 
+            <h2>Activity History</h2>
+
+            <hr>
+
+            <div class="row">
+
+                <div class="col-lg-2">
+                    <div class="form-group">
+                        <input id="beginDate" class="datepicker form-control" type="text" placeholder="1990-01-01">
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <div class="form-group">
+                        <input id="endDate" class="datepicker form-control" type"text"  placeholder="2015-01-01">
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <button id="goActivity" class="btn btn-sm btn-success">
+                        <span class="fa fa-fw fa-arrow-right" style="vertical-align:middle"></span>
+                        Go
+                    </button>
+                </div>
+
+            </div>
+
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="tab active"><a class="activityTab" id="Sale" href="#Sales">Sales</a></li>
+                <li role="presentation"><a class="activityTab" id="OnlineSale" href="#OnlineSales">Online Sales</a></li>
+                <li role="presentation"><a class="activityTab" id="Repair" href="#Repairs" href="#">Repairs</a></li>
+                <li role="presentation"><a class="activityTab" id="Upgrade" href="#Upgrades">Upgrades</a></li>
+                <li role="presentation"><a class="activityTab" id="Install" href="#Installs">Installs</a></li>
+            </ul>
+
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="table-responsive">
+                        <table id="activityTable" class="table table-bordered table-hover" style="border: 0px;">
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+
         </div>
         <!-- /.container-fluid -->
+
+
+
 
     </div>
     <!-- /#page-wrapper -->
@@ -208,6 +258,19 @@ if($ProductType == "laptop"){
         if(type=="HD") $("span#type").html("GB");
         if(type=="RAM") $("span#type").html("GB");
         if(type=="CPU") $("span#type").html("MHz");
+    });
+
+    $(document).ready(function(){
+
+        renderTable("Sale");
+
+        var d = new Date();
+
+
+        $('#endDate').attr("placeholder", d.getFullYear() + '-' +
+            ((d.getMonth()+1) < 10 ? '0' : '') + (d.getMonth()+1) + '-' +
+            (d.getDay() < 10 ? '0' : '') + d.getDay());
+
     });
 </script>
 
