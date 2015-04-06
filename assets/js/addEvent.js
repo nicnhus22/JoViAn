@@ -60,6 +60,72 @@ $(document).ready(function () {
 		return false;
 	});
 
+    /**                                *
+     *            HANDLE EDIT EMPLOYEE        *
+     *                                */
+    $('#editEmployeeSubmit').click(function () {
+        var valid = true;
+
+        var firstName 	= $("#firstName").val();
+        var lastName 	= $("#lastName").val();
+        var commission  = $("#commission").val();
+        var annualPay  	= $("#annualPay").val();
+        var seniority   = $("#privilege").val();
+        var email   = $("#email").val();
+        var username   = $("#username").val();
+        var empID   = $("#empID").val();
+
+        if (username == "") {
+            $("#username").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
+        }else{
+            $("#username").css("border","1px solid #ccc");
+        }
+        if (email == "") {
+            $("#email").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
+        }else{
+            $("#email").css("border","1px solid #ccc");
+        }
+        if (firstName == "") {
+            $("#firstName").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
+        }else{
+            $("#firstName").css("border","1px solid #ccc");
+        }
+        if(lastName == ""){
+            $("#lastName").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
+        }else {
+            $("#lastName").css("border","1px solid #ccc");
+        }
+        if(!validNumbers(commission)){
+            $("#commission").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
+        }else {
+            $("#commission").css("border","1px solid #ccc")
+        }
+        if(!validNumbers(annualPay)){
+            $("#annualPay").css("border","1px solid rgba(255,0,0,0.5)"); valid = false;
+        }else {
+            $("#annualPay").css("border","1px solid #ccc");
+        }
+
+        if(valid){
+            var dataString = 'firstName=' + firstName + '&username=' + username  + '&email=' + email  + '&id=' + empID  + '&lastName=' + lastName+'&commission=' + commission+ '&annualPay=' + annualPay + '&seniority='+seniority;
+
+            $.ajax({
+                type: "POST",
+                url: "../includes/updateEmployee.php",
+                data: dataString,
+                cache: false,
+                success: function(data){
+                    if (data == '1'){
+                        window.location.href = "employees.php";
+                    }else{
+                        console.log(data);
+                    }
+                }
+            });
+        }
+
+        return false;
+    });
 
 
 

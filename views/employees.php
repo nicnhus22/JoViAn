@@ -127,8 +127,8 @@ $employees = $sql->fetchAll();
                                             <td>'.$employee["Commission"].' %</td>
                                             <td>'.$employee["DOE"].'</td>
                                             <td>
-                                                <button class="btn btn-xs btn-success" onclick="route_viewEmployee('. $employee["ID"] .')">
-                                                    <span class="fa fa-fw fa-eye"  style="vertical-align:middle"></span> View
+                                                <button class="btn btn-xs btn-warning" onclick="route_viewEmployee('. $employee["ID"] .')">
+                                                    <span class="fa fa-fw fa-edit"  style="vertical-align:middle"></span> Edit/View
                                                 </button>
 
                                                 <button onclick="deleteRow(this,'.$employee['ID'].')" class="btn btn-xs btn-danger">

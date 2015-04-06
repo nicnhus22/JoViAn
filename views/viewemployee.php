@@ -35,6 +35,11 @@ $commission = $sql->fetch(PDO::FETCH_ASSOC);
 
 $commissionToDate = number_format($commission["sum"] * ($row["Commission"]/100), 2, '.', '');
 
+$nameArray =  explode(" ", $row["Name"]);
+
+$firstName = $nameArray[0];
+$lastName = $nameArray[1];
+
 ?>
 
 <!DOCTYPE html>
@@ -110,29 +115,95 @@ $commissionToDate = number_format($commission["sum"] * ($row["Commission"]/100),
 
             <hr>
 
+
+            <form method="POST" class="form-signin" id="edit_employee_form" accept-charset="UTF-8" action="">
             <div class="row">
                 <div class="col-sm-4">
                     <img class="img-responsive" src="../assets/img/andrew.jpg">
                 </div>
                 <div class="col-sm-4">
-                    <ul class="list-group">
-                        <li class="list-group-item">Employee ID: <span id="empID"><?= $row["ID"]?></span></li>
-                        <li class="list-group-item">Name: <?= $row["Name"]?> </li>
-                        <li class="list-group-item">Email: <?= $row["email"]?> </li>
-                        <li class="list-group-item">Username: <?= $row["username"]?> </li>
-                    </ul>
+
+
+
+                        <fieldset disabled="">
+                            <div class="form-group">
+                                <label for="disabledSelect">Employee ID</label>
+                                <input class="form-control" id="empID" type="text" value="<?= $row["ID"]?>" disabled="">
+                            </div>
+                        </fieldset>
+
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input class="form-control" value="<?= $firstName ?>" id="firstName" name="firstName">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input class="form-control" value="<?= $lastName ?>" id="lastName" name="lastName">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input class="form-control" value="<?= $row["email"] ?>" id="email" name="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label>User Name</label>
+                            <input class="form-control" value="<?= $row["username"] ?>" id="username" name="username">
+                        </div>
+
+
                 </div>
 
                 <div class="col-sm-4">
-                    <ul class="list-group">
-                        <li class="list-group-item">Seniority: <?= $row["privelege"]?> </li>
-                        <li class="list-group-item">Date of Hire: <?= $row["DOE"]?></li>
-                        <li class="list-group-item">Service Commission: <?= $row["Commission"]?> %</li>
-                        <li class="list-group-item">Yearly Salary: <?= $row["AnnualPay"]?> $</li>
-                        <li class="list-group-item">Commision To Date:<b> <?= $commissionToDate ?> $</b></li>
-                    </ul>
+
+                    <div class="form-group">
+                        <label>Seniority</label>
+                        <select class="form-control" name="privilege" id="privilege">
+                            <option value="admin" <?php if ($row["privelege"] == "admin") echo "selected"; else echo "";?>>Admin</option>
+                            <option value="regular" <?php if ($row["privelege"] == "regular") echo "selected"; else echo "";?>>Regular</option>
+                        </select>
+                    </div>
+
+                    <fieldset disabled="">
+                        <div class="form-group">
+                            <label for="disabledSelect">Date of Hire</label>
+                            <input class="form-control" id="disabledInput2" type="text" placeholder="<?= $row["DOE"]?>" disabled="">
+                        </div>
+                    </fieldset>
+
+
+
+                        <div class="form-group">
+                            <label>Service Commission</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="commission" value="<?= $row["Commission"]?>" name="commission" style="  z-index: 0;">
+                                <div class="input-group-addon">%</div>
+                            </div>
+                        </div>
+
+                    <div class="form-group">
+                        <label>Annual Salary</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="annualPay" value="<?= $row["AnnualPay"]?>" name="annualPay" style="  z-index: 0;">
+                            <div class="input-group-addon">$</div>
+                        </div>
+                    </div>
+
+                    <fieldset disabled="">
+                        <div class="form-group">
+                            <label for="disabledSelect">Commission To Date</label>
+                            <input class="form-control" id="disabledInput3" type="text" placeholder="<?= $commissionToDate?>" disabled="">
+                        </div>
+                    </fieldset>
+
+                    <button class="col-sm-offset-6 btn btn-warning col-sm-6" type="submit" name="submit" id="editEmployeeSubmit">
+                        <span class="fa fa-fw fa-save" style="vertical-align:middle"></span> Save Changes
+                    </button>
                 </div>
             </div>
+
+            </form>
 
             <h2>Activity History</h2>
 
