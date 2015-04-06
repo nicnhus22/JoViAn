@@ -22,72 +22,88 @@ try {
 
 
 
-$ID = $_POST["id"];
-$TYPE = $_POST["type"];
-$CADDR = $_POST["caddr"];
-$CNAME = $_POST["cname"];
-$EMPID = $_SESSION["id"];
-$TODAY = getDate();
-$TODAYSTRING = $TODAY["year"] . "-" . $TODAY["mon"] . "-" . $TODAY["mday"];
+$id = $_POST["id"];
+$type = $_POST["type"];
+$custAdd = $_POST["caddr"];
+$custName = $_POST["cname"];
+$empID = $_SESSION["id"];
+$date = getDate();
+$dateString = $date["year"] . "-" . $date["mon"] . "-" . $date["mday"];
 
 try {
 
     $sql = $db->prepare("INSERT INTO Sale (ProductID, EmployeeID, Date, CName, CAddress) VALUES (?, ?, ?, ?, ?)");
 
-    $sql->bindValue(1, $ID);
-    $sql->bindValue(2, $EMPID);
-    $sql->bindValue(3, $TODAYSTRING);
-    $sql->bindValue(4, $CNAME);
-    $sql->bindValue(5, $CADDR);
+    $sql->bindValue(1, $id);
+    $sql->bindValue(2, $empID);
+    $sql->bindValue(3, $dateString);
+    $sql->bindValue(4, $custName);
+    $sql->bindValue(5, $custAdd);
     $sql->execute();
 
-    if($TYPE == "Laptop") {
+    if($type == "Laptop" && !$_POST["service"]) {
         $sql = $db->prepare("UPDATE Laptop SET Quantity = Quantity - 1 WHERE ID = ?");
     }
 
-    else if($TYPE == "PC"){
+    else if($type == "PC" && !$_POST["service"]){
         $sql = $db->prepare("UPDATE PC SET Quantity = Quantity - 1 WHERE ID = ?");
     }
 
-    else if($TYPE == "Part"){
+    else if($type == "Part"){
         $sql = $db->prepare("UPDATE Part SET Quantity = Quantity - 1 WHERE ID = ?");
     }
 
-    else if($TYPE == "Software"){
+    else if($type == "Software"){
         $sql = $db->prepare("UPDATE Software SET Quantity = Quantity - 1 WHERE ID = ?");
     }
 
-    $sql->bindValue(1, $ID);
+    $sql->bindValue(1, $id);
     $sql->execute();
 
     if($_POST["service"]) {
-        $SERVICECOST = $_POST["serviceCost"];
+        $serviceCost = $_POST["serviceCost"];
 
         if($_POST["service"] == "Install") {
 
             $sql = $db->prepare("INSERT INTO Install (SoftwareID, EmployeeID, Date, CName, CAddress, ServiceCost) VALUES(?,?,?,?,?,?)");
 
-            $sql->bindValue(1, $ID);
-            $sql->bindValue(2, $EMPID);
-            $sql->bindValue(3, $TODAYSTRING);
-            $sql->bindValue(4, $CNAME);
-            $sql->bindValue(5, $CADDR);
-            $sql->bindValue(6, $SERVICECOST);
+            $sql->bindValue(1, $id);
+            $sql->bindValue(2, $empID);
+            $sql->bindValue(3, $dateString);
+            $sql->bindValue(4, $custName);
+            $sql->bindValue(5, $custAdd);
+            $sql->bindValue(6, $serviceCost);
             $sql->execute();
 
         } else if ($_POST["service"] == "Upgrade") {
 
-            $COMPID = $_POST["compID"];
+            $compID = $_POST["compID"];
 
             $sql = $db->prepare("INSERT INTO Upgrade (ComputerID, EmployeeID, Date, CName, CAddress, ServiceCost, PartID) VALUES(?,?,?,?,?,?,?)");
 
-            $sql->bindValue(1, $COMPID);
-            $sql->bindValue(2, $EMPID);
-            $sql->bindValue(3, $TODAYSTRING);
-            $sql->bindValue(4, $CNAME);
-            $sql->bindValue(5, $CADDR);
-            $sql->bindValue(6, $SERVICECOST);
-            $sql->bindValue(7, $ID);
+            $sql->bindValue(1, $compID);
+            $sql->bindValue(2, $empID);
+            $sql->bindValue(3, $dateString);
+            $sql->bindValue(4, $custName);
+            $sql->bindValue(5, $custAdd);
+            $sql->bindValue(6, $serviceCost);
+            $sql->bindValue(7, $id);
+            $sql->execute();
+
+        } else if ($_POST["service"] == "Repair") {
+
+            $repairDesc = $_POST["desc"];
+
+            $sql = $db->prepare("INSERT INTO Repair (ComputerID, EmployeeID, Date, CName, CAddress, Type, ServiceCost) VALUES(?,?,?,?,?,?,?)");
+
+            $sql->bindValue(1, $id);
+            $sql->bindValue(2, $empID);
+            $sql->bindValue(3, $dateString);
+            $sql->bindValue(4, $custName);
+            $sql->bindValue(5, $custAdd);
+            $sql->bindValue(6, $repairDesc);
+            $sql->bindValue(7, $serviceCost);
+
             $sql->execute();
 
         }

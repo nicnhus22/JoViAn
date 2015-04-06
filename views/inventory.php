@@ -149,12 +149,12 @@
                                                <td>' . $Laptop["Price"] . '</td>
                                                <td>' . $Laptop["Quantity"] . '</td>
                                                <td>
-                                                <button class="btn btn-xs btn-success">
-                                                  <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View
-                                                </button>
-                                                <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Laptop["ID"] . ',&#39Laptop&#39)">
+                                                <button class="btn btn-xs btn-success' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Laptop["ID"] . ',&#39Laptop&#39, false)">
                                                   <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
-                                                </button> ';
+                                                </button>
+                                                <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Laptop["ID"] . ',&#39Laptop&#39, true)">
+                                                  <span class="fa fa-fw fa-wrench" style="vertical-align:middle"></span>Repair
+                                                </button>';
                                  
                                      if ($_SESSION["privelege"] == "admin") {
                                           echo '<button class="btn btn-xs btn-warning" onclick="editProduct('.$Laptop["ID"].',1)">
@@ -180,10 +180,7 @@
                                                <td>' . $Part["Price"] . '</td>
                                                <td>' . $Part["Quantity"] . '</td>
                                                <td>
-                                                <button class="btn btn-xs btn-success">
-                                                 <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View
-                                                </button>
-                                                <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Part["ID"] . ',&#39Part&#39)">
+                                                <button class="btn btn-xs btn-success' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Part["ID"] . ',&#39Part&#39, false)">
                                                   <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
                                                 </button> ';
                                      if ($_SESSION["privelege"] == "admin") {
@@ -210,12 +207,13 @@
                                                <td>' . $PC["Price"] . '</td>
                                                <td>' . $PC["Quantity"] . '</td>
                                                <td>
-                                                <button class="btn btn-xs btn-success">
-                                                 <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View
-                                                </button>
-                                                <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $PC["ID"] . ',&#39PC&#39)">
+
+                                                <button class="btn btn-xs btn-success' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $PC["ID"] . ',&#39PC&#39, false)">
                                                  <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
-                                                </button> ';
+                                                </button>
+                                                <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Laptop["ID"] . ',&#39Laptop&#39, true)">
+                                                 <span class="fa fa-fw fa-wrench" style="vertical-align:middle"></span>Repair
+                                                </button>';
                                  
                                      if ($_SESSION["privelege"] == "admin") {
                                          echo '<button class="btn btn-xs btn-warning" onclick="editProduct('.$PC["ID"].',3)">
@@ -241,10 +239,7 @@
                                                              <td>' . $Software["Price"] . '</td>
                                                              <td>' . $Software["Quantity"] . '</td>
                                                              <td>
-                                                               <button class="btn btn-xs btn-success">
-                                                                 <span class="fa fa-fw fa-external-link" style="vertical-align:middle"></span>View
-                                                               </button>
-                                                               <button class="btn btn-xs btn-info' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Software["ID"] . ',&#39Software&#39)">
+                                                               <button class="btn btn-xs btn-success' . $disabled . '" data-toggle="modal" data-target="#serviceModal" onclick="updateServiceModal(' . $Software["ID"] . ',&#39Software&#39, false)">
                                                                  <span class="fa fa-fw fa-usd" style="vertical-align:middle"></span> Sell
                                                                </button> ';
                                  

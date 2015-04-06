@@ -175,7 +175,7 @@ function renderTable(type) {
 
 }
 
-function updateServiceModal(id, type) {
+function updateServiceModal(id, type, isRepair) {
 
 
     $.ajax({
@@ -186,14 +186,16 @@ function updateServiceModal(id, type) {
 
             var detailTrs = '';
             var saleTrs = '';
-            var price = parseFloat(item.Price);
-            var pst = (9.975 / 100) * price;
-            var gst = (5 / 100) * price;
-            var total = price + gst + pst;
+            var price;
+            var pst;
+            var gst;
+            var total;
+            var salesPanelTitle;
+            var modalFooter;
 
             $("#myModalLabel").html('<h3>' + item.Name + '</h3>')
 
-            if (type == "Laptop" || type == "PC") {
+            if (type == "Laptop" || type == "PC" || isRepair) {
                 detailTrs += '<tr><td>Processor</td><td>' + item.CPU + ' Ghz</td></tr>';
                 detailTrs += '<tr><td>RAM</td><td>' + item.RAM + ' G</td></tr>';
                 detailTrs += '<tr><td>HD</td><td>' + item.HD + ' G</td></tr>';
@@ -219,13 +221,53 @@ function updateServiceModal(id, type) {
                     detailTrs += '<tr><td>Size</td><td>' + item.Value + ' in</td></tr>';
                 }
                 detailTrs += '<tr><td></td><td><div class="checkbox" style="margin: 0;"><label><input id="service" type="checkbox" value="Upgrade">Upgrade Existing Computer</label></div></td></tr>';
+            }
+
+            if(isRepair) {
+                price = 49.99;
+                pst = getPst(price);
+                gst = getGst(price);
+                total = price + gst + pst;
+                salesPanelTitle = "Repair Summary";
+                saleTrs += '<tr><td>' +
+                    '<select id="repairSelect" class="">' +
+                        '<option>Hardware: CPU Replacement</option>' +
+                        '<option>Hardware: Mother</option>' +
+                        '<option>Hardware: Graphic Card Ventilator Replacement</option>' +
+                        '<option>Hardware: HD Replacement</option>' +
+                        '<option>Software: Malware Clean up</option>' +
+                        '<option>Software: Virus Clean up</option>' +
+                        '<option>Software: OS Reinstall</option>' +
+                        '<option>Software: OS Reinstall</option>' +
+                    '</select>'
+
+                    +
+                    '</td><td><button onclick="refreshSale()" class="btn btn-xs btn-success"><span class="fa fa-fw fa-refresh" style="vertical-align:middle"></span></button></td><td>$ <input style="width:50px; margin:0; border: none;" type="text" id="serviceCost" value="49.99"></td></tr>';
+
+                    modalFooter =   '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
+                                    '<button onclick="sellItem(' + id + ',&#39' + type + '&#39, true)" id="processBtn" type="button" class="btn btn-primary">Process</button>';
+
+            }
+            else {
+
+                price = parseFloat(item.Price);
+                pst = getPst(price);
+                gst = getGst(price);
+                total = price + gst + pst;
+                salesPanelTitle = "Sale Summary";
+
+                saleTrs += '<tr><td>' + item.Name + '</td><td></td><td>$ ' + '<span id="price">' +item.Price + '</span></td></tr>';
+
+                modalFooter =   '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
+                    '<button onclick="sellItem(' + id + ',&#39' + type + '&#39, false)" id="processBtn" type="button" class="btn btn-primary">Process</button>';
 
             }
 
-            saleTrs += '<tr><td>' + item.Name + '</td><td></td><td>$ ' + '<span id="price">' +item.Price + '</span></td></tr>';
             saleTrs += '<tr id="pst"><td></td><td>PST</td><td>$ ' + '<span id="pstTax">'+pst.toFixed(2) + '</span></td></tr>';
             saleTrs += '<tr><td></td><td>GST</td><td>$ ' + '<span id="gstTax">'+gst.toFixed(2) + '</span></td></tr>';
             saleTrs += '<tr><td></td><td>Total</td><td>$ ' + '<span id="total">'+total.toFixed(2) + '</span></td></tr>';
+
+
 
             $(".modal-body").html(
                 '<div class="modal-body col-lg-12">' +
@@ -253,7 +295,7 @@ function updateServiceModal(id, type) {
                     '<div class="col-lg-12">' +
                     '<div class="panel panel-green">' +
                     '<div class="panel-heading">' +
-                    '<h3 class="panel-title">Sale Summary</h3>' +
+                    '<h3 class="panel-title">'+salesPanelTitle+'</h3>' +
                     '</div>' +
                     '<div class="panel-body" style="padding: 0;">' +
                     '<div class="table-responsive">' +
@@ -292,26 +334,24 @@ function updateServiceModal(id, type) {
                     '</div>'
             );
 
-
+            $(".modal-footer").html(modalFooter);
         }
+
+
     });
 
-    $(".modal-footer").html(
 
-        '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
-            '<button onclick="sellItem(' + id + ',&#39' + type + '&#39)" id="processBtn" type="button" class="btn btn-primary">Process</button>'
-    );
 
 
 }
 
-function sellItem(id, type) {
+function sellItem(id, type, isRepair) {
 
     var valid = true;
     var focus = "";
     var cname = $("#cname").val();
     var caddr = $("#caddr").val();
-    var service = $("#service").val();
+    var service;
 
     if (cname == "") {
         $("#cname").css("border", "1px solid rgba(255,0,0,0.5)");
@@ -330,12 +370,11 @@ function sellItem(id, type) {
     }
 
     if (valid) {
-
-
         dataString = "id=" + id + "&type=" + type + "&cname=" + cname + "&caddr=" + caddr;
 
 
         if($("#service").is(':checked')) {
+            service = $("#service").val();
             dataString += "&service=" + service + "&serviceCost=" + parseFloat($("#serviceCost").val());
 
             if($("#service").val() == "Upgrade") {
@@ -344,6 +383,16 @@ function sellItem(id, type) {
             }
 
         }
+
+        if(isRepair) {
+            console.log(isRepair);
+            dataString += "&service=Repair&serviceCost=" + parseFloat($("#serviceCost").val());
+            dataString += "&desc=" + $( "#repairSelect option:selected").text();
+        }
+
+
+
+
 
         $.ajax({
             type: "POST",
@@ -389,7 +438,7 @@ $(document).on('change', '#service', function() {
             console.log("Upgrade");
             $('<tr id="serviceRow"><td>Upgrade</td><td>' +
                 ' <button onclick="refreshSale()" class="btn btn-xs btn-success"><span class="fa fa-fw fa-refresh" style="vertical-align:middle"></span></button>' +
-                '</td><td>$ <input style="width:50px; margin:0; border: none;" type="text" id="serviceCost" value="4.99"></td></tr>').insertBefore('#pst');
+                '</td><td>$ <input style="width:50px; margin:0; border: none;" type="text" id="serviceCost" value="14.99"></td></tr>').insertBefore('#pst');
 
             $.ajax({
                 type: "GET",
@@ -443,8 +492,14 @@ function getGst(price) {
 }
 
 function refreshSale() {
+    var price;
 
-    var price = parseFloat($("#price").html()) + parseFloat($("#serviceCost").val());
+    if($("#price").length) {
+        price = parseFloat($("#price").html()) + parseFloat($("#serviceCost").val());
+    }
+    else {
+        price = parseFloat($("#serviceCost").val());
+    }
     var pst = getPst(price);
     var gst = getGst(price)
     var total = price + gst + pst;
