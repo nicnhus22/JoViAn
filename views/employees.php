@@ -124,7 +124,7 @@ $employees = $sql->fetchAll();
                                         <tr>
                                             <td>'.$employee["ID"].'</td>
                                             <td>'.$employee["Name"].'</td>
-                                            <td>'.$employee["Commission"].'</td>
+                                            <td>'.$employee["Commission"].' %</td>
                                             <td>'.$employee["DOE"].'</td>
                                             <td>
                                                 <button class="btn btn-xs btn-success" onclick="route_viewEmployee('. $employee["ID"] .')">

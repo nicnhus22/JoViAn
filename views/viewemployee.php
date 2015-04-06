@@ -28,6 +28,12 @@ $sql->bindValue(1, $ID);
 $sql->execute();
 $row = $sql->fetch(PDO::FETCH_ASSOC);
 
+$sql = $db->prepare("SELECT (SELECT SUM(ServiceCost) FROM (SELECT ServiceCost, EmployeeID FROM Install UNION SELECT ServiceCost, EmployeeID FROM Repair UNION SELECT ServiceCost, EmployeeID FROM Upgrade) AS NewTable WHERE NewTable.EmployeeID = ?) as sum");
+$sql->bindValue(1, $ID);
+$sql->execute();
+$commission = $sql->fetch(PDO::FETCH_ASSOC);
+
+$commissionToDate = number_format($commission["sum"] * ($row["Commission"]/100), 2, '.', '');
 
 ?>
 
@@ -109,6 +115,7 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
                         <li class="list-group-item">Date of Hire: <?= $row["DOE"]?></li>
                         <li class="list-group-item">Service Commission: <?= $row["Commission"]?> %</li>
                         <li class="list-group-item">Yearly Salary: <?= $row["AnnualPay"]?> $</li>
+                        <li class="list-group-item">Commision To Date:<b> <?= $commissionToDate ?> $</b></li>
                     </ul>
                 </div>
             </div>
