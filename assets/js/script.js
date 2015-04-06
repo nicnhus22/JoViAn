@@ -338,6 +338,11 @@ function sellItem(id, type) {
         if($("#service").is(':checked')) {
             dataString += "&service=" + service + "&serviceCost=" + parseFloat($("#serviceCost").val());
 
+            if($("#service").val() == "Upgrade") {
+                console.log($("#computerSelect").val());
+                dataString += "&compID=" + $("#computerSelect").val();
+            }
+
         }
 
         $.ajax({
@@ -346,6 +351,7 @@ function sellItem(id, type) {
             data: dataString,
             cache: false,
             success: function (data) {
+                console.log(data);
                 if(data == 1) {
                     $(".modal-footer").html(
                         '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
@@ -374,14 +380,16 @@ $(document).on('change', '#service', function() {
         var total = price + gst + pst;
 
         if($("#service").val() == "Install") {
+            console.log("install");
             $('<tr id="serviceRow"><td>Install</td><td>' +
                 ' <button onclick="refreshSale()" class="btn btn-xs btn-success"><span class="fa fa-fw fa-refresh" style="vertical-align:middle"></span></button>' +
                 '</td><td>$ <input style="width:50px; margin:0; border: none;" type="text" id="serviceCost" value="2.99"></td></tr>').insertBefore('#pst');
         }
         else if ($("#service").val() == "Upgrade") {
+            console.log("Upgrade");
             $('<tr id="serviceRow"><td>Upgrade</td><td>' +
                 ' <button onclick="refreshSale()" class="btn btn-xs btn-success"><span class="fa fa-fw fa-refresh" style="vertical-align:middle"></span></button>' +
-                '</td><td>$ <input style="width:50px; margin:0; border: none;" type="text" id="serviceCost" value="2.99"></td></tr>').insertBefore('#pst');
+                '</td><td>$ <input style="width:50px; margin:0; border: none;" type="text" id="serviceCost" value="4.99"></td></tr>').insertBefore('#pst');
 
             $.ajax({
                 type: "GET",

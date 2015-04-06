@@ -65,8 +65,6 @@ try {
 
         if($_POST["service"] == "Install") {
 
-            echo 'yeeee dawg';
-
             $sql = $db->prepare("INSERT INTO Install (SoftwareID, EmployeeID, Date, CName, CAddress, ServiceCost) VALUES(?,?,?,?,?,?)");
 
             $sql->bindValue(1, $ID);
@@ -77,12 +75,28 @@ try {
             $sql->bindValue(6, $SERVICECOST);
             $sql->execute();
 
+        } else if ($_POST["service"] == "Upgrade") {
+
+            $COMPID = $_POST["compID"];
+
+            $sql = $db->prepare("INSERT INTO Upgrade (ComputerID, EmployeeID, Date, CName, CAddress, ServiceCost, PartID) VALUES(?,?,?,?,?,?,?)");
+
+            $sql->bindValue(1, $COMPID);
+            $sql->bindValue(2, $EMPID);
+            $sql->bindValue(3, $TODAYSTRING);
+            $sql->bindValue(4, $CNAME);
+            $sql->bindValue(5, $CADDR);
+            $sql->bindValue(6, $SERVICECOST);
+            $sql->bindValue(7, $ID);
+            $sql->execute();
+
         }
 
 
 
     }
 
+    print_r($_POST);
 
 } catch (PDOException $e) {
     echo 1;

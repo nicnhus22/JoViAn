@@ -20,7 +20,7 @@ try {
     die();
 }
 
-$sql = $db->prepare("SELECT Name FROM Laptop UNION SELECT Name FROM PC");
+$sql = $db->prepare("SELECT Name, ID FROM Laptop UNION SELECT Name, ID FROM PC");
 $sql->execute();
 $rows = $sql->fetchAll();
 
