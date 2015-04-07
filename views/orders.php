@@ -53,25 +53,12 @@
                      </ol>
                   </div>
                </div>
-               <!-- /.row -->
-               <div class="row">
-                  <div class="col-lg-12">
-                     <button class="btn btn-success">
-                     <span class="fa fa-fw fa-plus-circle" style="vertical-align:middle"></span> New Order
-                     </button>
-                  </div>
-               </div>
+
                <hr>
                <div class="row">
                </div>
                <div class="row">
-                  <div class="col-lg-7">
-                     <div class=" form-group input-group">
-                        <input type="text" class="form-control" value="Search Activitiy History ...">
-                        <span class="input-group-btn"><button class="btn btn-default" type="button"><i
-                           class="fa fa-search"></i></button></span>
-                     </div>
-                  </div>
+
                   <div class="col-lg-2">
                      <div class="form-group">
                         <input id="beginDate" class="datepicker form-control" type="text" placeholder="1990-01-01">
