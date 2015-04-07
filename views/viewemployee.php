@@ -265,17 +265,8 @@ $lastName = $nameArray[1];
 <?php scripts() ?>
 <script type="text/javascript">
 
-$.ajax({
-    url: "https://api.randomuser.me/",
-    beforeSend: function( xhr ) {
-    xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
-    }
-}).done(function( data ) {
-    if ( console && console.log ) {
-      var ppl = JSON.parse(data);
-      $("#employee_pic").attr("src",ppl.results[0].user.picture.large);
-    }
-});
+var number = Math.floor((Math.random() * 20) + 1);
+$("#employee_pic").attr("src","../assets/img/people/"+number+".jpg");
 
 </script>
 
