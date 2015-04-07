@@ -128,13 +128,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="inventory.php">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Inventory</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
+                            <?php 
+                                if ($_SESSION["privelege"] == 'admin') {
+                                    echo '<a href="inventory.php">
+                                                <div class="panel-footer">
+                                                    <span class="pull-left">View Inventory</span>
+                                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </a>';
+                                } 
+                            ?>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
@@ -150,13 +154,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="employees.php">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Employees</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
+                            <?php 
+                                if ($_SESSION["privelege"] == 'admin') {
+                                    echo '<a href="employees.php">
+                                                <div class="panel-footer">
+                                                    <span class="pull-left">View Employees</span>
+                                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </a>';
+                                } 
+                            ?>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
@@ -172,13 +180,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="orders.php">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Transactions</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
+                            <?php 
+                                if ($_SESSION["privelege"] == 'admin') {
+                                    echo '<a href="orders.php">
+                                                <div class="panel-footer">
+                                                    <span class="pull-left">View Transactions</span>
+                                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </a>';
+                                } 
+                            ?>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
@@ -194,13 +206,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="orders.php">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Analytics</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
+                            <?php 
+                                if ($_SESSION["privelege"] == 'admin') {
+                                    echo '<a href="orders.php">
+                                            <div class="panel-footer">
+                                                <span class="pull-left">View Orders</span>
+                                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </a>';
+                                } 
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -261,18 +277,28 @@
                                     <?php 
                                         $counter = 1;
                                         foreach($bestEmployees as $bestEmployee){
-
-                                            echo '<a href="viewemployee.php?ID='.$bestEmployee["ID"].'" class="list-group-item">
+                                            if ($_SESSION["privelege"] == 'admin') {
+                                                echo '<a href="viewemployee.php?ID='.$bestEmployee["ID"].'" class="list-group-item">
                                                     '.$counter.'. <i class="fa fa-fw fa-user"></i> '.$bestEmployee["Name"].' made '.$bestEmployee["SaleCount"].' ';
-                                            echo ($bestEmployee["SaleCount"] > 1 ? 'sales this week </a>' : 'sale this week </a>');
+                                                echo ($bestEmployee["SaleCount"] > 1 ? 'sales this week </a>' : 'sale this week </a>');
+                                            }else {
+                                                echo '<a href="" class="list-group-item">
+                                                    '.$counter.'. <i class="fa fa-fw fa-user"></i> '.$bestEmployee["Name"].' made '.$bestEmployee["SaleCount"].' ';
+                                                echo ($bestEmployee["SaleCount"] > 1 ? 'sales this week </a>' : 'sale this week </a>');
+                                            }
+                                            
                                             $counter++;
                                         }
                                     ?>
                                     
                                 </div>
-                                <div class="text-right">
-                                    <a href="employees.php">View All Employees <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
+                                <?php 
+                                    if ($_SESSION["privelege"] == 'admin') {
+                                        echo '<div class="text-right">
+                                                <a href="employees.php">View All Employees <i class="fa fa-arrow-circle-right"></i></a>
+                                            </div>';
+                                    } 
+                                ?>
                             </div>
                         </div>
                     </div>

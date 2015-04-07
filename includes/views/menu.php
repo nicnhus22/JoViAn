@@ -28,9 +28,6 @@ function menu()
                         <li>
                             <a href="viewemployee.php?ID='.$_SESSION["id"] .'"><i class="fa fa-fw fa-user"></i> Profile</a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
                         <li class="divider"></li>
                         <li>
                             <a href="../includes/logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
