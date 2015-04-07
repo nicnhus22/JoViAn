@@ -11,8 +11,6 @@ function head()
 
     echo '<meta charset="utf-8"/>
 
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-
         <!-- Bootstrap Core CSS -->
         <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 
