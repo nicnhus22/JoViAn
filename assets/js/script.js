@@ -690,6 +690,7 @@ function viewActivityDetails(type,productID,employeeID,partID){
                                         '<tbody>' +
                                             '<tr><td>Product Name</td><td>'+ dataAsJson.Product.Name+'</td></tr>'+
                                             '<tr><td>Product Price</td><td>'+dataAsJson.Product.Price+'$</td></tr>'+
+                                            '<tr><td>Employee Comission</td><td>'+parseFloat(parseFloat(dataAsJson.Employee.Commission)*parseFloat(dataAsJson.Product.Price)/100).toFixed(2)+'$</td></tr>'+
                                         '</tbody>' +
                                     '</table>' +
                                 '</div>' +
@@ -769,6 +770,7 @@ function viewActivityDetails(type,productID,employeeID,partID){
                                         '<tbody>' +
                                             '<tr><td>Product Name</td><td>'+ dataAsJson.Product.Name+'</td></tr>'+
                                             '<tr><td>Product Price</td><td>'+dataAsJson.Product.Price+'$</td></tr>'+
+                                            '<tr><td>Employee Comission</td><td>'+parseFloat(parseFloat(dataAsJson.Employee.Commission)*parseFloat(dataAsJson.Product.Price)/100).toFixed(2)+'$</td></tr>'+
                                         '</tbody>' +
                                     '</table>' +
                                 '</div>' +
@@ -861,6 +863,7 @@ function viewActivityDetails(type,productID,employeeID,partID){
                                         '<tbody>' +
                                             '<tr><td>Employee Name</td><td>'+dataAsJson.Employee.Name+'</td></tr>'+
                                             '<tr><td>Service Cost</td><td>'+dataAsJson.Repair.ServiceCost+' $</td></tr>'+
+                                            '<tr><td>Employee Comission</td><td>'+parseFloat(parseFloat(dataAsJson.Employee.Commission)*parseFloat(dataAsJson.Repair.ServiceCost)/100).toFixed(2)+'$</td></tr>'+
                                         '</tbody>' +
                                     '</table>' +
                                 '</div>' +
@@ -937,6 +940,7 @@ function viewActivityDetails(type,productID,employeeID,partID){
                                         '<tbody>' +
                                             '<tr><td>Employee Name</td><td>'+dataAsJson.Employee.Name+'</td></tr>'+
                                             '<tr><td>Service Cost</td><td>'+dataAsJson.Upgrade.ServiceCost+' $</td></tr>'+
+                                            '<tr><td>Employee Comission</td><td>'+parseFloat(parseFloat(dataAsJson.Employee.Commission)*parseFloat(dataAsJson.Upgrade.ServiceCost)/100).toFixed(2)+'$</td></tr>'+
                                         '</tbody>' +
                                     '</table>' +
                                 '</div>' +
@@ -1015,6 +1019,7 @@ function viewActivityDetails(type,productID,employeeID,partID){
                                         '<tbody>' +
                                             '<tr><td>Employee Name</td><td>'+dataAsJson.Employee.Name+'</td></tr>'+
                                             '<tr><td>Service Cost</td><td>'+dataAsJson.Install.ServiceCost+'</td></tr>'+
+                                            '<tr><td>Employee Comission</td><td>'+parseFloat(parseFloat(dataAsJson.Employee.Commission)*parseFloat(dataAsJson.Install.ServiceCost)/100).toFixed(2)+'$</td></tr>'+
                                         '</tbody>' +
                                     '</table>' +
                                 '</div>' +
