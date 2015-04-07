@@ -62,6 +62,17 @@
     $sql = $db->prepare("SELECT Name,SaleCount,ID FROM (SELECT EmployeeID, COUNT(*) AS SaleCount FROM Sale GROUP BY EmployeeID ORDER BY SaleCount DESC LIMIT 5) AS BestEmployee, Employee WHERE BestEmployee.EmployeeID = Employee.ID");
     $sql->execute();
     $bestEmployees = $sql->fetchAll();
+
+
+    # Fetch best employees
+    $sql = $db->prepare("SELECT * FROM Sale ORDER BY Date ASC");
+    $sql->execute();
+    $sales = $sql->fetchAll();
+
+    # Fetch best employees
+    $sql = $db->prepare("SELECT * FROM OnlineSale ORDER BY Date ASC");
+    $sql->execute();
+    $onlinesales = $sql->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -208,37 +219,24 @@
                 </div>
                 <!-- /.row -->
 
-                <!--    <div class="row">
+                <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Area Chart</h3>
+                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Online &amp; Regular Sales </h3>
                             </div>
                             <div class="panel-body">
-                                <div id="morris-area-chart"></div>
+                                <div id="morris-line-chart"></div>
                             </div>
                         </div>
                     </div>
-                </div>-->
+                </div>
 
                 <div class="row">
-<!--                     <div class="col-lg-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> Donut Chart</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div id="morris-donut-chart"></div>
-                                <div class="text-right">
-                                    <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="col-lg-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-credit-card"></i> Latest Online Sales </h3>
+                                <h3 class="panel-title"><i class="fa fa-credit-card"></i> Latest Online Sales by Date</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
@@ -325,6 +323,46 @@
     <script type="text/javascript">
         $("#nav_dashboard").addClass("active");
     </script>
+
+
+    <script type="text/javascript">
+        var sales = <?php echo(json_encode($sales)) ?>;
+        var onlinesales = <?php echo(json_encode($onlinesales)) ?>;
+
+        chartData = [];
+
+        var ctr = 1;
+        sales.forEach(function(sale){
+            chartData.push({d:sale.Date,sales:ctr});
+            ctr++;
+        });
+        var ctr = 1;
+        onlinesales.forEach(function(sale){
+            chartData.push({d:sale.Date,onlinesales:ctr});
+            ctr++;
+        });
+
+        // Line Chart
+        Morris.Line({
+            // ID of the element in which to draw the chart.
+            element: 'morris-line-chart',
+            // Chart data records -- each entry in this array corresponds to a point on
+            // the chart.
+            data: chartData,
+            // The name of the data record attribute that contains x-visitss.
+            xkey: 'd',
+            // A list of names of data record attributes that contain y-visitss.
+            ykeys: ['sales','onlinesales'],
+            // Labels for the ykeys -- will be displayed when you hover over the
+            // chart.
+            labels: ['Sales','Online Sales'],
+            // Disables line smoothing
+            smooth: true,
+            resize: true
+        });
+
+    </script>
+
 
 	</body>
 </html>
