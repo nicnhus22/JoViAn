@@ -83,20 +83,7 @@
         <style type="text/css">
             #map-canvas { height: 400px; width: 100%; margin: 0; padding: 0;}
         </style>
-        <script type="text/javascript"
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD92qfrn02U9jYfAMcBNCnGI9IZ5pNDwTU">
-        </script>
-        <script type="text/javascript">
-            function initialize() {
-                var mapOptions = {
-                    center: { lat: -34.397, lng: 150.644},
-                    zoom: 8
-                };
-                var map = new google.maps.Map(document.getElementById('map-canvas'),
-                    mapOptions);
-            }
-            google.maps.event.addDomListener(window, 'load', initialize);
-        </script>
+
 
 	</head>
 
@@ -344,6 +331,17 @@
         $("#nav_dashboard").addClass("active");
     </script>
 
+        <script type="text/javascript"
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD92qfrn02U9jYfAMcBNCnGI9IZ5pNDwTU">
+
+
+
+        </script>
+
+        <script type="text/javascript">
+            google.maps.event.addDomListener(window, 'load', renderMap);
+        </script>
+
 
     <script type="text/javascript">
         var sales = <?php echo(json_encode($sales)) ?>;
@@ -382,6 +380,7 @@
         });
 
     </script>
+
 
 
 	</body>
