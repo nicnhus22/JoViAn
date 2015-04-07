@@ -255,10 +255,13 @@
                             <div class="panel-body">
                                 <div class="list-group">
                                     <?php 
+                                        $counter = 1;
                                         foreach($bestEmployees as $bestEmployee){
+
                                             echo '<a href="viewemployee.php?ID='.$bestEmployee["ID"].'" class="list-group-item">
-                                                    <i class="fa fa-fw fa-user"></i> '.$bestEmployee["Name"].' made '.$bestEmployee["SaleCount"].' ';
+                                                    '.$counter.'. <i class="fa fa-fw fa-user"></i> '.$bestEmployee["Name"].' made '.$bestEmployee["SaleCount"].' ';
                                             echo ($bestEmployee["SaleCount"] > 1 ? 'sales this week </a>' : 'sale this week </a>');
+                                            $counter++;
                                         }
                                     ?>
                                     
