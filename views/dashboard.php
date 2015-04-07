@@ -277,10 +277,16 @@
                                     <?php 
                                         $counter = 1;
                                         foreach($bestEmployees as $bestEmployee){
-
-                                            echo '<a href="viewemployee.php?ID='.$bestEmployee["ID"].'" class="list-group-item">
+                                            if ($_SESSION["privelege"] == 'admin') {
+                                                echo '<a href="viewemployee.php?ID='.$bestEmployee["ID"].'" class="list-group-item">
                                                     '.$counter.'. <i class="fa fa-fw fa-user"></i> '.$bestEmployee["Name"].' made '.$bestEmployee["SaleCount"].' ';
-                                            echo ($bestEmployee["SaleCount"] > 1 ? 'sales this week </a>' : 'sale this week </a>');
+                                                echo ($bestEmployee["SaleCount"] > 1 ? 'sales this week </a>' : 'sale this week </a>');
+                                            }else {
+                                                echo '<a href="" class="list-group-item">
+                                                    '.$counter.'. <i class="fa fa-fw fa-user"></i> '.$bestEmployee["Name"].' made '.$bestEmployee["SaleCount"].' ';
+                                                echo ($bestEmployee["SaleCount"] > 1 ? 'sales this week </a>' : 'sale this week </a>');
+                                            }
+                                            
                                             $counter++;
                                         }
                                     ?>
