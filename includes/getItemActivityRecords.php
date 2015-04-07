@@ -53,7 +53,7 @@ $ENDDATE = ($_GET["endDate"] == "") ? $TODAYSTRING : $_GET["endDate"];
         $sql->bindValue(3, $ENDDATE);
     }
     else if ($TYPE == "Upgrade") {
-        $sql = $db->prepare("SELECT * FROM Upgrade WHERE ComputerID = ? OR PartID = ? AND Date between ? and ? ORDER BY Date");
+        $sql = $db->prepare("SELECT * FROM Upgrade WHERE (ComputerID = ? OR PartID = ?) AND Date between ? and ? ORDER BY Date");
         $sql->bindValue(1, $ID);
         $sql->bindValue(2, $ID);
         $sql->bindValue(3, $BEGINDATE);

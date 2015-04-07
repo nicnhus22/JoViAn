@@ -154,7 +154,7 @@ if($ProductType == "laptop"){
                 </div>
 
                 <div class="col-lg-2">
-                    <button id="goActivity" class="btn btn-sm btn-success">
+                    <button id="goItemActivity" class="btn btn-sm btn-success">
                         <span class="fa fa-fw fa-arrow-right" style="vertical-align:middle"></span>
                         Go
                     </button>

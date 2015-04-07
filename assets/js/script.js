@@ -70,6 +70,17 @@ $(".itemActivityTab").click(function () {
 });
 
 
+$("#goItemActivity").click(function () {
+
+
+    var type = $(".tab").find("a").attr("id");
+
+    getPartRecords($("#prodID").val(), type);
+
+    var $target = $('html,body');
+
+});
+
 $("#goActivity").click(function () {
 
 
@@ -84,6 +95,9 @@ $("#goActivity").click(function () {
 function getPartRecords(id, type) {
     var beginDate = $("#beginDate").val();
     var endDate = $("#endDate").val();
+
+    console.log(beginDate);
+    console.log(endDate);
 
     var url = "../includes/getItemActivityRecords.php?&id="+id+"&type="+type+"&beginDate=" + beginDate + "&endDate=" + endDate;
 
