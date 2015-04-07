@@ -22,7 +22,7 @@ try {
 }
 
 
-$sql = $db->prepare("SELECT * FROM Employee WHERE DOD IS NULL"); 
+$sql = $db->prepare("SELECT Employee.ID AS ID,Name,Commission,DOE,Privelege FROM Employee,users WHERE DOD IS NULL AND Employee.ID = users.EmployeeID;"); 
 $sql->execute(); 
 $employees = $sql->fetchAll();
 
@@ -95,11 +95,10 @@ $employees = $sql->fetchAll();
                     </div>
                 </div>
                 <div class="col-xs-4">
-                    <select class="form-control">
-                        <option>All</option>
-                        <option>Managers</option>
-                        <option>Technicians</option>
-                        <option>Sales Associates</option>
+                    <select class="form-control" id="sort_employee">
+                        <option value="all">All</option>
+                        <option value="admin">Administrator</option>
+                        <option value="regular">Regular</option>
                     </select>
                 </div>
             </div>
@@ -121,7 +120,7 @@ $employees = $sql->fetchAll();
                             <?php 
                                 foreach ($employees as $employee){
                                     echo '
-                                        <tr>
+                                        <tr class="'.$employee["Privelege"].'">
                                             <td>'.$employee["ID"].'</td>
                                             <td>'.$employee["Name"].'</td>
                                             <td>'.$employee["Commission"].' %</td>
@@ -185,6 +184,24 @@ $employees = $sql->fetchAll();
             searchText:'Search Table',
             searchPlaceHolder:'Input Value'
         });
+    });
+
+    $("#sort_employee").change(function(){
+        var value = $("#sort_employee").val();
+        switch(value){
+            case 'all':
+                $(".admin").show();
+                $(".regular").show();
+            break;
+            case 'admin':
+                $(".admin").show();
+                $(".regular").hide();
+            break;
+            case 'regular':
+                $(".admin").hide();
+                $(".regular").show();
+            break;
+        }
     });
 </script>
 
