@@ -266,7 +266,7 @@ $lastName = $nameArray[1];
 <script type="text/javascript">
 
 $.ajax({
-    url: "http://api.randomuser.me/",
+    url: "//api.randomuser.me/",
     beforeSend: function( xhr ) {
     xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
     }
