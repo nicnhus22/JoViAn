@@ -73,6 +73,13 @@
     $sql = $db->prepare("SELECT * FROM OnlineSale ORDER BY Date ASC");
     $sql->execute();
     $onlinesales = $sql->fetchAll();
+
+    # Fetch oldest employees 
+    $sql = $db->prepare("SELECT Name,SaleCount,ID,DOE FROM (SELECT EmployeeID, COUNT(*) AS SaleCount FROM Sale GROUP BY EmployeeID ORDER BY SaleCount DESC LIMIT 5) AS BestEmployee, Employee WHERE BestEmployee.EmployeeID = Employee.ID ORDER BY DOE");
+    $sql->execute();
+    $seniors = $sql->fetchAll();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -223,13 +230,45 @@
                 <!-- /.row -->
 
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Online &amp; Regular Sales </h3>
                             </div>
                             <div class="panel-body">
                                 <div id="morris-line-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-credit-card"></i> Seniority Table - Our Oldest Employees</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Employee Name</th>
+                                                <th>Date of Entry</th>
+                                                <th>Number Of Sales</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                                foreach($seniors as $senior){
+                                                    if ($_SESSION["privelege"] == 'admin') {
+                                                        echo '<tr><td><a href="viewemployee.php?ID='.$senior["ID"].'">'.$senior["Name"].'</a></td><td>'.$senior["DOE"].'</td><td>'.$senior["SaleCount"].'</td></tr>';
+                                                    }else{
+                                                        echo '<tr><td>'.$senior["Name"].'</td><td>'.$senior["DOE"].'</td><td>'.$senior["SaleCount"].'</td></tr>';
+                                                    }
+                                                }
+
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -267,6 +306,8 @@
                             </div>
                         </div>
                     </div>
+
+
                     <div class="col-lg-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
