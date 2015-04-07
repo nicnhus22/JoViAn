@@ -266,13 +266,17 @@ $lastName = $nameArray[1];
 <script type="text/javascript">
 
 $.ajax({
-  url: '//api.randomuser.me/',
-  dataType: 'json',
-  success: function(data){
-    $("#employee_pic").attr("src",data.results[0].user.picture.large);
-  }
+    url: "http://api.randomuser.me/",
+    beforeSend: function( xhr ) {
+    xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+    }
+}).done(function( data ) {
+    if ( console && console.log ) {
+      var ppl = JSON.parse(data);
+      $("#employee_pic").attr("src",ppl.results[0].user.picture.large);
+    }
 });
-    
+
 </script>
 
 <script type="text/javascript">
