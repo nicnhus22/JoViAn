@@ -266,7 +266,7 @@ $lastName = $nameArray[1];
 <script type="text/javascript">
 
 $.ajax({
-  url: 'http://api.randomuser.me/',
+  url: '//api.randomuser.me/',
   dataType: 'json',
   success: function(data){
     $("#employee_pic").attr("src",data.results[0].user.picture.large);
