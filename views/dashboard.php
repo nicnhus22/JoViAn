@@ -286,7 +286,7 @@
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Latest Shipments</h3>
+                        <h3 class="panel-title"><i class="fa fa-truck fa-fw"></i> Latest Shipments</h3>
                     </div>
                     <div class="panel-body" style="padding: 0;">
                         <div id="map-canvas"></div>
