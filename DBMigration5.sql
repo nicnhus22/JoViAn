@@ -1,0 +1,6 @@
+UPDATE `kgc353_4`.`OnlineSale` SET `StoreName`='Amazon' WHERE `ProductID`='1001' and`StoreName`='Ebay' and`Date`='2014-03-16' and`CName`='Della Dean' and`CAddress`='3527 Cozy Lake Townline, Dodge, PE, C9J-2P2, CA';
+UPDATE `kgc353_4`.`OnlineSale` SET `StoreName`='Amazon' WHERE `ProductID`='2001' and`StoreName`='Ebay' and`Date`='2014-07-08' and`CName`='Troy Warner' and`CAddress`='4486 Little Lagoon Village, Cardston, NS, B1N-1Y2, CA';
+UPDATE `kgc353_4`.`OnlineSale` SET `StoreName`='Amazon' WHERE `ProductID`='2010' and`StoreName`='Ebay' and`Date`='2015-03-02' and`CName`='Jason Anderson' and`CAddress`='7826 Foggy Robin Subdivision, Oven Fork, YK, Y1O-8V4';
+UPDATE `kgc353_4`.`OnlineSale` SET `StoreName`='Amazon' WHERE `ProductID`='3015' and`StoreName`='Ebay' and`Date`='2014-01-04' and`CName`='Mario Holloway' and`CAddress`='1650 Dewy Bear Green, Hell Gate, NW, X0K-5Z2, CA';
+UPDATE `kgc353_4`.`OnlineSale` SET `StoreName`='Amazon' WHERE `ProductID`='4005' and`StoreName`='Ebay' and`Date`='2012-12-12' and`CName`='Cary Harvey' and`CAddress`='3631 Quiet Mountain Pathway, Charity, SK, S5J-2P8, CA';
+UPDATE `kgc353_4`.`OnlineSale` SET `StoreName`='Amazon' WHERE `ProductID`='4012' and`StoreName`='Ebay' and`Date`='2015-03-02' and`CName`='Chris Castillo' and`CAddress`='6992 Cotton Way, Scarface, NU, X5N-7P6, CA';
