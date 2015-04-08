@@ -317,6 +317,83 @@ function renderActivityHtml (data, type) {
 
 }
 
+function renderActivityHtmlAnalytics (data, type) {
+    var dataAsJson = JSON.parse(data);
+    var buildTable;
+
+
+    if (dataAsJson == "") {
+        buildTable = '<thead><tr><td>No ' + type + 's to display!</td></tr></thead>';
+    }
+    else {
+
+        var tHeadRows;
+        var tBodyRows = '';
+
+        if (type == "Sale") {
+            tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Sold</td></tr>';
+            for (var i = 0; i < dataAsJson.length; i++) {
+                tBodyRows +=
+                    '<td>' + dataAsJson[i].ProductID + '</td>' +
+                    '<td>' + dataAsJson[i].ProductName + '</td>' +
+                    '<td>' + dataAsJson[i].ProductPrice + '</td> +'+
+                    '<td>' + dataAsJson[i].Qauntity + '</td> +';
+            }
+        }
+        else if (type == "OnlineSale") {
+            tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Sold</td></tr>';
+            for (var i = 0; i < dataAsJson.length; i++) {
+                tBodyRows +=
+                    '<td>' + dataAsJson[i].ProductID + '</td>' +
+                    '<td>' + dataAsJson[i].ProductName + '</td>' +
+                    '<td>' + dataAsJson[i].ProductPrice + '</td> +'+
+                    '<td>' + dataAsJson[i].Qauntity + '</td> +';
+            }
+        }
+        else if (type == "Repair") {
+            tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Sold</td></tr>';
+            for (var i = 0; i < dataAsJson.length; i++) {
+                tBodyRows +=
+                    '<td>' + dataAsJson[i].ProductID + '</td>' +
+                    '<td>' + dataAsJson[i].ProductName + '</td>' +
+                    '<td>' + dataAsJson[i].ProductPrice + '</td> +'+
+                    '<td>' + dataAsJson[i].Qauntity + '</td> +';
+            }
+        }
+        else if (type == "Upgrade") {
+            tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Sold</td></tr>';
+            for (var i = 0; i < dataAsJson.length; i++) {
+                tBodyRows +=
+                    '<td>' + dataAsJson[i].ProductID + '</td>' +
+                    '<td>' + dataAsJson[i].ProductName + '</td>' +
+                    '<td>' + dataAsJson[i].ProductPrice + '</td> +'+
+                    '<td>' + dataAsJson[i].Qauntity + '</td> +';
+            }
+        }
+        else if (type == "Install") {
+            tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Sold</td></tr>';
+            for (var i = 0; i < dataAsJson.length; i++) {
+                tBodyRows +=
+                    '<td>' + dataAsJson[i].ProductID + '</td>' +
+                    '<td>' + dataAsJson[i].ProductName + '</td>' +
+                    '<td>' + dataAsJson[i].ProductPrice + '</td> +'+
+                    '<td>' + dataAsJson[i].Qauntity + '</td> +';
+            }
+        }
+
+
+        buildTable = '<thead>' +
+            tHeadRows +
+            '</thead>' +
+            '<tbody>' +
+            tBodyRows +
+            '</tbody>';
+    }
+
+    $("#activityTable").html(buildTable);
+
+}
+
 
 function renderTable(type) {
 
@@ -358,7 +435,7 @@ function renderTableAnalytics(type) {
         url:  url,
         cache: false,
         success: function(data) {
-            renderActivityHtml(data, type);
+            renderActivityHtmlAnalytics(data, type);
         }
     });
 

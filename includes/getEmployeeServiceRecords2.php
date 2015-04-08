@@ -25,7 +25,7 @@ $TYPE = $_GET["type"];
 
 if ($ID == "") {
     if ($TYPE == "Sale")
-        $sql = $db->prepare("SELECT * FROM Sale ");
+        $sql = $db->prepare("SELECT ProductID, Name, Price, Total FROM (SELECT ProductID, COUNT(ProductID) as Total From Sale GROUP BY ProductID ORDER BY Total DESC ) as T1, (SELECT ID, Name, Price FROM PC UNION SELECT ID, Name, Price FROM Laptop UNION SELECT ID, Name, Price FROM Software UNION SELECT ID, Name, Price FROM Part) as T2 WHERE T1.ProductID = T2.ID;");
     else if ($TYPE == "Repair")
         $sql = $db->prepare("SELECT * FROM Repair ");
     else if ($TYPE == "OnlineSale")
@@ -36,7 +36,7 @@ if ($ID == "") {
         $sql = $db->prepare("SELECT * FROM Upgrade");
 } else {
     if ($TYPE == "Sale")
-        $sql = $db->prepare("SELECT * FROM Sale WHERE EmployeeID = ? ");
+        $sql = $db->prepare("SELECT ProductID, Name, Price, Total FROM (SELECT ProductID, COUNT(ProductID) as Total From Sale GROUP BY ProductID ORDER BY Total DESC ) as T1, (SELECT ID, Name, Price FROM PC UNION SELECT ID, Name, Price FROM Laptop UNION SELECT ID, Name, Price FROM Software UNION SELECT ID, Name, Price FROM Part) as T2 WHERE T1.ProductID = T2.ID;");
     else if ($TYPE == "Repair")
         $sql = $db->prepare("SELECT * FROM Repair WHERE EmployeeID = ?");
     else if ($TYPE == "OnlineSale")

@@ -48,7 +48,7 @@ function menu()
                         <a href="orders.php"><i class="fa fa-fw fa-history"></i> Activity History</a>
                     </li>
                     <li id="nav_analytics">
-                        <a href="analytics.php"><i class="fa fa-fw fa-history"></i> Analytics </a>
+                        <a href="analytics.php"><i class="fa fa-fw fa-line-chart"></i> Analytics </a>
                     </li>
                     ';
 
