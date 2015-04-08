@@ -207,20 +207,17 @@
                         <div class="panel panel-red">
                             <div class="panel-heading">
                                 <div class="row">
-                                    <div class="col-xs-3" style="padding-top: 60px;padding-left: 55px;">
-                                        <i class="fa fa-dollar fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo number_format($revenue["sum"], 0,".", " ") ?></div>
-                                        <div>in total Revenue</div>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo number_format($onlineRevenue["Total"], 0, '.', ' ') ?></div>
-                                        <div>in online sale</div>
+                                    <div class="col-xs-12 text-right">
+                                        <div class="huge"><?php echo number_format($revenue["sum"], 2,".", " ") ?><i class="fa fa-dollar"></i></div>
+                                        <div>in total revenue</div>
                                     </div>
                                     <div class="col-xs-12 text-right">
-                                        <div class="huge"><?php echo number_format($revenue["sum"]-$onlineRevenue["Total"], 0, '.', ' ') ?></div>
-                                        <div>in store services</div>
+                                        <div class="huge"><?php echo number_format($onlineRevenue["Total"], 2, '.', ' ') ?><i class="fa fa-dollar"></i></div>
+                                        <div>through online sale</div>
+                                    </div>
+                                    <div class="col-xs-12 text-right">
+                                        <div class="huge"><?php echo number_format($revenue["sum"]-$onlineRevenue["Total"], 2, '.', ' ') ?><i class="fa fa-dollar"></i></div>
+                                        <div>through store services</div>
                                     </div>
                                 </div>
                             </div>
