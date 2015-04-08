@@ -44,7 +44,7 @@
     $sql->execute();
     $transactionSize = $sql->fetch(PDO::FETCH_ASSOC);
 
-
+    # Fetch total revenue
     $sql = $db->prepare("SELECT (SELECT SUM(Price) FROM (SELECT ID, Price FROM Laptop UNION SELECT ID, Price FROM PC UNION SELECT ID, Price FROM Part UNION SELECT ID, Price FROM Software) AS NewTable, Sale WHERE NewTable.ID = Sale.ProductID) +
                         (SELECT SUM(Price) FROM (SELECT ID, Price FROM Laptop UNION SELECT ID, Price FROM PC UNION SELECT ID, Price FROM Part UNION SELECT ID, Price FROM Software) AS NewTable, OnlineSale WHERE NewTable.ID = OnlineSale.ProductID) +
                         (SELECT SUM(ServiceCost) FROM (SELECT ServiceCost FROM Install UNION SELECT ServiceCost FROM Repair UNION SELECT ServiceCost FROM Upgrade) AS NewTable) AS sum ");
@@ -78,6 +78,17 @@
     $sql = $db->prepare("SELECT Name,SaleCount,ID,DOE FROM (SELECT EmployeeID, COUNT(*) AS SaleCount FROM Sale GROUP BY EmployeeID ORDER BY SaleCount DESC LIMIT 5) AS BestEmployee, Employee WHERE BestEmployee.EmployeeID = Employee.ID ORDER BY DOE");
     $sql->execute();
     $seniors = $sql->fetchAll();
+
+    # Get store names for bar chart
+    $sql = $db->prepare("SELECT DISTINCT StoreName FROM OnlineSale");
+    $sql->execute();
+    $stores = $sql->fetchAll();
+
+    # Fetch best employees
+    $sql = $db->prepare("SELECT StoreName, YEAR(Date), COUNT(YEAR(Date)) FROM OnlineSale GROUP BY StoreName, YEAR(Date)");
+    $sql->execute();
+    $quantityPerOnlineStore = $sql->fetchAll();
+
 
 
 ?>
@@ -243,6 +254,16 @@
                     <div class="col-lg-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Online &amp; Regular Sales </h3>
+                            </div>
+                            <div class="panel-body">
+                                <div id="bar-example"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-credit-card"></i> Seniority Table - Our Oldest Employees</h3>
                             </div>
                             <div class="panel-body">
@@ -391,8 +412,42 @@
 
 
     <script type="text/javascript">
+        var stores = <?php echo(json_encode($stores)) ?>;
+        var quantityPerOnlineStore = <?php echo(json_encode($quantityPerOnlineStore)) ?>;
+
+        var labels = []
+
+        stores.forEach(function(store) {
+            labels.push(store.StoreName);
+        });
+
+        var barData = []
+
+
+
+
+        Morris.Bar({
+            element: 'bar-example',
+            data: [
+                { 'y': '2006', 'a': 100, 'b': 90 },
+                { y: '2006', a: 75,  b: 65 },
+                { y: '2008', a: 50,  b: 40 },
+                { y: '2009', a: 75,  b: 65 },
+                { y: '2010', a: 50,  b: 40 },
+                { y: '2011', a: 75,  b: 65 },
+                { y: '2012', a: 100, b: 90 }
+            ],
+            xkey: 'y',
+            ykeys: ['a', 'b'],
+            labels: labels
+        });
+
+
         var sales = <?php echo(json_encode($sales)) ?>;
         var onlinesales = <?php echo(json_encode($onlinesales)) ?>;
+
+
+
 
         chartData = [];
 
