@@ -46,12 +46,12 @@ function menu()
                     </li>
                     <li id="nav_orders">
                         <a href="orders.php"><i class="fa fa-fw fa-history"></i> Activity History</a>
-                    </li>
-                    <li id="nav_analytics">
+                    </li>';
+    if ($_SESSION["privelege"] == 'admin') {
+        echo '<li id="nav_analytics">
                         <a href="analytics.php"><i class="fa fa-fw fa-line-chart"></i> Analytics </a>
-                    </li>
-                    ';
-
+                    </li>';
+    }
 
     if ($_SESSION["privelege"] == 'admin') {
         echo '<li id="nav_employees">

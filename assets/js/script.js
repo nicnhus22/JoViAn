@@ -351,7 +351,7 @@ function renderActivityHtmlAnalytics (data, type) {
             }
         }
         else if (type == "Repair") {
-            tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Repaired</td></tr>';
+            tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Service Cost</td><td>Quantity Repaired</td></tr>';
             for (var i = 0; i < dataAsJson.length; i++) {
                 tBodyRows +=
                     '<tr><td>' + dataAsJson[i].ID + '</td>' +
@@ -361,7 +361,7 @@ function renderActivityHtmlAnalytics (data, type) {
             }
         }
         else if (type == "Upgrade") {
-            tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Upgraded</td></tr>';
+            tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Service Cost</td><td>Quantity Upgraded</td></tr>';
             for (var i = 0; i < dataAsJson.length; i++) {
                 tBodyRows +=
                     '<tr><td>' + dataAsJson[i].ID + '</td>' +
@@ -371,7 +371,7 @@ function renderActivityHtmlAnalytics (data, type) {
             }
         }
         else if (type == "Install") {
-            tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Installed</td></tr>';
+            tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Service Cost</td><td>Quantity Installed</td></tr>';
             for (var i = 0; i < dataAsJson.length; i++) {
                 tBodyRows +=
                     '<tr><td>' + dataAsJson[i].ID + '</td>' +
