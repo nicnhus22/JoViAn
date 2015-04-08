@@ -334,50 +334,50 @@ function renderActivityHtmlAnalytics (data, type) {
             tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Sold</td></tr>';
             for (var i = 0; i < dataAsJson.length; i++) {
                 tBodyRows +=
-                    '<td>' + dataAsJson[i].ProductID + '</td>' +
+                    '<tr><td>' + dataAsJson[i].ProductID + '</td>' +
                     '<td>' + dataAsJson[i].Name + '</td>' +
                     '<td>' + dataAsJson[i].Price + '</td> +'+
-                    '<td>' + dataAsJson[i].Total + '</td> +';
+                    '<td>' + dataAsJson[i].Total + '</td></tr>';
             }
         }
         else if (type == "OnlineSale") {
             tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Sold</td></tr>';
             for (var i = 0; i < dataAsJson.length; i++) {
                 tBodyRows +=
-                    '<td>' + dataAsJson[i].ProductID + '</td>' +
+                    '<tr><td>' + dataAsJson[i].ProductID + '</td>' +
                     '<td>' + dataAsJson[i].Name + '</td>' +
                     '<td>' + dataAsJson[i].Price + '</td> +'+
-                    '<td>' + dataAsJson[i].Total + '</td> +';
+                    '<td>' + dataAsJson[i].Total + '</td></tr>';
             }
         }
         else if (type == "Repair") {
             tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Sold</td></tr>';
             for (var i = 0; i < dataAsJson.length; i++) {
                 tBodyRows +=
-                    '<td>' + dataAsJson[i].ProductID + '</td>' +
+                    '<tr><td>' + dataAsJson[i].ProductID + '</td>' +
                     '<td>' + dataAsJson[i].Name + '</td>' +
                     '<td>' + dataAsJson[i].Price + '</td> +'+
-                    '<td>' + dataAsJson[i].Total + '</td> +';
+                    '<td>' + dataAsJson[i].Total + '</td></tr>';
             }
         }
         else if (type == "Upgrade") {
             tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Sold</td></tr>';
             for (var i = 0; i < dataAsJson.length; i++) {
                 tBodyRows +=
-                    '<td>' + dataAsJson[i].ProductID + '</td>' +
+                    '<tr><td>' + dataAsJson[i].ProductID + '</td>' +
                     '<td>' + dataAsJson[i].Name + '</td>' +
                     '<td>' + dataAsJson[i].Price + '</td> +'+
-                    '<td>' + dataAsJson[i].Total + '</td> +';
+                    '<td>' + dataAsJson[i].Total + '</td></tr>';
             }
         }
         else if (type == "Install") {
             tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Sold</td></tr>';
             for (var i = 0; i < dataAsJson.length; i++) {
                 tBodyRows +=
-                    '<td>' + dataAsJson[i].ProductID + '</td>' +
+                    '<tr><td>' + dataAsJson[i].ProductID + '</td>' +
                     '<td>' + dataAsJson[i].Name + '</td>' +
                     '<td>' + dataAsJson[i].Price + '</td> +'+
-                    '<td>' + dataAsJson[i].Total + '</td> +';
+                    '<td>' + dataAsJson[i].Total + '</td></tr>';
             }
         }
 
