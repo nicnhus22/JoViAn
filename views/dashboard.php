@@ -107,7 +107,7 @@
         <?php head(); ?>
 
         <style type="text/css">
-            #map-canvas { height: 237px; width: 100%; margin: 0; padding: 0;}
+            #map-canvas { height: 400px; width: 100%; margin: 0; padding: 0;}
         </style>
 
 
@@ -306,21 +306,8 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-6">
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-truck fa-fw"></i> Latest Shipments</h3>
-                        </div>
-                        <div class="panel-body" style="padding: 0;">
-                            <div id="map-canvas"></div>
-                        </div>
-                    </div>
-
                 </div>
 
-                </div>
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="panel panel-default">
@@ -398,7 +385,14 @@
 
 
 
-
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-truck fa-fw"></i> Latest Shipments</h3>
+                    </div>
+                    <div class="panel-body" style="padding: 0;">
+                        <div id="map-canvas"></div>
+                    </div>
+                </div>
 
 
 
