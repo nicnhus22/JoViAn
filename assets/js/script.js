@@ -335,9 +335,9 @@ function renderActivityHtmlAnalytics (data, type) {
             for (var i = 0; i < dataAsJson.length; i++) {
                 tBodyRows +=
                     '<td>' + dataAsJson[i].ProductID + '</td>' +
-                    '<td>' + dataAsJson[i].ProductName + '</td>' +
-                    '<td>' + dataAsJson[i].ProductPrice + '</td> +'+
-                    '<td>' + dataAsJson[i].Qauntity + '</td> +';
+                    '<td>' + dataAsJson[i].Name + '</td>' +
+                    '<td>' + dataAsJson[i].Price + '</td> +'+
+                    '<td>' + dataAsJson[i].Total + '</td> +';
             }
         }
         else if (type == "OnlineSale") {
@@ -345,9 +345,9 @@ function renderActivityHtmlAnalytics (data, type) {
             for (var i = 0; i < dataAsJson.length; i++) {
                 tBodyRows +=
                     '<td>' + dataAsJson[i].ProductID + '</td>' +
-                    '<td>' + dataAsJson[i].ProductName + '</td>' +
-                    '<td>' + dataAsJson[i].ProductPrice + '</td> +'+
-                    '<td>' + dataAsJson[i].Qauntity + '</td> +';
+                    '<td>' + dataAsJson[i].Name + '</td>' +
+                    '<td>' + dataAsJson[i].Price + '</td> +'+
+                    '<td>' + dataAsJson[i].Total + '</td> +';
             }
         }
         else if (type == "Repair") {
@@ -355,9 +355,9 @@ function renderActivityHtmlAnalytics (data, type) {
             for (var i = 0; i < dataAsJson.length; i++) {
                 tBodyRows +=
                     '<td>' + dataAsJson[i].ProductID + '</td>' +
-                    '<td>' + dataAsJson[i].ProductName + '</td>' +
-                    '<td>' + dataAsJson[i].ProductPrice + '</td> +'+
-                    '<td>' + dataAsJson[i].Qauntity + '</td> +';
+                    '<td>' + dataAsJson[i].Name + '</td>' +
+                    '<td>' + dataAsJson[i].Price + '</td> +'+
+                    '<td>' + dataAsJson[i].Total + '</td> +';
             }
         }
         else if (type == "Upgrade") {
@@ -365,9 +365,9 @@ function renderActivityHtmlAnalytics (data, type) {
             for (var i = 0; i < dataAsJson.length; i++) {
                 tBodyRows +=
                     '<td>' + dataAsJson[i].ProductID + '</td>' +
-                    '<td>' + dataAsJson[i].ProductName + '</td>' +
-                    '<td>' + dataAsJson[i].ProductPrice + '</td> +'+
-                    '<td>' + dataAsJson[i].Qauntity + '</td> +';
+                    '<td>' + dataAsJson[i].Name + '</td>' +
+                    '<td>' + dataAsJson[i].Price + '</td> +'+
+                    '<td>' + dataAsJson[i].Total + '</td> +';
             }
         }
         else if (type == "Install") {
@@ -375,9 +375,9 @@ function renderActivityHtmlAnalytics (data, type) {
             for (var i = 0; i < dataAsJson.length; i++) {
                 tBodyRows +=
                     '<td>' + dataAsJson[i].ProductID + '</td>' +
-                    '<td>' + dataAsJson[i].ProductName + '</td>' +
-                    '<td>' + dataAsJson[i].ProductPrice + '</td> +'+
-                    '<td>' + dataAsJson[i].Qauntity + '</td> +';
+                    '<td>' + dataAsJson[i].Name + '</td>' +
+                    '<td>' + dataAsJson[i].Price + '</td> +'+
+                    '<td>' + dataAsJson[i].Total + '</td> +';
             }
         }
 
