@@ -886,7 +886,7 @@ function viewActivityDetails(type,productID,employeeID,partID){
                                         '<tbody>' +
                                             '<tr><td>Product Name</td><td>'+ dataAsJson.Product.Name+'</td></tr>'+
                                             '<tr><td>Product Price</td><td>'+dataAsJson.Product.Price+'$</td></tr>'+
-                                            '<tr><td>Employee Comission</td><td>'+parseFloat(parseFloat(dataAsJson.Employee.Commission)*parseFloat(dataAsJson.Product.Price)/100).toFixed(2)+'$</td></tr>'+
+                                            '<tr><td>Employee Comission</td><td>'+(employeeID == -1 ? "No employee for this online sale." : parseFloat(parseFloat(dataAsJson.Employee.Commission)*parseFloat(dataAsJson.Product.Price)/100).toFixed(2))+'$</td></tr>'+
                                         '</tbody>' +
                                     '</table>' +
                                 '</div>' +
