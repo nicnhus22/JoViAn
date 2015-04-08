@@ -192,7 +192,7 @@ $lastName = $nameArray[1];
 
                     <div class="form-group">
                         <label>Seniority</label>
-                        <select class="form-control" name="privilege" id="privilege">
+                        <select class="form-control" name="privilege" id="privilege"<?php if ($_SESSION["privelege"] != "admin") echo "disabled"; else echo "";?>>
                             <option value="admin" <?php if ($row["privelege"] == "admin") echo "selected"; else echo "";?>>Admin</option>
                             <option value="regular" <?php if ($row["privelege"] == "regular") echo "selected"; else echo "";?>>Regular</option>
                         </select>

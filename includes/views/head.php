@@ -10,6 +10,7 @@ function head()
 {
 
     echo '<meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Bootstrap Core CSS -->
         <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
