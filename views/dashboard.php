@@ -51,6 +51,9 @@
     $sql->execute();
     $revenue = $sql->fetch(PDO::FETCH_ASSOC);
 
+    $sql = $db->prepare("SELECT SUM(Price) AS Total FROM (SELECT ID, Price FROM Laptop UNION SELECT ID, Price FROM PC UNION SELECT ID, Price FROM Part UNION SELECT ID, Price FROM Software) AS NewTable, OnlineSale WHERE NewTable.ID = OnlineSale.ProductID;");
+    $sql->execute();
+    $onlineRevenue = $sql->fetch(PDO::FETCH_ASSOC);
 
     # Fetch online sales
     $sql = $db->prepare("SELECT * FROM OnlineSale LIMIT 5");
@@ -204,12 +207,20 @@
                         <div class="panel panel-red">
                             <div class="panel-heading">
                                 <div class="row">
-                                    <div class="col-xs-3">
+                                    <div class="col-xs-12" style="text-align:center;">
                                         <i class="fa fa-dollar fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge"><?php echo number_format($revenue["sum"], 0,".", " ") ?></div>
                                         <div>in total Revenue</div>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge"><?php echo $onlineRevenue["Total"] ?></div>
+                                        <div>in online sale</div>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge"><?php echo $revenue["sum"]-$onlineRevenue["Total"] ?></div>
+                                        <div>in store services</div>
                                     </div>
                                 </div>
                             </div>
