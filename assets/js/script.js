@@ -334,7 +334,7 @@ function renderActivityHtmlAnalytics (data, type) {
             tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Sold</td></tr>';
             for (var i = 0; i < dataAsJson.length; i++) {
                 tBodyRows +=
-                    '<tr><td>' + dataAsJson[i].ProductID + '</td>' +
+                    '<tr><td>' + dataAsJson[i].ID + '</td>' +
                     '<td>' + dataAsJson[i].Name + '</td>' +
                     '<td>' + dataAsJson[i].Price + '</td> +'+
                     '<td>' + dataAsJson[i].Total + '</td></tr>';
@@ -344,39 +344,39 @@ function renderActivityHtmlAnalytics (data, type) {
             tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Sold</td></tr>';
             for (var i = 0; i < dataAsJson.length; i++) {
                 tBodyRows +=
-                    '<tr><td>' + dataAsJson[i].ProductID + '</td>' +
+                    '<tr><td>' + dataAsJson[i].ID + '</td>' +
                     '<td>' + dataAsJson[i].Name + '</td>' +
                     '<td>' + dataAsJson[i].Price + '</td> +'+
                     '<td>' + dataAsJson[i].Total + '</td></tr>';
             }
         }
         else if (type == "Repair") {
-            tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Sold</td></tr>';
+            tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Repaired</td></tr>';
             for (var i = 0; i < dataAsJson.length; i++) {
                 tBodyRows +=
-                    '<tr><td>' + dataAsJson[i].ProductID + '</td>' +
+                    '<tr><td>' + dataAsJson[i].ID + '</td>' +
                     '<td>' + dataAsJson[i].Name + '</td>' +
-                    '<td>' + dataAsJson[i].Price + '</td> +'+
+                    '<td>' + dataAsJson[i].ServiceCost + '</td> +'+
                     '<td>' + dataAsJson[i].Total + '</td></tr>';
             }
         }
         else if (type == "Upgrade") {
-            tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Sold</td></tr>';
+            tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Upgraded</td></tr>';
             for (var i = 0; i < dataAsJson.length; i++) {
                 tBodyRows +=
-                    '<tr><td>' + dataAsJson[i].ProductID + '</td>' +
+                    '<tr><td>' + dataAsJson[i].ID + '</td>' +
                     '<td>' + dataAsJson[i].Name + '</td>' +
-                    '<td>' + dataAsJson[i].Price + '</td> +'+
+                    '<td>' + dataAsJson[i].ServiceCost + '</td> +'+
                     '<td>' + dataAsJson[i].Total + '</td></tr>';
             }
         }
         else if (type == "Install") {
-            tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Sold</td></tr>';
+            tHeadRows = '<tr><td>Product ID</td><td>Product Name</td><td>Product Price</td><td>Quantity Installed</td></tr>';
             for (var i = 0; i < dataAsJson.length; i++) {
                 tBodyRows +=
-                    '<tr><td>' + dataAsJson[i].ProductID + '</td>' +
+                    '<tr><td>' + dataAsJson[i].ID + '</td>' +
                     '<td>' + dataAsJson[i].Name + '</td>' +
-                    '<td>' + dataAsJson[i].Price + '</td> +'+
+                    '<td>' + dataAsJson[i].ServiceCost + '</td> +'+
                     '<td>' + dataAsJson[i].Total + '</td></tr>';
             }
         }

@@ -25,7 +25,7 @@ $TYPE = $_GET["type"];
 
 
 if ($TYPE == "Sale")
-    $sql = $db->prepare("SELECT ProductID, Name, Price, Total
+    $sql = $db->prepare("SELECT ID, Name, Price, Total
                             FROM (SELECT ProductID, COUNT(ProductID) as Total
                             From Sale
                             GROUP BY ProductID
@@ -43,25 +43,25 @@ if ($TYPE == "Sale")
                             FROM Part) as T2
                             WHERE T1.ProductID = T2.ID;");
 else if ($TYPE == "Repair")
-    $sql = $db->prepare("SELECT ComputerID, Name, Price, Total
-                            FROM (SELECT ComputerID, COUNT(ComputerID) as Total
+    $sql = $db->prepare("SELECT ID, Name, ServiceCost, Total
+                            FROM (SELECT ComputerID, ServiceCost, COUNT(ComputerID) as Total
                             From Repair
                             GROUP BY ComputerID
                             ORDER BY Total DESC
-                            ) as T1, (SELECT ID, Name, Price
+                            ) as T1, (SELECT ID, Name
                             FROM PC
                             UNION
-                            SELECT ID, Name, Price
+                            SELECT ID, Name
                             FROM Laptop
                             UNION
-                            SELECT ID, Name, Price
+                            SELECT ID, Name
                             FROM Software
                             UNION
-                            SELECT ID, Name, Price
+                            SELECT ID, Name
                             FROM Part) as T2
                             WHERE T1.ComputerID = T2.ID;");
 else if ($TYPE == "OnlineSale")
-    $sql = $db->prepare("SELECT ProductID, Name, Price, Total
+    $sql = $db->prepare("SELECT ID, Name, Price, Total
                             FROM (SELECT ProductID, COUNT(ProductID) as Total
                             From OnlineSale
                             GROUP BY ProductID
@@ -79,39 +79,39 @@ else if ($TYPE == "OnlineSale")
                             FROM Part) as T2
                             WHERE T1.ProductID = T2.ID;");
 else if ($TYPE == "Install")
-    $sql = $db->prepare("SELECT SoftwareID, Name, Price, Total
-                            FROM (SELECT SoftwareID, COUNT(SoftwareID) as Total
+    $sql = $db->prepare("SELECT ID, Name, ServiceCost, Total
+                            FROM (SELECT SoftwareID, ServiceCost, COUNT(SoftwareID) as Total
                             From Install
                             GROUP BY SoftwareID
                             ORDER BY Total DESC
-                            ) as T1, (SELECT ID, Name, Price
+                            ) as T1, (SELECT ID, Name
                             FROM PC
                             UNION
-                            SELECT ID, Name, Price
+                            SELECT ID, Name
                             FROM Laptop
                             UNION
-                            SELECT ID, Name, Price
+                            SELECT ID, Name
                             FROM Software
                             UNION
-                            SELECT ID, Name, Price
+                            SELECT ID, Name
                             FROM Part) as T2
                             WHERE T1.SoftwareID = T2.ID;");
 else if ($TYPE == "Upgrade")
-    $sql = $db->prepare("SELECT ComputerID, Name, Price, Total
-                            FROM (SELECT ComputerID, COUNT(ComputerID) as Total
+    $sql = $db->prepare("SELECT ID, Name, ServiceCost, Total
+                            FROM (SELECT ComputerID, ServiceCost, COUNT(ComputerID) as Total
                             From Upgrade
                             GROUP BY ComputerID
                             ORDER BY Total DESC
-                            ) as T1, (SELECT ID, Name, Price
+                            ) as T1, (SELECT ID, Name
                             FROM PC
                             UNION
-                            SELECT ID, Name, Price
+                            SELECT ID, Name
                             FROM Laptop
                             UNION
-                            SELECT ID, Name, Price
+                            SELECT ID, Name
                             FROM Software
                             UNION
-                            SELECT ID, Name, Price
+                            SELECT ID, Name
                             FROM Part) as T2
                             WHERE T1.ComputerID = T2.ID;");
 
