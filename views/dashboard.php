@@ -207,7 +207,7 @@
                         <div class="panel panel-red">
                             <div class="panel-heading">
                                 <div class="row">
-                                    <div class="col-xs-12" style="text-align:center;">
+                                    <div class="col-xs-3" style="padding-top: 60px;padding-left: 55px;">
                                         <i class="fa fa-dollar fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
@@ -215,11 +215,11 @@
                                         <div>in total Revenue</div>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo $onlineRevenue["Total"] ?></div>
+                                        <div class="huge"><?php echo number_format($onlineRevenue["Total"], 0, '.', ' ') ?></div>
                                         <div>in online sale</div>
                                     </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo $revenue["sum"]-$onlineRevenue["Total"] ?></div>
+                                    <div class="col-xs-12 text-right">
+                                        <div class="huge"><?php echo number_format($revenue["sum"]-$onlineRevenue["Total"], 0, '.', ' ') ?></div>
                                         <div>in store services</div>
                                     </div>
                                 </div>
