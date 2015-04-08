@@ -326,6 +326,30 @@ function renderTable(type) {
 
 }
 
+function renderTableAnalytics(type) {
+
+    var beginDate = $("#beginDate").val();
+    var endDate = $("#endDate").val();
+
+    var url = "../includes/getEmployeeServiceRecords.php?&type=" + type + "&beginDate=" + beginDate + "&endDate=" + endDate;
+
+    if($("#empID").length > 0) {
+        var empID = $("#empID").val();
+        url+= "&id=" + empID;
+        console.log(url);
+    }
+
+    $.ajax({
+        url:  url,
+        cache: false,
+        success: function(data) {
+            renderActivityHtml(data, type);
+        }
+    });
+
+}
+
+
 function updateServiceModal(id, type, isRepair) {
 
 
