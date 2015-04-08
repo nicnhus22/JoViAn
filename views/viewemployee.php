@@ -33,10 +33,43 @@ $sql->bindValue(1, $ID);
 $sql->execute();
 $commission = $sql->fetch(PDO::FETCH_ASSOC);
 
+$totalSold = 0;
+
+$sql = $db->prepare("SELECT SUM(Price) AS Total FROM PC WHERE ID IN 
+                        (SELECT ID AS ProductID FROM (SELECT ID,Price FROM Laptop UNION SELECT ID,Price FROM PC UNION SELECT ID,Price FROM Software UNION SELECT ID,Price FROM Part) AS Prodcut WHERE ID 
+                            IN (SELECT ProductID FROM OnlineSale WHERE EmployeeID=? UNION SELECT ProductID FROM Sale WHERE EmployeeID=?)) LIMIT 1");
+$sql->bindValue(1, $ID);
+$sql->bindValue(2, $ID);
+$sql->execute();
+$totalSold += $sql->fetch(PDO::FETCH_ASSOC)["Total"];
+$sql = $db->prepare("SELECT ID,SUM(Price) AS Total FROM Laptop WHERE ID IN 
+                        (SELECT ID AS ProductID FROM (SELECT ID,Price FROM Laptop UNION SELECT ID,Price FROM PC UNION SELECT ID,Price FROM Software UNION SELECT ID,Price FROM Part) AS Prodcut WHERE ID 
+                            IN (SELECT ProductID FROM OnlineSale WHERE EmployeeID=? UNION SELECT ProductID FROM Sale WHERE EmployeeID=?));");
+$sql->bindValue(1, $ID);
+$sql->bindValue(2, $ID);
+$sql->execute();
+$totalSold += $sql->fetch(PDO::FETCH_ASSOC)["Total"];
+$sql = $db->prepare("SELECT ID,SUM(Price) AS Total FROM Part WHERE ID IN 
+                        (SELECT ID AS ProductID FROM (SELECT ID,Price FROM Laptop UNION SELECT ID,Price FROM PC UNION SELECT ID,Price FROM Software UNION SELECT ID,Price FROM Part) AS Prodcut WHERE ID 
+                            IN (SELECT ProductID FROM OnlineSale WHERE EmployeeID=? UNION SELECT ProductID FROM Sale WHERE EmployeeID=?));");
+$sql->bindValue(1, $ID);
+$sql->bindValue(2, $ID);
+$sql->execute();
+$totalSold += $sql->fetch(PDO::FETCH_ASSOC)["Total"];
+$sql = $db->prepare("SELECT ID,SUM(Price) AS Total FROM Software WHERE ID IN 
+                        (SELECT ID AS ProductID FROM (SELECT ID,Price FROM Laptop UNION SELECT ID,Price FROM PC UNION SELECT ID,Price FROM Software UNION SELECT ID,Price FROM Part) AS Prodcut WHERE ID 
+                            IN (SELECT ProductID FROM OnlineSale WHERE EmployeeID=? UNION SELECT ProductID FROM Sale WHERE EmployeeID=?));");
+$sql->bindValue(1, $ID);
+$sql->bindValue(2, $ID);
+$sql->execute();
+$totalSold += $sql->fetch(PDO::FETCH_ASSOC)["Total"];
+
+$totalSold *= ($row["Commission"]/100);
 $commissionToDate = number_format($commission["sum"] * ($row["Commission"]/100), 2, '.', '');
+$commissionToDate += $totalSold; 
+
 
 $nameArray =  explode(" ", $row["Name"]);
-
 $firstName = $nameArray[0];
 $lastName = $nameArray[1];
 
@@ -192,8 +225,8 @@ $lastName = $nameArray[1];
 
                     <fieldset disabled="">
                         <div class="form-group">
-                            <label for="disabledSelect">Commission To Date</label>
-                            <input class="form-control" id="disabledInput3" type="text" placeholder="<?= $commissionToDate?>" disabled="">
+                            <label for="disabledSelect">Total Earned From Commission</label>
+                            <input class="form-control" id="disabledInput3" type="text" placeholder="<?= $commissionToDate ?>$" disabled="">
                         </div>
                     </fieldset>
 

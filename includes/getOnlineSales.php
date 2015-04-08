@@ -41,7 +41,7 @@ $rows["Product"] = $sql->fetch(PDO::FETCH_ASSOC);
 
 if(isset($_GET["EmployeeID"])){
 	# Get Employee Information
-	$sql = $db->prepare("SELECT Name FROM Employee WHERE ID=? LIMIT 1");
+	$sql = $db->prepare("SELECT Name,Commission FROM Employee WHERE ID=? LIMIT 1");
 	$sql->bindValue(1, $_GET["EmployeeID"]);
 	$sql->execute();
 	$rows["Employee"] = $sql->fetch(PDO::FETCH_ASSOC);

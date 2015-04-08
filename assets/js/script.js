@@ -53,6 +53,21 @@ $(".activityTab").click(function () {
 
 });
 
+$(".activityTabAnalytics").click(function () {
+
+    $(".tab").removeClass("active");
+    $(".tab").removeClass("tab");
+    $(this).closest("li").addClass("tab");
+    $(this).closest("li").addClass("active");
+
+    var type = $(this).attr("id");
+
+    renderTableAnalytics(type);
+
+    var $target = $('html,body');
+
+});
+
 $(".itemActivityTab").click(function () {
 
     $(".tab").removeClass("active");
@@ -325,6 +340,30 @@ function renderTable(type) {
     });
 
 }
+
+function renderTableAnalytics(type) {
+
+    var beginDate = $("#beginDate").val();
+    var endDate = $("#endDate").val();
+
+    var url = "../includes/getEmployeeServiceRecords2.php?&type=" + type;
+
+    if($("#empID").length > 0) {
+        var empID = $("#empID").val();
+        url+= "&id=" + empID;
+        console.log(url);
+    }
+
+    $.ajax({
+        url:  url,
+        cache: false,
+        success: function(data) {
+            renderActivityHtml(data, type);
+        }
+    });
+
+}
+
 
 function updateServiceModal(id, type, isRepair) {
 
@@ -690,6 +729,7 @@ function viewActivityDetails(type,productID,employeeID,partID){
                                         '<tbody>' +
                                             '<tr><td>Product Name</td><td>'+ dataAsJson.Product.Name+'</td></tr>'+
                                             '<tr><td>Product Price</td><td>'+dataAsJson.Product.Price+'$</td></tr>'+
+                                            '<tr><td>Employee Comission</td><td>'+parseFloat(parseFloat(dataAsJson.Employee.Commission)*parseFloat(dataAsJson.Product.Price)/100).toFixed(2)+'$</td></tr>'+
                                         '</tbody>' +
                                     '</table>' +
                                 '</div>' +
@@ -769,6 +809,7 @@ function viewActivityDetails(type,productID,employeeID,partID){
                                         '<tbody>' +
                                             '<tr><td>Product Name</td><td>'+ dataAsJson.Product.Name+'</td></tr>'+
                                             '<tr><td>Product Price</td><td>'+dataAsJson.Product.Price+'$</td></tr>'+
+                                            '<tr><td>Employee Comission</td><td>'+parseFloat(parseFloat(dataAsJson.Employee.Commission)*parseFloat(dataAsJson.Product.Price)/100).toFixed(2)+'$</td></tr>'+
                                         '</tbody>' +
                                     '</table>' +
                                 '</div>' +
@@ -861,6 +902,7 @@ function viewActivityDetails(type,productID,employeeID,partID){
                                         '<tbody>' +
                                             '<tr><td>Employee Name</td><td>'+dataAsJson.Employee.Name+'</td></tr>'+
                                             '<tr><td>Service Cost</td><td>'+dataAsJson.Repair.ServiceCost+' $</td></tr>'+
+                                            '<tr><td>Employee Comission</td><td>'+parseFloat(parseFloat(dataAsJson.Employee.Commission)*parseFloat(dataAsJson.Repair.ServiceCost)/100).toFixed(2)+'$</td></tr>'+
                                         '</tbody>' +
                                     '</table>' +
                                 '</div>' +
@@ -937,6 +979,7 @@ function viewActivityDetails(type,productID,employeeID,partID){
                                         '<tbody>' +
                                             '<tr><td>Employee Name</td><td>'+dataAsJson.Employee.Name+'</td></tr>'+
                                             '<tr><td>Service Cost</td><td>'+dataAsJson.Upgrade.ServiceCost+' $</td></tr>'+
+                                            '<tr><td>Employee Comission</td><td>'+parseFloat(parseFloat(dataAsJson.Employee.Commission)*parseFloat(dataAsJson.Upgrade.ServiceCost)/100).toFixed(2)+'$</td></tr>'+
                                         '</tbody>' +
                                     '</table>' +
                                 '</div>' +
@@ -1015,6 +1058,7 @@ function viewActivityDetails(type,productID,employeeID,partID){
                                         '<tbody>' +
                                             '<tr><td>Employee Name</td><td>'+dataAsJson.Employee.Name+'</td></tr>'+
                                             '<tr><td>Service Cost</td><td>'+dataAsJson.Install.ServiceCost+'</td></tr>'+
+                                            '<tr><td>Employee Comission</td><td>'+parseFloat(parseFloat(dataAsJson.Employee.Commission)*parseFloat(dataAsJson.Install.ServiceCost)/100).toFixed(2)+'$</td></tr>'+
                                         '</tbody>' +
                                     '</table>' +
                                 '</div>' +
