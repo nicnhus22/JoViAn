@@ -87,7 +87,12 @@
     $sql->execute();
     $stores = $sql->fetchAll();
 
-    # Fetch best employees
+    # Get distict dates for bar graph
+    $sql = $db->prepare("SELECT DISTINCT YEAR(Date) FROM OnlineSale ORDER BY YEAR(Date)");
+    $sql->execute();
+    $years = $sql->fetchAll();
+
+    # Get online store data for bar graph
     $sql = $db->prepare("SELECT StoreName, YEAR(Date), COUNT(YEAR(Date)) FROM OnlineSale GROUP BY StoreName, YEAR(Date)");
     $sql->execute();
     $quantityPerOnlineStore = $sql->fetchAll();
@@ -420,42 +425,49 @@
 
 
     <script type="text/javascript">
+
+        function findDataWithYear(data, year) {
+            for(var i = 0; i < data.length; i++) {
+                if(data[i].y == year) return data[i];
+            }
+            return null;
+        }
+
         var stores = <?php echo(json_encode($stores)) ?>;
+        var years = <?php echo(json_encode($years)) ?>;
         var quantityPerOnlineStore = <?php echo(json_encode($quantityPerOnlineStore)) ?>;
 
         var labels = []
-
-        stores.forEach(function(store) {
-            labels.push(store.StoreName);
-        });
-
         var barData = []
 
+        console.log(stores);
 
+        for(var i = 0; i < stores.length; i++) {
+            labels.push(stores[i].StoreName);
+        }
 
+        for(var i = 0; i < years.length; i++) {
+            var year = years[i][0];
+            console.log(year);
+            barData.push({y:year});
+        }
+
+        for (var i = 0; i < quantityPerOnlineStore.length; i++) {
+            var dataItem = findDataWithYear(barData, quantityPerOnlineStore[i][1]);
+            dataItem[quantityPerOnlineStore[i][0]] = quantityPerOnlineStore[i][2];
+        }
 
         Morris.Bar({
             element: 'bar-example',
-            data: [
-                { 'y': '2006', 'a': 100, 'b': 90 },
-                { y: '2006', a: 75,  b: 65 },
-                { y: '2008', a: 50,  b: 40 },
-                { y: '2009', a: 75,  b: 65 },
-                { y: '2010', a: 50,  b: 40 },
-                { y: '2011', a: 75,  b: 65 },
-                { y: '2012', a: 100, b: 90 }
-            ],
+            data: barData,
             xkey: 'y',
-            ykeys: ['a', 'b'],
+            ykeys: labels,
             labels: labels
         });
 
 
         var sales = <?php echo(json_encode($sales)) ?>;
         var onlinesales = <?php echo(json_encode($onlinesales)) ?>;
-
-
-
 
         chartData = [];
 
