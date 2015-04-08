@@ -331,7 +331,7 @@ function renderTableAnalytics(type) {
     var beginDate = $("#beginDate").val();
     var endDate = $("#endDate").val();
 
-    var url = "../includes/getEmployeeServiceRecords.php?&type=" + type + "&beginDate=" + beginDate + "&endDate=" + endDate;
+    var url = "../includes/getEmployeeServiceRecords2.php?&type=" + type;
 
     if($("#empID").length > 0) {
         var empID = $("#empID").val();
