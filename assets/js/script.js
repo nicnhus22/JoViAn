@@ -53,6 +53,21 @@ $(".activityTab").click(function () {
 
 });
 
+$(".activityTabAnalytics").click(function () {
+
+    $(".tab").removeClass("active");
+    $(".tab").removeClass("tab");
+    $(this).closest("li").addClass("tab");
+    $(this).closest("li").addClass("active");
+
+    var type = $(this).attr("id");
+
+    renderTableAnalytics(type);
+
+    var $target = $('html,body');
+
+});
+
 $(".itemActivityTab").click(function () {
 
     $(".tab").removeClass("active");

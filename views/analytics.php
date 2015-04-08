@@ -57,11 +57,11 @@
                <hr>
 
                <ul class="nav nav-tabs">
-                  <li role="presentation" class="tab active"><a class="activityTab" id="Sale" href="#Sales">Sales</a></li>
-                  <li role="presentation"><a class="activityTab" id="OnlineSale" href="#OnlineSales">Online Sales</a></li>
-                  <li role="presentation"><a class="activityTab" id="Repair" href="#Repairs" href="#">Repairs</a></li>
-                  <li role="presentation"><a class="activityTab" id="Upgrade" href="#Upgrades">Upgrades</a></li>
-                  <li role="presentation"><a class="activityTab" id="Install" href="#Installs">Installs</a></li>
+                  <li role="presentation" class="tab active"><a class="activityTabAnalytics" id="Sale" href="#Sales">Sales</a></li>
+                  <li role="presentation"><a class="activityTabAnalytics" id="OnlineSale" href="#OnlineSales">Online Sales</a></li>
+                  <li role="presentation"><a class="activityTabAnalytics" id="Repair" href="#Repairs" href="#">Repairs</a></li>
+                  <li role="presentation"><a class="activityTabAnalytics" id="Upgrade" href="#Upgrades">Upgrades</a></li>
+                  <li role="presentation"><a class="activityTabAnalytics" id="Install" href="#Installs">Installs</a></li>
                </ul>
                <div class="row">
                   <div class="col-lg-12">
