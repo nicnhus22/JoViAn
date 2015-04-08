@@ -107,7 +107,7 @@
         <?php head(); ?>
 
         <style type="text/css">
-            #map-canvas { height: 400px; width: 100%; margin: 0; padding: 0;}
+            #map-canvas { height: 237px; width: 100%; margin: 0; padding: 0;}
         </style>
 
 
@@ -267,7 +267,7 @@
                     <div class="col-lg-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Online &amp; Regular Sales </h3>
+                                <h3 class="panel-title"><i class="fa fa-desktop fa-fw"></i> Online Store Comparison </h3>
                             </div>
                             <div class="panel-body">
                                 <div id="bar-example"></div>
@@ -277,7 +277,7 @@
                     <div class="col-lg-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-credit-card"></i> Seniority Table - Our Oldest Employees</h3>
+                                <h3 class="panel-title"><i class="fa fa-user"></i> Seniority Table - Our Oldest Employees</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
@@ -306,8 +306,21 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-lg-6">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-truck fa-fw"></i> Latest Shipments</h3>
+                        </div>
+                        <div class="panel-body" style="padding: 0;">
+                            <div id="map-canvas"></div>
+                        </div>
+                    </div>
+
                 </div>
 
+                </div>
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="panel panel-default">
@@ -385,14 +398,7 @@
 
 
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-truck fa-fw"></i> Latest Shipments</h3>
-                    </div>
-                    <div class="panel-body" style="padding: 0;">
-                        <div id="map-canvas"></div>
-                    </div>
-                </div>
+
 
 
 
@@ -414,9 +420,6 @@
 
         <script type="text/javascript"
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD92qfrn02U9jYfAMcBNCnGI9IZ5pNDwTU">
-
-
-
         </script>
 
         <script type="text/javascript">
@@ -440,15 +443,12 @@
         var labels = []
         var barData = []
 
-        console.log(stores);
-
         for(var i = 0; i < stores.length; i++) {
             labels.push(stores[i].StoreName);
         }
 
         for(var i = 0; i < years.length; i++) {
             var year = years[i][0];
-            console.log(year);
             barData.push({y:year});
         }
 

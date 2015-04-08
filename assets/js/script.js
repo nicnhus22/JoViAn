@@ -1176,6 +1176,8 @@ function viewActivityDetails(type,productID,employeeID,partID){
 
 function renderMap () {
 
+    console.log("rendering map");
+
         var mapOptions = {
             center: { lat: -34.397, lng: 150.644},
             zoom: 5
@@ -1191,6 +1193,8 @@ function renderMap () {
             var postalCodes = [];
             dataAsJson = JSON.parse(data);
 
+
+
             for(var i = 0; i < dataAsJson.length; i++) {
 
 
@@ -1199,6 +1203,8 @@ function renderMap () {
                     url: "https://maps.googleapis.com/maps/api/geocode/json?address="+ dataAsJson[i].CAddress.split(",")[3] +"&key=AIzaSyBKccuEfSB_LplDy-S43ALZ1acme0xmk2k",
                     cache: false,
                     success: function (location) {
+
+                        console.log(location);
 
                         if(location.status == "OK") {
 
